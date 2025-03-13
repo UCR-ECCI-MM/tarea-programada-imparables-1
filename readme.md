@@ -14,15 +14,12 @@ Para la implementación en **Python**, se seguirá la guía de estilo **PEP 8** 
 
 ## 📜 Descripción 
 
-En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo **XML** con información médica de **MedlinePlus.gov**. Se utiliza un **analizador léxico y sintáctico con PLY** para interpretar los datos y mostrarlos en una interfaz gráfica amigable.
+En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo...(TERMINAR)
 
 ### 🎯 Objetivos:
-- Navegar por la información médica de forma estructurada.  
-- Mostrar gráficos relevantes basados en los datos extraídos.  
-- Proporcionar opciones como:
-  - **Visualización de información general del dataset**.  
-  - **Acceso a páginas web incluidas en los datos**.  
-  - **Validación robusta de datos de entrada**.  
+- Objetivo#1
+- Objetivo#2
+- Objetivo#3
 
 ## 📊 Presentaciones TP1
 
