@@ -38,5 +38,6 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
 ---
 
 ### ✅ Notas:
-- Se seguirá la guía de estilo **PEP 8** en el código fuente.  
-- Los commits estarán estructurados bajo el esquema de la tabla anterior.  
+- Se seguirá la guía de estilo **PEP 8** en el código fuente.
+- Los commits estarán estructurados bajo el esquema de la tabla anterior.
+- En cada carpeta de entregable estará un `readme.md` con las indicaciones para poder ejecutar el proyecto
