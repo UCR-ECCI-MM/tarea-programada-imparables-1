@@ -1,0 +1,11 @@
+Todo el proceso de instalacion
+
+DEBIAN/UBUNTU--------------------------------------
+
+python3 -m venv entornomostro
+
+source entornomostro/bin/activate
+
+pip install matplotlib
+
+pip install PyQt5
