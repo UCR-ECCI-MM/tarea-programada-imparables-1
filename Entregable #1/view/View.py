@@ -18,14 +18,14 @@ class View(QMainWindow):
     #
     def initUI(self):
         
-        loadUi( 'Entregable #1/view/WelcomePage.ui' , self )  # Load mainWindow.ui, designed in Qt Designer
+        loadUi( 'Entregable #1/view/mainWindow.ui' , self )  # Load mainWindow.ui, designed in Qt Designer
 
         self.centerWindow() # Center the main window on the screen
         
-        # self.landingPage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
-        # loadUi( 'view/landingPage.ui' , self.landingPage ) # Load from the UI file
-        # self.stackedWidget.addWidget(self.landingPage) # Add landingPage to the stackedWidget
-        # self.stackedWidget.setCurrentWidget( self.landingPage ) # set the landingPage to the main window on the stackedWidget]
+        self.welcomePage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
+        loadUi( 'Entregable #1/view/WelcomePage.ui' , self.welcomePage ) # Load from the UI file
+        self.stackedWidget.addWidget(self.welcomePage) # Add landingPage to the stackedWidget
+        self.stackedWidget.setCurrentWidget( self.welcomePage ) # set the landingPage to the main window on the stackedWidget]
 
         # # Load and add the databaseExplorer page
         # self.databaseExplorer = QMainWindow()  # Instantiate the databaseExplorer window

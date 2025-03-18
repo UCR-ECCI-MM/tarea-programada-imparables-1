@@ -24,6 +24,7 @@ En esta tarea, se desarrolla una aplicación en **Python** que procesa un archiv
 ## 📊 Presentaciones TP1
 
 - 🔗 [Presentación Entregable #1](https://www.canva.com/design/DAGhpk5KZds/vbva_ABSX7URnhySVLA9lg/edit?utm_content=DAGhpk5KZds&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- 🔗 [DOC Entregable #1](https://docs.google.com/document/d/1-pL6v0Fi6CXQtW9VehQbuTX9JwXbPxlaxotsDXyK8_g/edit?usp=sharing)
 
 ## 🔄 Esquema de Commits
 

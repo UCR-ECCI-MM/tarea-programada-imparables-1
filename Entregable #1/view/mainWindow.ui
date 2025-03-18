@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>763</width>
+    <height>583</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.522843, y1:1, x2:0.533, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>200</y>
+      <width>281</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>NINGUN ARCHIVO CARGADO</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>763</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuINICIO">
+    <property name="title">
+     <string>INICIO</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuCARGAR_ARCHIVO">
+    <property name="title">
+     <string>ARCHIVO</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAYUDA">
+    <property name="title">
+     <string>AYUDA</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuGRAFICO_1">
+    <property name="title">
+     <string>GRAFICO 1</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuGRAFICO_2">
+    <property name="title">
+     <string>GRAFICO 2</string>
+    </property>
+   </widget>
+   <addaction name="menuINICIO"/>
+   <addaction name="menuCARGAR_ARCHIVO"/>
+   <addaction name="menuAYUDA"/>
+   <addaction name="menuGRAFICO_1"/>
+   <addaction name="menuGRAFICO_2"/>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
