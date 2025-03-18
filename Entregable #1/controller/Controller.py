@@ -17,7 +17,7 @@ class Controller:
         print(f"Button clicked! Action: {action}")
 
         if action == 'startApp':
-            print("STARTING APP!")
+            self.view.switchToMainWindow()
         elif action == 'action2':
             self.handleAction2()
         elif action == 'openFile':

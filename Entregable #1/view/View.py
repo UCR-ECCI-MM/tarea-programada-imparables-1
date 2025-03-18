@@ -24,8 +24,20 @@ class View(QMainWindow):
         self.centerWindow() # Center the main window on the screen
         self.welcomePage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
         loadUi( 'Entregable #1/view/welcomePage.ui' , self ) # Load from the UI file
+        self.stackedWidget.addWidget(self.welcomePage) # Add welcomePage to the stackedWidget
+        self.stackedWidget.setCurrentWidget(self.welcomePage) # set the welcomePage to the main window on the stackedWidget
         self.menuBar.setVisible(False) # Hide the menu bar initially (since we start on the welcome page)
         self.connectButtons() # Connect buttons or other widgets to controller methods
+
+    def switchToMainWindow(self):
+        """
+        Switch to the main window and show the menu bar.
+        """
+        self.mainPage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
+        loadUi( 'Entregable #1/view/mainWindow.ui' , self ) # Load from the UI file
+        self.stackedWidget.addWidget(self.mainPage) # Add welcomePage to the stackedWidget
+        self.stackedWidget.setCurrentWidget(self.mainPage) # set the welcomePage to the main window on the stackedWidget
+        self.menuBar.setVisible(True)  # Show the menu bar
 
     def connectButtons(self):
         """
