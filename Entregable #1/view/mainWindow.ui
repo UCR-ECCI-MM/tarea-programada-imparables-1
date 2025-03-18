@@ -54,9 +54,33 @@ background-color: rgb(255, 255, 255);</string>
      <string>AYUDA</string>
     </property>
    </widget>
+   <widget class="QMenu" name="GRAFICO1">
+    <property name="title">
+     <string>GRAFICOS</string>
+    </property>
+    <addaction name="actionGraficos"/>
+   </widget>
+   <widget class="QMenu" name="FUNCIONABILIDAD1">
+    <property name="title">
+     <string>FUNCIONABILIDADES</string>
+    </property>
+    <addaction name="actionfuncionabilidadPrueba"/>
+   </widget>
    <addaction name="menuARCHIVO"/>
    <addaction name="menuAYUDA"/>
+   <addaction name="GRAFICO1"/>
+   <addaction name="FUNCIONABILIDAD1"/>
   </widget>
+  <action name="actionGraficos">
+   <property name="text">
+    <string>graficoPrueba</string>
+   </property>
+  </action>
+  <action name="actionfuncionabilidadPrueba">
+   <property name="text">
+    <string>funcionabilidadPrueba</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -38,20 +38,36 @@ class View(QMainWindow):
         self.stackedWidget.addWidget(self.mainPage) # Add welcomePage to the stackedWidget
         self.stackedWidget.setCurrentWidget(self.mainPage) # set the welcomePage to the main window on the stackedWidget
         self.menuBar.setVisible(True)  # Show the menu bar
+        self.connectMenuActions() # Connect menu actions to controller methods
 
     def connectButtons(self):
         """
-        Connect buttons to the controller's handleButtonClick method, passing the button name as a parameter.
+        Connect buttons to the controller's handleButtonClick method.
         """
-        self.connectButton('startButton', 'startApp') # (butttonName, actionName)
+        self.connectButton('startButton', 'startApp', 'clicked') # (butttonName, actionName, actionExecuted)
 
-    def connectButton(self, buttonName, action):
+    def connectMenuActions(self):
         """
-        Connect a button to the controller's handleButtonClick method, passing the action as a parameter.
+        Connect menu actions to the controller's handleButtonClick method.
         """
-        if hasattr(self, buttonName):
-            button = getattr(self, buttonName)
-            button.clicked.connect(lambda: self.controller.handleButtonClick(action))
+        self.connectButton('actionGraficos', 'GRAFICO', 'triggered') #(butttonName, actionName, actionExecuted)
+        self.connectButton('actionfuncionabilidadPrueba', 'FUNCIONABILIDAD', 'triggered')
+
+    def connectButton(self, widgetName, action, signal):
+        """
+        Connect a widget (button or menu action) to the controller's handleButtonClick method, passing the action as a parameter.
+        :param widgetName: Name of the widget (button or menu action).
+        :param action: Action to pass to the controller.
+        :param signal: Signal to connect (e.g., 'clicked' for buttons, 'triggered' for menu actions).
+        """
+        if hasattr(self, widgetName):
+            widget = getattr(self, widgetName)
+            if signal == 'clicked':
+                widget.clicked.connect(lambda: self.controller.handleButtonClick(action))
+            elif signal == 'triggered':
+                widget.triggered.connect(lambda: self.controller.handleButtonClick(action))
+            else:
+                print(f"Unsupported signal: {signal}")
 
     #
     # Center the main window on the screen
