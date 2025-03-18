@@ -36,15 +36,21 @@ class View(QMainWindow):
         self.centerWindow() # Center the main window on the screen
         self.stackedWidget.addWidget(self.mainPage) # Add welcomePage to the stackedWidget
         self.stackedWidget.setCurrentWidget(self.mainPage) # set the welcomePage to the main window on the stackedWidget
+        self.menuBar.setVisible(True)  # Show the menu bar
+        self.connectMenuActions() # Connect menu actions to controller methods
 
     def connectButtons(self):
         """
         Connect buttons to the controller's handleButtonClick method.
         """
         self.connectButton('startButton', 'startApp', 'clicked') # (butttonName, actionName, actionExecuted)
-        self.connectButton('actionGraficos', 'GRAFICO', 'clicked') #(butttonName, actionName, actionExecuted)
-        self.connectButton('actionfuncionabilidadPrueba_2', 'FUNCIONABILIDAD', 'clicked')
 
+    def connectMenuActions(self):
+        """
+        Connect menu actions to the controller's handleButtonClick method.
+        """
+        self.connectButton('actionGraficos', 'GRAFICO', 'triggered') #(butttonName, actionName, actionExecuted)
+        self.connectButton('actionfuncionabilidadPrueba', 'FUNCIONABILIDAD', 'triggered')
 
     def connectButton(self, widgetName, action, signal):
         """

@@ -34,66 +34,6 @@ background-color: rgb(255, 255, 255);</string>
      <string>NINGUN ARCHIVO CARGADO</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>210</y>
-      <width>141</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>FUNCIONABILIDAD</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>160</y>
-      <width>1011</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="archivoButton">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>180</y>
-      <width>90</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ARCHIVO</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="actionGraficos_2">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>190</y>
-      <width>90</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>GRAFICO</string>
-    </property>
-   </widget>
-   <zorder>label_2</zorder>
-   <zorder>label</zorder>
-   <zorder>pushButton_3</zorder>
-   <zorder>archivoButton</zorder>
-   <zorder>actionGraficos_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -110,12 +50,26 @@ background-color: rgb(255, 255, 255);</string>
    <property name="nativeMenuBar">
     <bool>false</bool>
    </property>
-   <widget class="QMenu" name="menuHOLA">
+   <widget class="QMenu" name="menuAYUDA">
     <property name="title">
-     <string>HOLA</string>
+     <string>AYUDA</string>
     </property>
    </widget>
-   <addaction name="menuHOLA"/>
+   <widget class="QMenu" name="GRAFICO1">
+    <property name="title">
+     <string>GRAFICOS</string>
+    </property>
+    <addaction name="actionGraficos"/>
+   </widget>
+   <widget class="QMenu" name="FUNCIONABILIDAD1">
+    <property name="title">
+     <string>FUNCIONABILIDADES</string>
+    </property>
+    <addaction name="actionfuncionabilidadPrueba"/>
+   </widget>
+   <addaction name="menuAYUDA"/>
+   <addaction name="GRAFICO1"/>
+   <addaction name="FUNCIONABILIDAD1"/>
   </widget>
   <action name="actionGraficos">
    <property name="text">
