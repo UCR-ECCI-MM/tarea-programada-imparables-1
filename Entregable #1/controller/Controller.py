@@ -3,9 +3,6 @@ from view.View import View
 
 class Controller:
 
-    #
-    # Constructor of Controller
-    #
     def __init__(self):
         """
         Initialize the view
@@ -13,12 +10,23 @@ class Controller:
         self.view = View(self)  # Build the view and pass the controller as a parameter
         print("Controller build!")
 
-    #
-    # Controller logic
-    #
+    def handleButtonClick(self, action):
+        """
+        Handle the button click event based on the action.
+        """
+        print(f"Button clicked! Action: {action}")
+
+        if action == 'startApp':
+            print("STARTING APP!")
+        elif action == 'action2':
+            self.handleAction2()
+        elif action == 'openFile':
+            self.handleOpenFile()
+        else:
+            print("Unknown action!")
+
     def run(self):
         """
-        # Inicia la vista.
+        Initialize the view
         """
         self.view.run()
-        

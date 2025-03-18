@@ -17,20 +17,29 @@ class View(QMainWindow):
     # UI initializer method
     #
     def initUI(self):
-        
+        """
+        Initialize the view of the app, the welcom screen
+        """
         loadUi( 'Entregable #1/view/mainWindow.ui' , self )  # Load mainWindow.ui, designed in Qt Designer
-
         self.centerWindow() # Center the main window on the screen
-        
         self.welcomePage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
-        loadUi( 'Entregable #1/view/WelcomePage.ui' , self.welcomePage ) # Load from the UI file
-        self.stackedWidget.addWidget(self.welcomePage) # Add landingPage to the stackedWidget
-        self.stackedWidget.setCurrentWidget( self.welcomePage ) # set the landingPage to the main window on the stackedWidget]
+        loadUi( 'Entregable #1/view/welcomePage.ui' , self ) # Load from the UI file
+        self.menuBar.setVisible(False) # Hide the menu bar initially (since we start on the welcome page)
+        self.connectButtons() # Connect buttons or other widgets to controller methods
 
-        # # Load and add the databaseExplorer page
-        # self.databaseExplorer = QMainWindow()  # Instantiate the databaseExplorer window
-        # uic.loadUi('view/databaseExplorer.ui', self.databaseExplorer)  # Load its UI layout
-        # self.stackedWidget.addWidget(self.databaseExplorer)  # Add to the stacked widget
+    def connectButtons(self):
+        """
+        Connect buttons to the controller's handleButtonClick method, passing the button name as a parameter.
+        """
+        self.connectButton('startButton', 'startApp') # (butttonName, actionName)
+
+    def connectButton(self, buttonName, action):
+        """
+        Connect a button to the controller's handleButtonClick method, passing the action as a parameter.
+        """
+        if hasattr(self, buttonName):
+            button = getattr(self, buttonName)
+            button.clicked.connect(lambda: self.controller.handleButtonClick(action))
 
     #
     # Center the main window on the screen
