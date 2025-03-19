@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QPushButton, QFileDialog, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QPushButton, QFileDialog, QTableWidgetItem, QWidget
 from PyQt5.uic import loadUi
 from PyQt5 import uic
 
@@ -22,7 +22,8 @@ class View(QMainWindow):
         """
         loadUi( 'Entregable #1/view/mainWindow.ui' , self )  # Load mainWindow.ui, designed in Qt Designer
         self.centerWindow() # Center the main window on the screen
-        self.welcomePage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
+        # self.welcomePage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
+        self.welcomePage = QWidget() #Initiate the landingPage first, so the landingPage now gonna be a main window
         loadUi( 'Entregable #1/view/welcomePage.ui' , self ) # Load from the UI file
         self.stackedWidget.addWidget(self.welcomePage) # Add welcomePage to the stackedWidget
         self.stackedWidget.setCurrentWidget(self.welcomePage) # set the welcomePage to the main window on the stackedWidget
@@ -33,7 +34,7 @@ class View(QMainWindow):
         """
         Switch to the main window and show the menu bar.
         """
-        self.mainPage = QMainWindow() #Initiate the landingPage first, so the landingPage now gonna be a main window
+        self.mainPage = QWidget() #Initiate the landingPage first, so the landingPage now gonna be a main window
         loadUi( 'Entregable #1/view/mainWindow.ui' , self ) # Load from the UI file
         self.stackedWidget.addWidget(self.mainPage) # Add welcomePage to the stackedWidget
         self.stackedWidget.setCurrentWidget(self.mainPage) # set the welcomePage to the main window on the stackedWidget
