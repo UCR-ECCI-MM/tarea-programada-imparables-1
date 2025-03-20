@@ -1,12 +1,6 @@
 from view.View import View
 # from model.Model import Model
-import tkinter as tk
-from tkinter import messagebox
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import matplotlib.pyplot as plt
-
-
-from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QDialog
+from PyQt5.QtWidgets import QVBoxLayout, QDialog, QMessageBox
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
@@ -58,7 +52,7 @@ class Controller:
             # ------------------------------------PROVISIONAL------------------------------------
         elif action == "FUNCIONABILIDAD":
             # ------------------------------------PROVISIONAL------------------------------------
-            messagebox.showinfo("Opción 1", "Has seleccionado la opción 1")
+            QMessageBox.information(self.view, "Opción 1", "Has seleccionado la opción 1")
             # ------------------------------------PROVISIONAL------------------------------------
         else:
             print("Unknown action!")
