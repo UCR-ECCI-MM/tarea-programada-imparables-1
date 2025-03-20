@@ -52,7 +52,37 @@ class Controller:
             # ------------------------------------PROVISIONAL------------------------------------
         elif action == "FUNCIONABILIDAD":
             # ------------------------------------PROVISIONAL------------------------------------
-            QMessageBox.information(self.view, "Opción 1", "Has seleccionado la opción 1")
+                # Crear el QMessageBox
+                msg_box = QMessageBox(self.view)
+                msg_box.setWindowTitle("Opción 1")
+                msg_box.setText("Has seleccionado la opción 1")
+
+                # Aplicar estilos CSS al QMessageBox
+                msg_box.setStyleSheet("""
+                    QMessageBox {
+                        background-color: #f0f0f0;
+                        font-family: Arial;
+                        font-size: 14px;
+                    }
+                    QMessageBox QLabel {
+                        color: #ffffff;
+                        background-color: #000000;
+                        border-radius: 5px;
+                        padding: 6px;
+                    }
+                    QMessageBox QPushButton {
+                        background-color: #0078d7;
+                        color: white;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                    }
+                    QMessageBox QPushButton:hover {
+                        background-color: #005bb5;
+                    }
+                """)
+
+                # Mostrar el QMessageBox
+                msg_box.exec_()
             # ------------------------------------PROVISIONAL------------------------------------
         else:
             print("Unknown action!")
