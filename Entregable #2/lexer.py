@@ -26,7 +26,16 @@ tokens = (
     'COMMA', 
     'NUMBER', 
     'IDENTIFIER',
-    'MINUS'
+    'MINUS',
+    'BEGIN_BACKUP',
+    'END_BACKUP',
+    'SOURCE',
+    'DESTINATION',
+    'FILE_LIST',
+    'BEGIN_BACKUP_UPDATE',
+    'END_BACKUP_UPDATE',
+    'PROGRESS',
+    'DETAILS',
 )
 
 # Regular expressions for tokens
@@ -138,6 +147,42 @@ def t_IDENTIFIER(t):
 
 def t_MINUS(t): 
     r'-' 
+    return t
+
+def t_BEGIN_BACKUP(t):
+    r'BEGIN_BACKUP'
+    return t
+
+def t_END_BACKUP(t):
+    r'END_BACKUP'
+    return t
+
+def t_BEGIN_BACKUP_UPDATE(t):
+    r'BEGIN_BACKUP_UPDATE'
+    return t
+
+def t_END_BACKUP_UPDATE(t):
+    r'END_BACKUP_UPDATE'
+    return t
+
+def t_SOURCE(t):
+    r'SOURCE'
+    return t
+
+def t_DESTINATION(t):
+    r'DESTINATION'
+    return t
+
+def t_FILE_LIST(t):
+    r'FILE_LIST'
+    return t
+
+def t_PROGRESS(t):
+    r'PROGRESS'
+    return t
+
+def t_DETAILS(t):
+    r'DETAILS'
     return t
 
 # Ignored characters (spaces and tabs)
