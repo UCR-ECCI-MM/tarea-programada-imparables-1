@@ -36,6 +36,8 @@ tokens = (
     'END_BACKUP_UPDATE',
     'PROGRESS',
     'DETAILS',
+    'RESULT',
+    'LATENCY',
 )
 
 # Regular expressions for tokens
@@ -183,6 +185,14 @@ def t_PROGRESS(t):
 
 def t_DETAILS(t):
     r'DETAILS'
+    return t
+
+def t_RESULT(t):
+    r'result'
+    return t
+
+def t_LATENCY(t):
+    r'latency'
     return t
 
 # Ignored characters (spaces and tabs)
