@@ -14,7 +14,7 @@ Para la implementación en **Python**, se seguirá la guía de estilo **PEP 8** 
 
 ## 📜 Descripción 
 
-En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo...(TERMINAR)
+En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo .txt el cual contiene un log perteneciente a un sistema operativo. El fin de la apliación es poder ofrecer un entorno amigable con el usuario y de facil acceso a la información proporcionada en el log, logrando con esto el facil entendimiento y permitiendo así un mejor análisis de la informacion contenida en el archivo.
 
 ## 📊 Presentaciones TP1
 
