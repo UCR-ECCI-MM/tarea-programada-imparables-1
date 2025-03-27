@@ -16,15 +16,11 @@ Para la implementación en **Python**, se seguirá la guía de estilo **PEP 8** 
 
 En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo...(TERMINAR)
 
-### 🎯 Objetivos:
-- Objetivo#1
-- Objetivo#2
-- Objetivo#3
-
 ## 📊 Presentaciones TP1
 
 - 🔗 [Presentación Entregable #1](https://www.canva.com/design/DAGhpk5KZds/vbva_ABSX7URnhySVLA9lg/edit?utm_content=DAGhpk5KZds&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - 🔗 [DOC Entregable #1](https://docs.google.com/document/d/1-pL6v0Fi6CXQtW9VehQbuTX9JwXbPxlaxotsDXyK8_g/edit?usp=sharing)
+- 🔗 [Presentación Entregable #2]()
 
 ## 🔄 Esquema de Commits
 

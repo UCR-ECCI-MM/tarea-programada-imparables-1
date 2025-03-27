@@ -9,3 +9,5 @@ source entornomostro/bin/activate
 pip install matplotlib
 
 pip install PyQt5
+
+pip install ply
