@@ -44,6 +44,7 @@ tokens = (
     'NETWORK',
     'PASS',
     'FAIL',
+    'STEP',
 )
 
 # Regular expressions for tokens
@@ -215,6 +216,10 @@ def t_PASS(t):
 
 def t_FAIL(t):
     r'FAIL'
+    return t
+
+def t_STEP(t):
+    r'STEP'
     return t
 
 
