@@ -38,6 +38,12 @@ tokens = (
     'DETAILS',
     'RESULT',
     'LATENCY',
+    'VIDEO',
+    'AUDIO',
+    'STORAGE',
+    'NETWORK',
+    'PASS',
+    'FAIL',
 )
 
 # Regular expressions for tokens
@@ -187,13 +193,31 @@ def t_DETAILS(t):
     r'DETAILS'
     return t
 
-def t_RESULT(t):
-    r'result'
+def t_VIDEO(t):
+    r'VIDEO'
     return t
 
-def t_LATENCY(t):
-    r'latency'
+def t_AUDIO(t):
+    r'AUDIO'
     return t
+
+def t_STORAGE(t):
+    r'STORAGE'
+    return t
+
+def t_NETWORK(t):
+    r'NETWORK'
+    return t
+
+def t_PASS(t):
+    r'PASS'
+    return t
+
+def t_FAIL(t):
+    r'FAIL'
+    return t
+
+
 
 # Ignored characters (spaces and tabs)
 t_ignore = ' \t'
