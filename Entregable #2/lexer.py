@@ -45,6 +45,7 @@ tokens = (
     'PASS',
     'FAIL',
     'STEP',
+    'STACK_TRACE',
 )
 
 # Regular expressions for tokens
@@ -220,6 +221,10 @@ def t_FAIL(t):
 
 def t_STEP(t):
     r'STEP'
+    return t
+
+def t_STACK_TRACE(t):
+    r'STACK_TRACE'
     return t
 
 
