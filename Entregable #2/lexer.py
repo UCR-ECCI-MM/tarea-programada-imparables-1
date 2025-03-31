@@ -46,6 +46,8 @@ tokens = (
     'FAIL',
     'STEP',
     'STACK_TRACE',
+    'FUNCTION',
+    'LIINE',
 )
 
 # Regular expressions for tokens
@@ -227,6 +229,13 @@ def t_STACK_TRACE(t):
     r'STACK_TRACE'
     return t
 
+def t_FUNCTION(t):
+    r'FUNCTION'
+    return t
+
+def t_LINE(t):
+    r'LINE'
+    return t
 
 
 # Ignored characters (spaces and tabs)
