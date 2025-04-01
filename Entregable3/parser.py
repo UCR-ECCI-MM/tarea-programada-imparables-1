@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from lexer import tokens  # Asegúrate de que el archivo del lexer se llame lexer.py y tenga definidos los tokens
+from Entregable2.lexer import tokens
 
 # Regla inicial: el documento se compone de una lista de entradas
 def p_S(p):

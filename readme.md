@@ -82,8 +82,12 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```sh
    python3 main.py
    ```
-
 ---
+
+## Ejecutar Entregable 3
+   ```sh
+   python -m Entregable3.parser
+   ```
 
 ### ✅ Notas:
 - Se seguirá la guía de estilo **PEP 8** en el código fuente.
