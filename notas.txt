@@ -1,6 +1,6 @@
 Todo el proceso de instalacion
 
-DEBIAN/UBUNTU--------------------------------------
+DEBIAN/UBUNTU/MAC--------------------------------------
 
 python3 -m venv entornomostro
 
@@ -11,6 +11,8 @@ pip install matplotlib
 pip install PyQt5
 
 pip install ply
+
+python '.\Entregable #1\main.py'
 
 WINDOWS-------------------------------------(USANDO TERMINAL DE VS CODE)
 
