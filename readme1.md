@@ -20,13 +20,9 @@ Estas bibliotecas son necesarias para la interfaz gráfica (GUI) y la generació
 Descargar el Repositorio
 Clona el repositorio de GitHub en tu máquina local:
 
-bash
-Copy
 git clone https://github.com/[nombre-del-repositorio].git
 Navega a la carpeta de la tarea programada 1:
 
-bash
-Copy
 cd [nombre-del-repositorio]/TareaProgramada1/Entrega1
 Ejecutar el Programa
 Ejecuta el archivo principal del programa:
