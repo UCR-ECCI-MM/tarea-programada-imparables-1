@@ -12,9 +12,9 @@ Dentro de este repositorio se encuentra la **Tarea Programada #1** del grupo **L
 Para la implementación en **Python**, se seguirá la guía de estilo **PEP 8** para mantener el código legible y estructurado correctamente.  
 🔗 [Referencia oficial de PEP 8](https://peps.python.org/pep-0008/)  
 
-## 📜 Descripción 
+## 📜 Descripción
 
-En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo .txt el cual contiene un log perteneciente a un sistema operativo. El fin de la apliación es poder ofrecer un entorno amigable con el usuario y de facil acceso a la información proporcionada en el log, logrando con esto el facil entendimiento y permitiendo así un mejor análisis de la informacion contenida en el archivo.
+En esta tarea, se desarrolla una aplicación en **Python** que procesa un archivo .txt el cual contiene un log perteneciente a un sistema operativo. El fin de la aplicación es poder ofrecer un entorno amigable con el usuario y de fácil acceso a la información proporcionada en el log, logrando con esto el fácil entendimiento y permitiendo así un mejor análisis de la información contenida en el archivo.
 
 ## 📊 Presentaciones TP1
 
@@ -35,7 +35,57 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
 
 ---
 
+## 🚀 Ejecución del Proyecto
+
+### 🔹 Windows
+
+1. Asegúrate de tener **Python 3** instalado. Puedes verificarlo con:
+   ```sh
+   python --version
+   ```
+2. Clona el repositorio:
+   ```sh
+   git clone https://github.com/usuario/repo-imparables2.git
+   ```
+3. Accede a la carpeta del proyecto:
+   ```sh
+   cd repo-imparables2
+   ```
+4. Instala las dependencias necesarias:
+   ```sh
+   pip install -r requirements.txt
+   ```
+5. Ejecuta la aplicación:
+   ```sh
+   python main.py
+   ```
+
+### 🔹 Mac / Ubuntu
+
+1. Asegúrate de tener **Python 3** instalado. Puedes verificarlo con:
+   ```sh
+   python3 --version
+   ```
+2. Clona el repositorio:
+   ```sh
+   git clone https://github.com/usuario/repo-imparables2.git
+   ```
+3. Accede a la carpeta del proyecto:
+   ```sh
+   cd repo-imparables2
+   ```
+4. Instala las dependencias necesarias:
+   ```sh
+   pip3 install -r requirements.txt
+   ```
+5. Ejecuta la aplicación:
+   ```sh
+   python3 main.py
+   ```
+
+---
+
 ### ✅ Notas:
 - Se seguirá la guía de estilo **PEP 8** en el código fuente.
 - Los commits estarán estructurados bajo el esquema de la tabla anterior.
-- En cada carpeta de entregable estará un `readme.md` con las indicaciones para poder ejecutar el proyecto
+- En cada carpeta de entregable estará un `readme.md` con las indicaciones para poder ejecutar el proyecto.

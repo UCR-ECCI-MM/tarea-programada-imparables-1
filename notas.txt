@@ -11,3 +11,17 @@ pip install matplotlib
 pip install PyQt5
 
 pip install ply
+
+WINDOWS-------------------------------------(USANDO TERMINAL DE VS CODE)
+
+python -m venv entornomostro
+
+.\entornomostro\Scripts\activate
+
+pip install matplotlib
+
+pip install PyQt5
+
+pip install ply
+
+python '.\Entregable #1\main.py'
