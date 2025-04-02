@@ -93,20 +93,27 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```sh
    cd repo-imparables2
    ```
-4. Instala las dependencias necesarias:
+4. Crea un entorno para instalar las librerias necesarias:
    ```sh
-   pip3 install -r requirements.txt
+   python3 -m venv entornomostro
    ```
-5. Ejecuta la aplicación:
+5. Accede al entorno:
    ```sh
-   python3 main.py
+   source entornomostro/bin/activate
+   ```
+6. Instala las librerias necesarias:
+   ```sh
+   pip install matplotlib
+
+   pip install PyQt5
+
+   pip install ply
+   ```
+7. Ejecuta el programa:
+   ```sh
+   python -m Entregable*.ejecutable
    ```
 ---
-
-## Ejecutar Entregable 3
-   ```sh
-   python -m Entregable3.parser
-   ```
 
 ### ✅ Notas:
 - Se seguirá la guía de estilo **PEP 8** en el código fuente.
