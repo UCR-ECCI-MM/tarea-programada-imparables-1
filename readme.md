@@ -76,7 +76,7 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```
    - ##### Entregable 3
    ```sh
-   python Entregable2/parser.py
+   python Entregable3/parser.py
    ```
 
 ### 🔹 Mac / Ubuntu
@@ -113,6 +113,17 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```sh
    python -m Entregable*.ejecutable
    ```
+      - ##### Entregable 1
+   ```sh
+   python -m Entregable1.main
+   ```
+   - ##### Entregable 2
+   ```sh
+   python -m Entregable2.lexer
+   ```
+   - ##### Entregable 3
+   ```sh
+   python -m Entregable2.parser
 ---
 
 ### ✅ Notas:
