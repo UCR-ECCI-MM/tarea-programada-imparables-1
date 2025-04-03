@@ -62,7 +62,9 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
 6. Instala las dependencias para que puedas correr cualquier entregable
    ```sh
    pip install matplotlib
+
    pip install PyQt5
+
    pip install ply
    ```
 7. Cómo correr cada etapa, una vez instaladas dependencias y dentro del entorno virtual
@@ -79,7 +81,7 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    python Entregable3/parser.py
    ```
 
-### 🔹 Mac / Ubuntu
+### 🔹 Mac / Ubuntu (Recomendado abrir una terminal en VS code)
 
 1. Asegúrate de tener **Python 3** instalado. Puedes verificarlo con:
    ```sh
@@ -91,17 +93,17 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```
 3. Accede a la carpeta del proyecto:
    ```sh
-   cd repo-imparables2
+   cd tareas-programadas-imparables-2
    ```
-4. Crea un entorno para instalar las librerias necesarias:
+4. Crea un entorno virtual para dentro del mismo instalar las dependencias y poder correr el proyecto
    ```sh
    python3 -m venv entornomostro
    ```
-5. Accede al entorno:
+5. Activa el entorno virtual
    ```sh
    source entornomostro/bin/activate
    ```
-6. Instala las librerias necesarias:
+6. Instala las dependencias para que puedas correr cualquier entregable
    ```sh
    pip install matplotlib
 
@@ -109,7 +111,7 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
 
    pip install ply
    ```
-7. Ejecuta el programa:
+7. Cómo correr cada etapa, una vez instaladas dependencias y dentro del entorno virtual
       - ##### Entregable 1
    ```sh
    python -m Entregable1.main
