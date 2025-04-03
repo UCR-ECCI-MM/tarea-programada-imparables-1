@@ -1,4 +1,4 @@
-from view.View import View
+from Entregable1.view.View import View
 # from model.Model import Model
 from PyQt5.QtWidgets import QVBoxLayout, QDialog, QMessageBox
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas

@@ -87,7 +87,7 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```
 2. Clona el repositorio:
    ```sh
-   git clone https://github.com/usuario/repo-imparables2.git
+   git clone https://github.com/UCR-ECCI-MM/tarea-programada-imparables-1.git
    ```
 3. Accede a la carpeta del proyecto:
    ```sh
@@ -110,9 +110,6 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    pip install ply
    ```
 7. Ejecuta el programa:
-   ```sh
-   python -m Entregable*.ejecutable
-   ```
       - ##### Entregable 1
    ```sh
    python -m Entregable1.main

@@ -4,7 +4,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
 from PyQt5.QtWidgets import QApplication
-from controller.Controller import Controller
+from Entregable1.controller.Controller import Controller
 
 def main():
     # Inicializa QApplication antes de cualquier QWidget
