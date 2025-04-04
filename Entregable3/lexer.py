@@ -81,7 +81,8 @@ def t_LOGLEVEL(t):
     return t
 
 def t_ENTRY_NUMBER(t):
-    r'/s*Entry/s*\d{3}:'
+    r'\s*Entry\s*\d+:'
+    t.value = t.value[:-1]  # Remove the colon (OJO)
     return t
 
 def t_BEGIN_DIAGNOSTIC(t):
