@@ -25,7 +25,7 @@ tokens = (
     'BEGIN_BOOT_SEQUENCE', 
     'END_BOOT_SEQUENCE',
     'COMMA', 
-    'NUMBER', 
+    # 'NUMBER', 
     'IDENTIFIER',
     'MINUS',
     'BEGIN_BACKUP',
@@ -81,7 +81,7 @@ def t_LOGLEVEL(t):
     return t
 
 def t_ENTRY_NUMBER(t):
-    r'/sEntry \d{3}:'
+    r'/s*Entry/s*\d{3}:'
     return t
 
 def t_BEGIN_DIAGNOSTIC(t):
@@ -156,10 +156,10 @@ def t_COMMA(t):
     r','
     return t
 
-def t_NUMBER(t):
-    r'\d+'
-    t.value = int(t.value)
-    return t
+# def t_NUMBER(t):
+#     r'\d+'
+#     t.value = int(t.value)
+#     return t
 
 def t_IDENTIFIER(t):
     r'[A-Za-z_][A-Za-z0-9_]*'
