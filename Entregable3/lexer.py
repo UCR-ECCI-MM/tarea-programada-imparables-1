@@ -9,13 +9,14 @@ tokens = (
     'BEGIN_DIAGNOSTIC', 
     'END_DIAGNOSTIC', 
     'CHECK',
-    'TIMESTAMP', 
+    # 'TIMESTAMP', 
+    'DATE',
+    'TIME',
     'LOGLEVEL', 
     'ENTRY',
     'ARROW', 
     'LBRACE', 
     'RBRACE', 
-    'RESULT', 
     'LATENCY',
     'STRING',
     'SEMICOLON',
@@ -37,7 +38,6 @@ tokens = (
     'PROGRESS',
     'DETAILS',
     'RESULT',
-    'LATENCY',
     'VIDEO',
     'AUDIO',
     'STORAGE',
@@ -63,9 +63,16 @@ def t_RBRACKET(t):
     r'\]'
     return t
 
-def t_TIMESTAMP(t):
-    r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
-    return t
+
+# def t_TIMESTAMP(t):
+#     r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
+#     return t
+
+def t_DATE(t): 
+    r'\d{4}-\d{2}-\d{2}'
+
+def t_TIME(t): 
+    r'\d{2}:\d{2}:\d{2}'
 
 def t_LOGLEVEL(t):
     r'(INFO|WARN|DEBUG|ERROR):'

@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from Entregable2.lexer import tokens
+from lexer import tokens
 
 # Regla inicial: el documento se compone de una lista de entradas
 def p_S(p):
