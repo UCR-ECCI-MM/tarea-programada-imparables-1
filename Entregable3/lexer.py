@@ -8,7 +8,7 @@ tokens = (
     'TIME',
     'LOGLEVEL',
     'ENTRY_NUMBER',
-    'COLON', 
+    # 'COLON', 
     'MESSAGE', 
     'BEGIN_DIAGNOSTIC', 
     'END_DIAGNOSTIC', 
@@ -19,7 +19,7 @@ tokens = (
     'RBRACE', 
     'LATENCY',
     'STRING',
-    'SEMICOLON',
+    # 'SEMICOLON',
     'BEGIN_CRASH_REPORT', 
     'END_CRASH_REPORT', 
     'BEGIN_BOOT_SEQUENCE', 
@@ -124,13 +124,13 @@ def t_STRING(t):
     r'"[^"]*"'
     return t
 
-def t_COLON(t):
-    r':'
-    return t
+# def t_COLON(t):
+#     r':'
+#     return t
 
-def t_SEMICOLON(t):
-    r';'
-    return t
+# def t_SEMICOLON(t):
+#     r';'
+#     return t
 
 def t_MESSAGE(t):
     r'[a-zA-Z][a-zA-Z0-9\s]*\.'
