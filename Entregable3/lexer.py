@@ -4,16 +4,16 @@ tokens = (
     'COMMENT', 
     'LBRACKET', 
     'RBRACKET', 
+    'DATE',
+    'TIME',
+    'LOGLEVEL',
+    'ENTRY_NUMBER',
     'COLON', 
     'MESSAGE', 
     'BEGIN_DIAGNOSTIC', 
     'END_DIAGNOSTIC', 
     'CHECK',
     # 'TIMESTAMP', 
-    'DATE',
-    'TIME',
-    'LOGLEVEL', 
-    'ENTRY',
     'ARROW', 
     'LBRACE', 
     'RBRACE', 
@@ -77,11 +77,11 @@ def t_TIME(t):
 
 def t_LOGLEVEL(t):
     r'(INFO|WARN|DEBUG|ERROR):'
-    t.value = t.value[:-1]  # Remove the colon
+    t.value = t.value[:-1]  # Remove the colon (OJO)
     return t
 
-def t_ENTRY(t):
-    r'Entry \d{3}'
+def t_ENTRY_NUMBER(t):
+    r'/sEntry \d{3}:'
     return t
 
 def t_BEGIN_DIAGNOSTIC(t):
