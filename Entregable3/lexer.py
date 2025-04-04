@@ -63,16 +63,17 @@ def t_RBRACKET(t):
     r'\]'
     return t
 
-
 # def t_TIMESTAMP(t):
 #     r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
 #     return t
 
 def t_DATE(t): 
     r'\d{4}-\d{2}-\d{2}'
+    return t
 
 def t_TIME(t): 
     r'\d{2}:\d{2}:\d{2}'
+    return t
 
 def t_LOGLEVEL(t):
     r'(INFO|WARN|DEBUG|ERROR):'
