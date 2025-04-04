@@ -21,6 +21,9 @@ tokens = (
     'LATENCY',
     'SEMICOLON',
     'CHECK',
+    'BEGIN_BOOT_SEQUENCE', 
+    'END_BOOT_SEQUENCE',
+    'STEP',
     # 'COLON', 
     'MESSAGE', 
     # 'TIMESTAMP', 
@@ -29,8 +32,6 @@ tokens = (
     'RBRACE', 
     'BEGIN_CRASH_REPORT', 
     'END_CRASH_REPORT', 
-    'BEGIN_BOOT_SEQUENCE', 
-    'END_BOOT_SEQUENCE',
     'COMMA', 
     # 'NUMBER', 
     'IDENTIFIER',
@@ -44,7 +45,6 @@ tokens = (
     'END_BACKUP_UPDATE',
     'PROGRESS',
     'DETAILS',
-    'STEP',
     'STACK_TRACE',
     'FUNCTION',
     'LIINE',
@@ -105,6 +105,43 @@ def t_ARROW(t):
     r'->'
     return t
 
+def t_RESULT(t):
+    r'result:'
+    return t
+
+def t_LATENCY(t):
+    r'latency:'
+    return t
+
+def t_VIDEO(t):
+    r'VIDEO'
+    return t
+
+def t_AUDIO(t):
+    r'AUDIO'
+    return t
+
+def t_STORAGE(t):
+    r'STORAGE'
+    return t
+
+def t_NETWORK(t):
+    r'NETWORK'
+    return t
+
+def t_PASS(t):
+    r'PASS'
+    return t
+
+def t_FAIL(t):
+    r'FAIL'
+    return t
+
+def t_STEP(t):
+    r'STEP:'
+    t.value = t.value[:-1]  # Remove the colon (OJO)
+    return t
+
 def t_LBRACE(t):
     r'\{'
     return t
@@ -115,14 +152,6 @@ def t_RBRACE(t):
 
 def t_INSIDEBRACE(t):
     r'\{[^}]*\}'
-    return t
-
-def t_RESULT(t):
-    r'result:'
-    return t
-
-def t_LATENCY(t):
-    r'latency:'
     return t
 
 # def t_COLON(t):
@@ -187,7 +216,9 @@ def t_END_BACKUP_UPDATE(t):
     return t
 
 def t_SOURCE(t):
-    r'SOURCE'
+    r'SOURCE\s*:'
+    t.value = t.value[:-1]  # Remove the colon (OJO)
+    # t.value = t.value[:-1]  # Remove the colon (OJO)
     return t
 
 def t_DESTINATION(t):
@@ -204,34 +235,6 @@ def t_PROGRESS(t):
 
 def t_DETAILS(t):
     r'DETAILS'
-    return t
-
-def t_VIDEO(t):
-    r'VIDEO'
-    return t
-
-def t_AUDIO(t):
-    r'AUDIO'
-    return t
-
-def t_STORAGE(t):
-    r'STORAGE'
-    return t
-
-def t_NETWORK(t):
-    r'NETWORK'
-    return t
-
-def t_PASS(t):
-    r'PASS'
-    return t
-
-def t_FAIL(t):
-    r'FAIL'
-    return t
-
-def t_STEP(t):
-    r'STEP'
     return t
 
 def t_STACK_TRACE(t):
