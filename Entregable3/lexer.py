@@ -8,18 +8,25 @@ tokens = (
     'TIME',
     'LOGLEVEL',
     'ENTRY_NUMBER',
-    # 'COLON', 
-    'MESSAGE', 
+    'STRING',
     'BEGIN_DIAGNOSTIC', 
     'END_DIAGNOSTIC', 
+    'VIDEO',
+    'STORAGE',
+    'NETWORK',
+    'AUDIO',
+    'RESULT',
+    'PASS',
+    'FAIL',
+    'LATENCY',
+    'SEMICOLON',
     'CHECK',
+    # 'COLON', 
+    'MESSAGE', 
     # 'TIMESTAMP', 
     'ARROW', 
     'LBRACE', 
     'RBRACE', 
-    'LATENCY',
-    'STRING',
-    # 'SEMICOLON',
     'BEGIN_CRASH_REPORT', 
     'END_CRASH_REPORT', 
     'BEGIN_BOOT_SEQUENCE', 
@@ -37,13 +44,6 @@ tokens = (
     'END_BACKUP_UPDATE',
     'PROGRESS',
     'DETAILS',
-    'RESULT',
-    'VIDEO',
-    'AUDIO',
-    'STORAGE',
-    'NETWORK',
-    'PASS',
-    'FAIL',
     'STEP',
     'STACK_TRACE',
     'FUNCTION',
@@ -85,6 +85,10 @@ def t_ENTRY_NUMBER(t):
     t.value = t.value[:-1]  # Remove the colon (OJO)
     return t
 
+def t_STRING(t):
+    r'"[^"]*"'
+    return t
+
 def t_BEGIN_DIAGNOSTIC(t):
     r'BEGIN_DIAGNOSTIC'
     return t
@@ -121,17 +125,13 @@ def t_LATENCY(t):
     r'latency:'
     return t
 
-def t_STRING(t):
-    r'"[^"]*"'
-    return t
-
 # def t_COLON(t):
 #     r':'
 #     return t
 
-# def t_SEMICOLON(t):
-#     r';'
-#     return t
+def t_SEMICOLON(t):
+    r';'
+    return t
 
 def t_MESSAGE(t):
     r'[a-zA-Z][a-zA-Z0-9\s]*\.'
