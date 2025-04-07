@@ -218,6 +218,7 @@ def t_END_BACKUP_UPDATE(t):
 def t_SOURCE(t):
     r'SOURCE\s*:'
     t.value = t.value[:-1]  # Remove the colon (OJO)
+    print(f"Detectado: {t.value}")  # Depuración
     # t.value = t.value[:-1]  # Remove the colon (OJO)
     return t
 
@@ -246,7 +247,7 @@ def t_FUNCTION(t):
     return t
 
 def t_LINE(t):
-    r'LINE'
+    r'LINE:'
     return t
 
 
