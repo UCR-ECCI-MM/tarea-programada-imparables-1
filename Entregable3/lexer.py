@@ -24,16 +24,16 @@ tokens = (
     'BEGIN_BOOT_SEQUENCE', 
     'END_BOOT_SEQUENCE',
     'STEP',
-    # 'COLON', 
+    'COLON', 
     'MESSAGE', 
-    # 'TIMESTAMP', 
+    'TIMESTAMP', 
     'ARROW', 
     'LBRACE', 
     'RBRACE', 
     'BEGIN_CRASH_REPORT', 
     'END_CRASH_REPORT', 
     'COMMA', 
-    # 'NUMBER', 
+    'NUMBER', 
     'IDENTIFIER',
     'MINUS',
     'BEGIN_BACKUP',
@@ -53,7 +53,7 @@ tokens = (
 # Regular expressions for tokens
 def t_COMMENT(t):
     r'\#.*'
-    return t
+    pass
 
 def t_LBRACKET(t):
     r'\['
@@ -63,9 +63,9 @@ def t_RBRACKET(t):
     r'\]'
     return t
 
-# def t_TIMESTAMP(t):
-#     r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
-#     return t
+def t_TIMESTAMP(t):
+    r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
+    return t
 
 def t_DATE(t): 
     r'\d{4}-\d{2}-\d{2}'
@@ -154,9 +154,9 @@ def t_INSIDEBRACE(t):
     r'\{[^}]*\}'
     return t
 
-# def t_COLON(t):
-#     r':'
-#     return t
+def t_COLON(t):
+    r':'
+    return t
 
 def t_SEMICOLON(t):
     r';'
@@ -186,10 +186,10 @@ def t_COMMA(t):
     r','
     return t
 
-# def t_NUMBER(t):
-#     r'\d+'
-#     t.value = int(t.value)
-#     return t
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
 
 def t_IDENTIFIER(t):
     r'[A-Za-z_][A-Za-z0-9_]*'
@@ -270,7 +270,9 @@ try:
         data = file.read()
         lexer.input(data)
         for tok in lexer:
-            print(tok.value)
+            #print(tok)
+            pass
+        print("Lexer executed successfully")
 except FileNotFoundError:
     print("File not found")
 except Exception as e:
