@@ -165,7 +165,7 @@ def t_LINE(t):
     return t
 
 def t_ERROR_CODE(t):
-    r'ERROR_CODE:\s*\d+'
+    r'ERROR_CODE:'
     return t
 
 def t_PROGRESS(t):

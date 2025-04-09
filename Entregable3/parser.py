@@ -120,15 +120,15 @@ def p_crash_content(p):
     p[0] = { 'error_code': p[1], 'message': p[2], 'stack_trace': p[3] }
 
 def p_error_code_line(p): 
-    'error_code_line : IDENTIFIER COLON NUMBER SEMICOLON' 
-    p[0] = p[3]
+    'error_code_line : ERROR_CODE NUMBER SEMICOLON' 
+    p[0] = p[2]
 
 def p_message_line(p): 
-    'message_line : IDENTIFIER COLON STRING SEMICOLON' 
-    p[0] = p[3]
+    'message_line : MESSAGE STRING SEMICOLON' 
+    p[0] = p[2]
 
 def p_stack_trace_line(p): 
-    'stack_trace_line : STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON' 
+    'stack_trace_line : STACK_TRACE LBRACKET stack_items RBRACKET SEMICOLON' 
     p[0] = p[4]
 
 def p_stack_items_multiple(p): 
