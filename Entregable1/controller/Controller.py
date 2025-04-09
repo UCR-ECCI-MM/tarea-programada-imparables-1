@@ -1,4 +1,7 @@
-from Entregable1.view.View import View
+try: # Intento directo de importación
+    from view.View import View #Linux
+except ImportError:
+    from Entregable1.view.View import View #Mac
 # from model.Model import Model
 from PyQt5.QtWidgets import QVBoxLayout, QDialog, QMessageBox
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
