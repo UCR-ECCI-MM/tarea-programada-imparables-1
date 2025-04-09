@@ -144,8 +144,8 @@ def p_stack_item(p):
     p[0] = { 'function': p[2], 'line': p[4] }
 
 def p_function_line(p): 
-    'function_line : FUNCTION COLON STRING' 
-    p[0] = p[3]
+    'function_line : FUNCTION STRING' 
+    p[0] = p[2]
 
 def p_line_line(p): # Observa que en tu lexer has definido un token "LIINE" (o LINE); ajusta aquí según corresponda. 
     'line_line : LINE COLON NUMBER' 

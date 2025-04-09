@@ -44,7 +44,7 @@ Rule 33    stack_trace_line -> STACK_TRACE LBRACKET stack_items RBRACKET SEMICOL
 Rule 34    stack_items -> stack_item COMMA stack_items
 Rule 35    stack_items -> stack_item
 Rule 36    stack_item -> LBRACE function_line COMMA line_line RBRACE
-Rule 37    function_line -> FUNCTION COLON STRING
+Rule 37    function_line -> FUNCTION STRING
 Rule 38    line_line -> LINE COLON NUMBER
 Rule 39    backup_block -> BEGIN_BACKUP backup_content END_BACKUP
 Rule 40    backup_content -> source_line destination_line file_list_line backup_update_list_opt
@@ -73,7 +73,7 @@ BEGIN_BOOT_SEQUENCE  : 25
 BEGIN_CRASH_REPORT   : 29
 BEGIN_DIAGNOSTIC     : 14
 CHECK                : 17
-COLON                : 37 38
+COLON                : 38
 COMMA                : 17 34 36 44 45
 DATE                 : 5
 DESTINATION          : 42
@@ -847,7 +847,7 @@ state 71
 state 72
 
     (36) stack_item -> LBRACE . function_line COMMA line_line RBRACE
-    (37) function_line -> . FUNCTION COLON STRING
+    (37) function_line -> . FUNCTION STRING
 
     FUNCTION        shift and go to state 87
 
@@ -966,9 +966,9 @@ state 86
 
 state 87
 
-    (37) function_line -> FUNCTION . COLON STRING
+    (37) function_line -> FUNCTION . STRING
 
-    COLON           shift and go to state 98
+    STRING          shift and go to state 98
 
 
 state 88
@@ -1053,9 +1053,9 @@ state 97
 
 state 98
 
-    (37) function_line -> FUNCTION COLON . STRING
+    (37) function_line -> FUNCTION STRING .
 
-    STRING          shift and go to state 108
+    COMMA           reduce using rule 37 (function_line -> FUNCTION STRING .)
 
 
 state 99
@@ -1069,14 +1069,14 @@ state 100
 
     (54) details_line -> DETAILS . STRING SEMICOLON
 
-    STRING          shift and go to state 109
+    STRING          shift and go to state 108
 
 
 state 101
 
     (53) progress_line -> PROGRESS NUMBER . SEMICOLON
 
-    SEMICOLON       shift and go to state 110
+    SEMICOLON       shift and go to state 109
 
 
 state 102
@@ -1105,52 +1105,45 @@ state 105
 
     (17) check_line -> CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY . STRING RBRACE SEMICOLON
 
-    STRING          shift and go to state 111
+    STRING          shift and go to state 110
 
 
 state 106
 
     (36) stack_item -> LBRACE function_line COMMA line_line . RBRACE
 
-    RBRACE          shift and go to state 112
+    RBRACE          shift and go to state 111
 
 
 state 107
 
     (38) line_line -> LINE . COLON NUMBER
 
-    COLON           shift and go to state 113
+    COLON           shift and go to state 112
 
 
 state 108
 
-    (37) function_line -> FUNCTION COLON STRING .
+    (54) details_line -> DETAILS STRING . SEMICOLON
 
-    COMMA           reduce using rule 37 (function_line -> FUNCTION COLON STRING .)
+    SEMICOLON       shift and go to state 113
 
 
 state 109
-
-    (54) details_line -> DETAILS STRING . SEMICOLON
-
-    SEMICOLON       shift and go to state 114
-
-
-state 110
 
     (53) progress_line -> PROGRESS NUMBER SEMICOLON .
 
     DETAILS         reduce using rule 53 (progress_line -> PROGRESS NUMBER SEMICOLON .)
 
 
-state 111
+state 110
 
     (17) check_line -> CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY STRING . RBRACE SEMICOLON
 
-    RBRACE          shift and go to state 115
+    RBRACE          shift and go to state 114
 
 
-state 112
+state 111
 
     (36) stack_item -> LBRACE function_line COMMA line_line RBRACE .
 
@@ -1158,35 +1151,35 @@ state 112
     RBRACKET        reduce using rule 36 (stack_item -> LBRACE function_line COMMA line_line RBRACE .)
 
 
-state 113
+state 112
 
     (38) line_line -> LINE COLON . NUMBER
 
-    NUMBER          shift and go to state 116
+    NUMBER          shift and go to state 115
 
 
-state 114
+state 113
 
     (54) details_line -> DETAILS STRING SEMICOLON .
 
     END_BACKUP_UPDATE reduce using rule 54 (details_line -> DETAILS STRING SEMICOLON .)
 
 
-state 115
+state 114
 
     (17) check_line -> CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY STRING RBRACE . SEMICOLON
 
-    SEMICOLON       shift and go to state 117
+    SEMICOLON       shift and go to state 116
 
 
-state 116
+state 115
 
     (38) line_line -> LINE COLON NUMBER .
 
     RBRACE          reduce using rule 38 (line_line -> LINE COLON NUMBER .)
 
 
-state 117
+state 116
 
     (17) check_line -> CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY STRING RBRACE SEMICOLON .
 
