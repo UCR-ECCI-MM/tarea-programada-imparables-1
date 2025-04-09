@@ -75,7 +75,13 @@ def p_check_list_single(p):
     p[0] = [p[1]]
 
 def p_check_line(p): 
-    '''check_line : CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON''' # Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
+    '''check_line : CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY STRING RBRACE SEMICOLON''' # Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
+
+def p_check_string(p):
+    '''CHECK_STRING : VIDEO 
+    | AUDIO
+    | NETWORK
+    | STORAGE'''
 
 def p_result_value_pass(p): 
     'result_value : PASS' 

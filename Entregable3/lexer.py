@@ -111,19 +111,19 @@ def t_LATENCY(t):
     return t
 
 def t_VIDEO(t):
-    r'VIDEO'
+    r'video'
     return t
 
 def t_AUDIO(t):
-    r'AUDIO'
+    r'audio'
     return t
 
 def t_STORAGE(t):
-    r'STORAGE'
+    r'storage'
     return t
 
 def t_NETWORK(t):
-    r'NETWORK'
+    r'newwork'
     return t
 
 def t_PASS(t):
@@ -271,6 +271,7 @@ def t_error(t):
 
 def t_STRING(t):
     r'"[^"]*"'
+    t.value = t.value[1:-1]
     return t
 
 def t_SEMICOLON(t):
