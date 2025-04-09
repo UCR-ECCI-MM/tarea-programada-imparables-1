@@ -164,7 +164,7 @@ def p_source_line(p):
     p[0] = p[3]
 
 def p_destination_line(p): 
-    'destination_line : DESTINATION COLON STRING SEMICOLON' 
+    'destination_line : DESTINATION STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_file_list_line(p): 
