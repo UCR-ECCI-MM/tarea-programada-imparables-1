@@ -129,14 +129,14 @@ def p_message_line(p):
 
 def p_stack_trace_line(p): 
     'stack_trace_line : STACK_TRACE LBRACKET stack_items RBRACKET SEMICOLON' 
-    p[0] = p[4]
+    p[0] = p[3]
 
 def p_stack_items_multiple(p): 
     'stack_items : stack_item COMMA stack_items'
     p[0] = [p[1]] + p[3]
 
 def p_stack_items_single(p): 
-    'stack_items : stack_item' 
+    'stack_items : stack_item COMMA' 
     p[0] = [p[1]]
 
 def p_stack_item(p): 
