@@ -168,11 +168,11 @@ def p_destination_line(p):
     p[0] = p[3]
 
 def p_file_list_line(p): 
-    'file_list_line : FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON' 
+    'file_list_line : FILE_LIST LBRACKET file_entries COMMA RBRACKET SEMICOLON' 
     p[0] = p[4]
 
 def p_file_entries_multiple(p): 
-    'file_entries : STRING COMMA file_entries' 
+    'file_entries : STRING file_entries' 
     p[0] = [p[1]] + p[3]
 
 def p_file_entries_single(p): 
