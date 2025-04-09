@@ -161,7 +161,7 @@ def t_FUNCTION(t):
     return t
 
 def t_LINE(t):
-    r'LINE:\s*\d+'
+    r'LINE:'
     return t
 
 def t_ERROR_CODE(t):

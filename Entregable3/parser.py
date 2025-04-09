@@ -148,8 +148,8 @@ def p_function_line(p):
     p[0] = p[2]
 
 def p_line_line(p): # Observa que en tu lexer has definido un token "LIINE" (o LINE); ajusta aquí según corresponda. 
-    'line_line : LINE COLON NUMBER' 
-    p[0] = p[3]
+    'line_line : LINE NUMBER' 
+    p[0] = p[2]
 
 def p_backup_block(p): 
     'backup_block : BEGIN_BACKUP backup_content END_BACKUP' 
