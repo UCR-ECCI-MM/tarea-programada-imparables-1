@@ -42,48 +42,45 @@ Rule 30    crash_content -> error_code_line message_line stack_trace_line
 Rule 31    error_code_line -> ERROR_CODE NUMBER SEMICOLON
 Rule 32    message_line -> MESSAGE STRING SEMICOLON
 Rule 33    stack_trace_line -> STACK_TRACE LBRACKET stack_items RBRACKET SEMICOLON
-Rule 34    opt_comma -> COMMA
-Rule 35    opt_comma -> empty
-Rule 36    empty -> <empty>
-Rule 37    stack_items -> stack_item COMMA stack_items
-Rule 38    stack_items -> stack_item COMMA
-Rule 39    stack_item -> LBRACE function_line COMMA line_line RBRACE
-Rule 40    function_line -> FUNCTION STRING
-Rule 41    line_line -> LINE NUMBER
-Rule 42    backup_block -> BEGIN_BACKUP backup_content END_BACKUP
-Rule 43    backup_content -> source_line destination_line file_list_line backup_update_list_opt
-Rule 44    source_line -> SOURCE STRING SEMICOLON
-Rule 45    destination_line -> DESTINATION STRING SEMICOLON
-Rule 46    file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON
-Rule 47    file_entries -> STRING COMMA file_entries
-Rule 48    file_entries -> STRING COMMA
-Rule 49    backup_update_list_opt -> backup_update_list
-Rule 50    backup_update_list_opt -> <empty>
-Rule 51    backup_update_list -> backup_update_block backup_update_list
-Rule 52    backup_update_list -> backup_update_block
-Rule 53    backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
-Rule 54    backup_update_content -> timestamp_line progress_line details_line
-Rule 55    timestamp_line -> TIMESTAMP STRING SEMICOLON
-Rule 56    progress_line -> PROGRESS NUMBER SEMICOLON
-Rule 57    details_line -> DETAILS STRING SEMICOLON
+Rule 34    stack_items -> stack_item COMMA stack_items
+Rule 35    stack_items -> stack_item COMMA
+Rule 36    stack_item -> LBRACE function_line COMMA line_line RBRACE
+Rule 37    function_line -> FUNCTION STRING
+Rule 38    line_line -> LINE NUMBER
+Rule 39    backup_block -> BEGIN_BACKUP backup_content END_BACKUP
+Rule 40    backup_content -> source_line destination_line file_list_line backup_update_list_opt
+Rule 41    source_line -> SOURCE STRING SEMICOLON
+Rule 42    destination_line -> DESTINATION STRING SEMICOLON
+Rule 43    file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON
+Rule 44    file_entries -> STRING COMMA file_entries
+Rule 45    file_entries -> STRING COMMA
+Rule 46    backup_update_list_opt -> backup_update_list
+Rule 47    backup_update_list_opt -> <empty>
+Rule 48    backup_update_list -> backup_update_block backup_update_list
+Rule 49    backup_update_list -> backup_update_block
+Rule 50    backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
+Rule 51    backup_update_content -> timestamp_line progress_line details_line
+Rule 52    timestamp_line -> TIMESTAMP STRING SEMICOLON
+Rule 53    progress_line -> PROGRESS NUMBER SEMICOLON
+Rule 54    details_line -> DETAILS STRING SEMICOLON
 
 Terminals, with rules where they appear
 
 ARROW                : 17
 AUDIO                : 19
-BEGIN_BACKUP         : 42
-BEGIN_BACKUP_UPDATE  : 53
+BEGIN_BACKUP         : 39
+BEGIN_BACKUP_UPDATE  : 50
 BEGIN_BOOT_SEQUENCE  : 25
 BEGIN_CRASH_REPORT   : 29
 BEGIN_DIAGNOSTIC     : 14
 CHECK                : 17
 COLON                : 
-COMMA                : 17 34 37 38 39 47 48
+COMMA                : 17 34 35 36 44 45
 DATE                 : 5
-DESTINATION          : 45
-DETAILS              : 57
-END_BACKUP           : 42
-END_BACKUP_UPDATE    : 53
+DESTINATION          : 42
+DETAILS              : 54
+END_BACKUP           : 39
+END_BACKUP_UPDATE    : 50
 END_BOOT_SEQUENCE    : 25
 END_CRASH_REPORT     : 29
 END_DIAGNOSTIC       : 14
@@ -91,31 +88,31 @@ ENTRY_MESSAGE        : 5
 ENTRY_NUMBER         : 5
 ERROR_CODE           : 31
 FAIL                 : 23
-FILE_LIST            : 46
-FUNCTION             : 40
+FILE_LIST            : 43
+FUNCTION             : 37
 IDENTIFIER           : 
 LATENCY              : 17
-LBRACE               : 17 39
-LBRACKET             : 5 33 46
-LINE                 : 41
+LBRACE               : 17 36
+LBRACKET             : 5 33 43
+LINE                 : 38
 LOGLEVEL             : 5
 MESSAGE              : 32
 MINUS                : 
 NETWORK              : 20
-NUMBER               : 31 41 56
+NUMBER               : 31 38 53
 PASS                 : 22
-PROGRESS             : 56
-RBRACE               : 17 39
-RBRACKET             : 5 33 46
+PROGRESS             : 53
+RBRACE               : 17 36
+RBRACKET             : 5 33 43
 RESULT               : 17
-SEMICOLON            : 17 28 31 32 33 44 45 46 55 56 57
-SOURCE               : 44
+SEMICOLON            : 17 28 31 32 33 41 42 43 52 53 54
+SOURCE               : 41
 STACK_TRACE          : 33
 STEP                 : 28
 STORAGE              : 21
-STRING               : 17 17 24 28 32 40 44 45 47 48 55 57
+STRING               : 17 17 24 28 32 37 41 42 44 45 52 54
 TIME                 : 5
-TIMESTAMP            : 55
+TIMESTAMP            : 52
 VIDEO                : 18
 error                : 
 
@@ -124,11 +121,11 @@ Nonterminals, with rules where they appear
 CHECK_STRING         : 
 S                    : 0
 backup_block         : 13
-backup_content       : 42
-backup_update_block  : 51 52
-backup_update_content : 53
-backup_update_list   : 49 51
-backup_update_list_opt : 43
+backup_content       : 39
+backup_update_block  : 48 49
+backup_update_content : 50
+backup_update_list   : 46 48
+backup_update_list_opt : 40
 block                : 8 9
 blocks               : 6 8
 blocks_opt           : 4
@@ -137,29 +134,27 @@ check_line           : 15 16
 check_list           : 14 15
 crash_block          : 12
 crash_content        : 29
-destination_line     : 43
-details_line         : 54
+destination_line     : 40
+details_line         : 51
 diagnostic_block     : 10
-empty                : 35
 entries              : 1 2
 entry                : 2 3
 error_code_line      : 30
-file_entries         : 46 47
-file_list_line       : 43
-function_line        : 39
-line_line            : 39
+file_entries         : 43 44
+file_list_line       : 40
+function_line        : 36
+line_line            : 36
 log_line             : 4
 message_line         : 30
-opt_comma            : 
-progress_line        : 54
+progress_line        : 51
 result_value         : 17
-source_line          : 43
-stack_item           : 37 38
-stack_items          : 33 37
+source_line          : 40
+stack_item           : 34 35
+stack_items          : 33 34
 stack_trace_line     : 30
 step_line            : 26 27
 step_list            : 25 26
-timestamp_line       : 54
+timestamp_line       : 51
 
 Parsing method: LALR
 
@@ -222,7 +217,7 @@ state 4
     (14) diagnostic_block -> . BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC
     (25) boot_block -> . BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE
     (29) crash_block -> . BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT
-    (42) backup_block -> . BEGIN_BACKUP backup_content END_BACKUP
+    (39) backup_block -> . BEGIN_BACKUP backup_content END_BACKUP
 
     LBRACKET        reduce using rule 7 (blocks_opt -> .)
     $end            reduce using rule 7 (blocks_opt -> .)
@@ -282,7 +277,7 @@ state 9
     (14) diagnostic_block -> . BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC
     (25) boot_block -> . BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE
     (29) crash_block -> . BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT
-    (42) backup_block -> . BEGIN_BACKUP backup_content END_BACKUP
+    (39) backup_block -> . BEGIN_BACKUP backup_content END_BACKUP
 
     LBRACKET        reduce using rule 9 (blocks -> block .)
     $end            reduce using rule 9 (blocks -> block .)
@@ -383,9 +378,9 @@ state 16
 
 state 17
 
-    (42) backup_block -> BEGIN_BACKUP . backup_content END_BACKUP
-    (43) backup_content -> . source_line destination_line file_list_line backup_update_list_opt
-    (44) source_line -> . SOURCE STRING SEMICOLON
+    (39) backup_block -> BEGIN_BACKUP . backup_content END_BACKUP
+    (40) backup_content -> . source_line destination_line file_list_line backup_update_list_opt
+    (41) source_line -> . SOURCE STRING SEMICOLON
 
     SOURCE          shift and go to state 31
 
@@ -488,15 +483,15 @@ state 28
 
 state 29
 
-    (42) backup_block -> BEGIN_BACKUP backup_content . END_BACKUP
+    (39) backup_block -> BEGIN_BACKUP backup_content . END_BACKUP
 
     END_BACKUP      shift and go to state 43
 
 
 state 30
 
-    (43) backup_content -> source_line . destination_line file_list_line backup_update_list_opt
-    (45) destination_line -> . DESTINATION STRING SEMICOLON
+    (40) backup_content -> source_line . destination_line file_list_line backup_update_list_opt
+    (42) destination_line -> . DESTINATION STRING SEMICOLON
 
     DESTINATION     shift and go to state 45
 
@@ -504,7 +499,7 @@ state 30
 
 state 31
 
-    (44) source_line -> SOURCE . STRING SEMICOLON
+    (41) source_line -> SOURCE . STRING SEMICOLON
 
     STRING          shift and go to state 46
 
@@ -605,20 +600,20 @@ state 42
 
 state 43
 
-    (42) backup_block -> BEGIN_BACKUP backup_content END_BACKUP .
+    (39) backup_block -> BEGIN_BACKUP backup_content END_BACKUP .
 
-    BEGIN_DIAGNOSTIC reduce using rule 42 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
-    BEGIN_BOOT_SEQUENCE reduce using rule 42 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
-    BEGIN_CRASH_REPORT reduce using rule 42 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
-    BEGIN_BACKUP    reduce using rule 42 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
-    LBRACKET        reduce using rule 42 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
-    $end            reduce using rule 42 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_DIAGNOSTIC reduce using rule 39 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 39 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_CRASH_REPORT reduce using rule 39 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_BACKUP    reduce using rule 39 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    LBRACKET        reduce using rule 39 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    $end            reduce using rule 39 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
 
 
 state 44
 
-    (43) backup_content -> source_line destination_line . file_list_line backup_update_list_opt
-    (46) file_list_line -> . FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON
+    (40) backup_content -> source_line destination_line . file_list_line backup_update_list_opt
+    (43) file_list_line -> . FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON
 
     FILE_LIST       shift and go to state 55
 
@@ -626,14 +621,14 @@ state 44
 
 state 45
 
-    (45) destination_line -> DESTINATION . STRING SEMICOLON
+    (42) destination_line -> DESTINATION . STRING SEMICOLON
 
     STRING          shift and go to state 56
 
 
 state 46
 
-    (44) source_line -> SOURCE STRING . SEMICOLON
+    (41) source_line -> SOURCE STRING . SEMICOLON
 
     SEMICOLON       shift and go to state 57
 
@@ -690,14 +685,14 @@ state 53
 
 state 54
 
-    (43) backup_content -> source_line destination_line file_list_line . backup_update_list_opt
-    (49) backup_update_list_opt -> . backup_update_list
-    (50) backup_update_list_opt -> .
-    (51) backup_update_list -> . backup_update_block backup_update_list
-    (52) backup_update_list -> . backup_update_block
-    (53) backup_update_block -> . BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
+    (40) backup_content -> source_line destination_line file_list_line . backup_update_list_opt
+    (46) backup_update_list_opt -> . backup_update_list
+    (47) backup_update_list_opt -> .
+    (48) backup_update_list -> . backup_update_block backup_update_list
+    (49) backup_update_list -> . backup_update_block
+    (50) backup_update_block -> . BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
 
-    END_BACKUP      reduce using rule 50 (backup_update_list_opt -> .)
+    END_BACKUP      reduce using rule 47 (backup_update_list_opt -> .)
     BEGIN_BACKUP_UPDATE shift and go to state 65
 
     backup_update_list_opt         shift and go to state 62
@@ -706,23 +701,23 @@ state 54
 
 state 55
 
-    (46) file_list_line -> FILE_LIST . LBRACKET file_entries RBRACKET SEMICOLON
+    (43) file_list_line -> FILE_LIST . LBRACKET file_entries RBRACKET SEMICOLON
 
     LBRACKET        shift and go to state 66
 
 
 state 56
 
-    (45) destination_line -> DESTINATION STRING . SEMICOLON
+    (42) destination_line -> DESTINATION STRING . SEMICOLON
 
     SEMICOLON       shift and go to state 67
 
 
 state 57
 
-    (44) source_line -> SOURCE STRING SEMICOLON .
+    (41) source_line -> SOURCE STRING SEMICOLON .
 
-    DESTINATION     reduce using rule 44 (source_line -> SOURCE STRING SEMICOLON .)
+    DESTINATION     reduce using rule 41 (source_line -> SOURCE STRING SEMICOLON .)
 
 
 state 58
@@ -742,9 +737,9 @@ state 59
 state 60
 
     (33) stack_trace_line -> STACK_TRACE LBRACKET . stack_items RBRACKET SEMICOLON
-    (37) stack_items -> . stack_item COMMA stack_items
-    (38) stack_items -> . stack_item COMMA
-    (39) stack_item -> . LBRACE function_line COMMA line_line RBRACE
+    (34) stack_items -> . stack_item COMMA stack_items
+    (35) stack_items -> . stack_item COMMA
+    (36) stack_item -> . LBRACE function_line COMMA line_line RBRACE
 
     LBRACE          shift and go to state 72
 
@@ -760,27 +755,27 @@ state 61
 
 state 62
 
-    (43) backup_content -> source_line destination_line file_list_line backup_update_list_opt .
+    (40) backup_content -> source_line destination_line file_list_line backup_update_list_opt .
 
-    END_BACKUP      reduce using rule 43 (backup_content -> source_line destination_line file_list_line backup_update_list_opt .)
+    END_BACKUP      reduce using rule 40 (backup_content -> source_line destination_line file_list_line backup_update_list_opt .)
 
 
 state 63
 
-    (49) backup_update_list_opt -> backup_update_list .
+    (46) backup_update_list_opt -> backup_update_list .
 
-    END_BACKUP      reduce using rule 49 (backup_update_list_opt -> backup_update_list .)
+    END_BACKUP      reduce using rule 46 (backup_update_list_opt -> backup_update_list .)
 
 
 state 64
 
-    (51) backup_update_list -> backup_update_block . backup_update_list
-    (52) backup_update_list -> backup_update_block .
-    (51) backup_update_list -> . backup_update_block backup_update_list
-    (52) backup_update_list -> . backup_update_block
-    (53) backup_update_block -> . BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
+    (48) backup_update_list -> backup_update_block . backup_update_list
+    (49) backup_update_list -> backup_update_block .
+    (48) backup_update_list -> . backup_update_block backup_update_list
+    (49) backup_update_list -> . backup_update_block
+    (50) backup_update_block -> . BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
 
-    END_BACKUP      reduce using rule 52 (backup_update_list -> backup_update_block .)
+    END_BACKUP      reduce using rule 49 (backup_update_list -> backup_update_block .)
     BEGIN_BACKUP_UPDATE shift and go to state 65
 
     backup_update_block            shift and go to state 64
@@ -788,9 +783,9 @@ state 64
 
 state 65
 
-    (53) backup_update_block -> BEGIN_BACKUP_UPDATE . backup_update_content END_BACKUP_UPDATE
-    (54) backup_update_content -> . timestamp_line progress_line details_line
-    (55) timestamp_line -> . TIMESTAMP STRING SEMICOLON
+    (50) backup_update_block -> BEGIN_BACKUP_UPDATE . backup_update_content END_BACKUP_UPDATE
+    (51) backup_update_content -> . timestamp_line progress_line details_line
+    (52) timestamp_line -> . TIMESTAMP STRING SEMICOLON
 
     TIMESTAMP       shift and go to state 76
 
@@ -799,9 +794,9 @@ state 65
 
 state 66
 
-    (46) file_list_line -> FILE_LIST LBRACKET . file_entries RBRACKET SEMICOLON
-    (47) file_entries -> . STRING COMMA file_entries
-    (48) file_entries -> . STRING COMMA
+    (43) file_list_line -> FILE_LIST LBRACKET . file_entries RBRACKET SEMICOLON
+    (44) file_entries -> . STRING COMMA file_entries
+    (45) file_entries -> . STRING COMMA
 
     STRING          shift and go to state 78
 
@@ -809,9 +804,9 @@ state 66
 
 state 67
 
-    (45) destination_line -> DESTINATION STRING SEMICOLON .
+    (42) destination_line -> DESTINATION STRING SEMICOLON .
 
-    FILE_LIST       reduce using rule 45 (destination_line -> DESTINATION STRING SEMICOLON .)
+    FILE_LIST       reduce using rule 42 (destination_line -> DESTINATION STRING SEMICOLON .)
 
 
 state 68
@@ -843,16 +838,16 @@ state 70
 
 state 71
 
-    (37) stack_items -> stack_item . COMMA stack_items
-    (38) stack_items -> stack_item . COMMA
+    (34) stack_items -> stack_item . COMMA stack_items
+    (35) stack_items -> stack_item . COMMA
 
     COMMA           shift and go to state 85
 
 
 state 72
 
-    (39) stack_item -> LBRACE . function_line COMMA line_line RBRACE
-    (40) function_line -> . FUNCTION STRING
+    (36) stack_item -> LBRACE . function_line COMMA line_line RBRACE
+    (37) function_line -> . FUNCTION STRING
 
     FUNCTION        shift and go to state 87
 
@@ -860,22 +855,22 @@ state 72
 
 state 73
 
-    (51) backup_update_list -> backup_update_block backup_update_list .
+    (48) backup_update_list -> backup_update_block backup_update_list .
 
-    END_BACKUP      reduce using rule 51 (backup_update_list -> backup_update_block backup_update_list .)
+    END_BACKUP      reduce using rule 48 (backup_update_list -> backup_update_block backup_update_list .)
 
 
 state 74
 
-    (53) backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content . END_BACKUP_UPDATE
+    (50) backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content . END_BACKUP_UPDATE
 
     END_BACKUP_UPDATE shift and go to state 88
 
 
 state 75
 
-    (54) backup_update_content -> timestamp_line . progress_line details_line
-    (56) progress_line -> . PROGRESS NUMBER SEMICOLON
+    (51) backup_update_content -> timestamp_line . progress_line details_line
+    (53) progress_line -> . PROGRESS NUMBER SEMICOLON
 
     PROGRESS        shift and go to state 90
 
@@ -883,22 +878,22 @@ state 75
 
 state 76
 
-    (55) timestamp_line -> TIMESTAMP . STRING SEMICOLON
+    (52) timestamp_line -> TIMESTAMP . STRING SEMICOLON
 
     STRING          shift and go to state 91
 
 
 state 77
 
-    (46) file_list_line -> FILE_LIST LBRACKET file_entries . RBRACKET SEMICOLON
+    (43) file_list_line -> FILE_LIST LBRACKET file_entries . RBRACKET SEMICOLON
 
     RBRACKET        shift and go to state 92
 
 
 state 78
 
-    (47) file_entries -> STRING . COMMA file_entries
-    (48) file_entries -> STRING . COMMA
+    (44) file_entries -> STRING . COMMA file_entries
+    (45) file_entries -> STRING . COMMA
 
     COMMA           shift and go to state 93
 
@@ -952,13 +947,13 @@ state 84
 
 state 85
 
-    (37) stack_items -> stack_item COMMA . stack_items
-    (38) stack_items -> stack_item COMMA .
-    (37) stack_items -> . stack_item COMMA stack_items
-    (38) stack_items -> . stack_item COMMA
-    (39) stack_item -> . LBRACE function_line COMMA line_line RBRACE
+    (34) stack_items -> stack_item COMMA . stack_items
+    (35) stack_items -> stack_item COMMA .
+    (34) stack_items -> . stack_item COMMA stack_items
+    (35) stack_items -> . stack_item COMMA
+    (36) stack_item -> . LBRACE function_line COMMA line_line RBRACE
 
-    RBRACKET        reduce using rule 38 (stack_items -> stack_item COMMA .)
+    RBRACKET        reduce using rule 35 (stack_items -> stack_item COMMA .)
     LBRACE          shift and go to state 72
 
     stack_item                     shift and go to state 71
@@ -966,30 +961,30 @@ state 85
 
 state 86
 
-    (39) stack_item -> LBRACE function_line . COMMA line_line RBRACE
+    (36) stack_item -> LBRACE function_line . COMMA line_line RBRACE
 
     COMMA           shift and go to state 97
 
 
 state 87
 
-    (40) function_line -> FUNCTION . STRING
+    (37) function_line -> FUNCTION . STRING
 
     STRING          shift and go to state 98
 
 
 state 88
 
-    (53) backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .
+    (50) backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .
 
-    BEGIN_BACKUP_UPDATE reduce using rule 53 (backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .)
-    END_BACKUP      reduce using rule 53 (backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .)
+    BEGIN_BACKUP_UPDATE reduce using rule 50 (backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .)
+    END_BACKUP      reduce using rule 50 (backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .)
 
 
 state 89
 
-    (54) backup_update_content -> timestamp_line progress_line . details_line
-    (57) details_line -> . DETAILS STRING SEMICOLON
+    (51) backup_update_content -> timestamp_line progress_line . details_line
+    (54) details_line -> . DETAILS STRING SEMICOLON
 
     DETAILS         shift and go to state 100
 
@@ -997,33 +992,33 @@ state 89
 
 state 90
 
-    (56) progress_line -> PROGRESS . NUMBER SEMICOLON
+    (53) progress_line -> PROGRESS . NUMBER SEMICOLON
 
     NUMBER          shift and go to state 101
 
 
 state 91
 
-    (55) timestamp_line -> TIMESTAMP STRING . SEMICOLON
+    (52) timestamp_line -> TIMESTAMP STRING . SEMICOLON
 
     SEMICOLON       shift and go to state 102
 
 
 state 92
 
-    (46) file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET . SEMICOLON
+    (43) file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET . SEMICOLON
 
     SEMICOLON       shift and go to state 103
 
 
 state 93
 
-    (47) file_entries -> STRING COMMA . file_entries
-    (48) file_entries -> STRING COMMA .
-    (47) file_entries -> . STRING COMMA file_entries
-    (48) file_entries -> . STRING COMMA
+    (44) file_entries -> STRING COMMA . file_entries
+    (45) file_entries -> STRING COMMA .
+    (44) file_entries -> . STRING COMMA file_entries
+    (45) file_entries -> . STRING COMMA
 
-    RBRACKET        reduce using rule 48 (file_entries -> STRING COMMA .)
+    RBRACKET        reduce using rule 45 (file_entries -> STRING COMMA .)
     STRING          shift and go to state 78
 
     file_entries                   shift and go to state 104
@@ -1044,15 +1039,15 @@ state 95
 
 state 96
 
-    (37) stack_items -> stack_item COMMA stack_items .
+    (34) stack_items -> stack_item COMMA stack_items .
 
-    RBRACKET        reduce using rule 37 (stack_items -> stack_item COMMA stack_items .)
+    RBRACKET        reduce using rule 34 (stack_items -> stack_item COMMA stack_items .)
 
 
 state 97
 
-    (39) stack_item -> LBRACE function_line COMMA . line_line RBRACE
-    (41) line_line -> . LINE NUMBER
+    (36) stack_item -> LBRACE function_line COMMA . line_line RBRACE
+    (38) line_line -> . LINE NUMBER
 
     LINE            shift and go to state 107
 
@@ -1060,52 +1055,52 @@ state 97
 
 state 98
 
-    (40) function_line -> FUNCTION STRING .
+    (37) function_line -> FUNCTION STRING .
 
-    COMMA           reduce using rule 40 (function_line -> FUNCTION STRING .)
+    COMMA           reduce using rule 37 (function_line -> FUNCTION STRING .)
 
 
 state 99
 
-    (54) backup_update_content -> timestamp_line progress_line details_line .
+    (51) backup_update_content -> timestamp_line progress_line details_line .
 
-    END_BACKUP_UPDATE reduce using rule 54 (backup_update_content -> timestamp_line progress_line details_line .)
+    END_BACKUP_UPDATE reduce using rule 51 (backup_update_content -> timestamp_line progress_line details_line .)
 
 
 state 100
 
-    (57) details_line -> DETAILS . STRING SEMICOLON
+    (54) details_line -> DETAILS . STRING SEMICOLON
 
     STRING          shift and go to state 108
 
 
 state 101
 
-    (56) progress_line -> PROGRESS NUMBER . SEMICOLON
+    (53) progress_line -> PROGRESS NUMBER . SEMICOLON
 
     SEMICOLON       shift and go to state 109
 
 
 state 102
 
-    (55) timestamp_line -> TIMESTAMP STRING SEMICOLON .
+    (52) timestamp_line -> TIMESTAMP STRING SEMICOLON .
 
-    PROGRESS        reduce using rule 55 (timestamp_line -> TIMESTAMP STRING SEMICOLON .)
+    PROGRESS        reduce using rule 52 (timestamp_line -> TIMESTAMP STRING SEMICOLON .)
 
 
 state 103
 
-    (46) file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON .
+    (43) file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON .
 
-    BEGIN_BACKUP_UPDATE reduce using rule 46 (file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON .)
-    END_BACKUP      reduce using rule 46 (file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON .)
+    BEGIN_BACKUP_UPDATE reduce using rule 43 (file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON .)
+    END_BACKUP      reduce using rule 43 (file_list_line -> FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON .)
 
 
 state 104
 
-    (47) file_entries -> STRING COMMA file_entries .
+    (44) file_entries -> STRING COMMA file_entries .
 
-    RBRACKET        reduce using rule 47 (file_entries -> STRING COMMA file_entries .)
+    RBRACKET        reduce using rule 44 (file_entries -> STRING COMMA file_entries .)
 
 
 state 105
@@ -1117,30 +1112,30 @@ state 105
 
 state 106
 
-    (39) stack_item -> LBRACE function_line COMMA line_line . RBRACE
+    (36) stack_item -> LBRACE function_line COMMA line_line . RBRACE
 
     RBRACE          shift and go to state 111
 
 
 state 107
 
-    (41) line_line -> LINE . NUMBER
+    (38) line_line -> LINE . NUMBER
 
     NUMBER          shift and go to state 112
 
 
 state 108
 
-    (57) details_line -> DETAILS STRING . SEMICOLON
+    (54) details_line -> DETAILS STRING . SEMICOLON
 
     SEMICOLON       shift and go to state 113
 
 
 state 109
 
-    (56) progress_line -> PROGRESS NUMBER SEMICOLON .
+    (53) progress_line -> PROGRESS NUMBER SEMICOLON .
 
-    DETAILS         reduce using rule 56 (progress_line -> PROGRESS NUMBER SEMICOLON .)
+    DETAILS         reduce using rule 53 (progress_line -> PROGRESS NUMBER SEMICOLON .)
 
 
 state 110
@@ -1152,23 +1147,23 @@ state 110
 
 state 111
 
-    (39) stack_item -> LBRACE function_line COMMA line_line RBRACE .
+    (36) stack_item -> LBRACE function_line COMMA line_line RBRACE .
 
-    COMMA           reduce using rule 39 (stack_item -> LBRACE function_line COMMA line_line RBRACE .)
+    COMMA           reduce using rule 36 (stack_item -> LBRACE function_line COMMA line_line RBRACE .)
 
 
 state 112
 
-    (41) line_line -> LINE NUMBER .
+    (38) line_line -> LINE NUMBER .
 
-    RBRACE          reduce using rule 41 (line_line -> LINE NUMBER .)
+    RBRACE          reduce using rule 38 (line_line -> LINE NUMBER .)
 
 
 state 113
 
-    (57) details_line -> DETAILS STRING SEMICOLON .
+    (54) details_line -> DETAILS STRING SEMICOLON .
 
-    END_BACKUP_UPDATE reduce using rule 57 (details_line -> DETAILS STRING SEMICOLON .)
+    END_BACKUP_UPDATE reduce using rule 54 (details_line -> DETAILS STRING SEMICOLON .)
 
 
 state 114

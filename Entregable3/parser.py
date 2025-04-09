@@ -37,7 +37,7 @@ def p_entry_log(p):
 
 def p_log_line(p): 
     'log_line : LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE' 
-    p[0] = { 'date': p[2],'time': p[3], 'loglevel': p[4], 'entry_number': p[5], 'entry_message': p[6] }
+    p[0] = { 'date': p[2],'time': p[3], 'loglevel': p[5], 'entry_number': p[6], 'entry_message': p[7] }
 
 def p_blocks_opt(p): 
     'blocks_opt : blocks' 
@@ -109,7 +109,7 @@ def p_step_list_single(p):
 
 def p_step_line(p): 
     'step_line : STEP STRING SEMICOLON' 
-    p[0] = p[3]
+    p[0] = p[2]
 
 def p_crash_block(p): 
     'crash_block : BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT' 
