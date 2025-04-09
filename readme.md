@@ -21,7 +21,7 @@ En esta tarea, se desarrolla una aplicación en **Python** que procesa un archiv
 - 🔗 [Presentación Entregable #1](https://www.canva.com/design/DAGhpk5KZds/vbva_ABSX7URnhySVLA9lg/edit?utm_content=DAGhpk5KZds&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - 🔗 [DOC Entregable #1 (Requisitos de software)](https://docs.google.com/document/d/1-pL6v0Fi6CXQtW9VehQbuTX9JwXbPxlaxotsDXyK8_g/edit?usp=sharing)
 - 🔗 [Presentación Entregable #2](https://www.canva.com/design/DAGi46PW5a8/Ww5yINbbRVSs8eE37Smu2w/edit?utm_content=DAGi46PW5a8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-- 🔗 [DOC Entregable #3 (Gramática)](https://docs.google.com/document/d/18mt0UUAWnmb6NcEyALx32VE0ToXhcSUkzyq41YL3sys/edit?usp=sharing)
+- 🔗 [Presentación Entregable #3 (Parser)](https://www.canva.com/design/DAGkHR5JsSU/f8FS1b11_O-lp0vpHsAe9Q/edit?utm_content=DAGkHR5JsSU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## 🔄 Esquema de Commits
 
