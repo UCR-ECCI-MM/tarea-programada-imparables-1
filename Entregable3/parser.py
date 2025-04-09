@@ -108,7 +108,7 @@ def p_step_list_single(p):
     p[0] = [p[1]]
 
 def p_step_line(p): 
-    'step_line : STEP COLON STRING SEMICOLON' 
+    'step_line : STEP STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_crash_block(p): 
