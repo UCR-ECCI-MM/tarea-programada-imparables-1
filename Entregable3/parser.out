@@ -1,0 +1,1285 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AUDIO
+    ERROR_CODE
+    MESSAGE
+    MINUS
+    NETWORK
+    STORAGE
+    VIDEO
+
+Grammar
+
+Rule 0     S' -> S
+Rule 1     S -> entries
+Rule 2     entries -> entry entries
+Rule 3     entries -> entry
+Rule 4     entry -> log_line blocks_opt
+Rule 5     log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+Rule 6     blocks_opt -> blocks
+Rule 7     blocks_opt -> <empty>
+Rule 8     blocks -> block blocks
+Rule 9     blocks -> block
+Rule 10    block -> diagnostic_block
+Rule 11    block -> boot_block
+Rule 12    block -> crash_block
+Rule 13    block -> backup_block
+Rule 14    diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC
+Rule 15    check_list -> check_line check_list
+Rule 16    check_list -> check_line
+Rule 17    check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+Rule 18    result_value -> PASS
+Rule 19    result_value -> FAIL
+Rule 20    result_value -> STRING
+Rule 21    boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE
+Rule 22    step_list -> step_line step_list
+Rule 23    step_list -> step_line
+Rule 24    step_line -> STEP COLON STRING SEMICOLON
+Rule 25    crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT
+Rule 26    crash_content -> error_code_line message_line stack_trace_line
+Rule 27    error_code_line -> IDENTIFIER COLON NUMBER SEMICOLON
+Rule 28    message_line -> IDENTIFIER COLON STRING SEMICOLON
+Rule 29    stack_trace_line -> STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON
+Rule 30    stack_items -> stack_item COMMA stack_items
+Rule 31    stack_items -> stack_item
+Rule 32    stack_item -> LBRACE function_line COMMA line_line RBRACE
+Rule 33    function_line -> FUNCTION COLON STRING
+Rule 34    line_line -> LINE COLON NUMBER
+Rule 35    backup_block -> BEGIN_BACKUP backup_content END_BACKUP
+Rule 36    backup_content -> source_line destination_line file_list_line backup_update_list_opt
+Rule 37    source_line -> SOURCE COLON STRING SEMICOLON
+Rule 38    destination_line -> DESTINATION COLON STRING SEMICOLON
+Rule 39    file_list_line -> FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON
+Rule 40    file_entries -> STRING COMMA file_entries
+Rule 41    file_entries -> STRING
+Rule 42    backup_update_list_opt -> backup_update_list
+Rule 43    backup_update_list_opt -> <empty>
+Rule 44    backup_update_list -> backup_update_block backup_update_list
+Rule 45    backup_update_list -> backup_update_block
+Rule 46    backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
+Rule 47    backup_update_content -> timestamp_line progress_line details_line
+Rule 48    timestamp_line -> TIMESTAMP COLON STRING SEMICOLON
+Rule 49    progress_line -> PROGRESS COLON NUMBER SEMICOLON
+Rule 50    details_line -> DETAILS COLON STRING SEMICOLON
+
+Terminals, with rules where they appear
+
+ARROW                : 17
+AUDIO                : 
+BEGIN_BACKUP         : 35
+BEGIN_BACKUP_UPDATE  : 46
+BEGIN_BOOT_SEQUENCE  : 21
+BEGIN_CRASH_REPORT   : 25
+BEGIN_DIAGNOSTIC     : 14
+CHECK                : 17
+COLON                : 17 17 17 24 27 28 29 33 34 37 38 39 48 49 50
+COMMA                : 17 30 32 40
+DATE                 : 5
+DESTINATION          : 38
+DETAILS              : 50
+END_BACKUP           : 35
+END_BACKUP_UPDATE    : 46
+END_BOOT_SEQUENCE    : 21
+END_CRASH_REPORT     : 25
+END_DIAGNOSTIC       : 14
+ENTRY_MESSAGE        : 5
+ENTRY_NUMBER         : 5
+ERROR_CODE           : 
+FAIL                 : 19
+FILE_LIST            : 39
+FUNCTION             : 33
+IDENTIFIER           : 27 28
+LATENCY              : 17
+LBRACE               : 17 32
+LBRACKET             : 5 29 39
+LINE                 : 34
+LOGLEVEL             : 5
+MESSAGE              : 
+MINUS                : 
+NETWORK              : 
+NUMBER               : 27 34 49
+PASS                 : 18
+PROGRESS             : 49
+RBRACE               : 17 32
+RBRACKET             : 5 29 39
+RESULT               : 17
+SEMICOLON            : 17 24 27 28 29 37 38 39 48 49 50
+SOURCE               : 37
+STACK_TRACE          : 29
+STEP                 : 24
+STORAGE              : 
+STRING               : 17 17 20 24 28 33 37 38 40 41 48 50
+TIME                 : 5
+TIMESTAMP            : 48
+VIDEO                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+S                    : 0
+backup_block         : 13
+backup_content       : 35
+backup_update_block  : 44 45
+backup_update_content : 46
+backup_update_list   : 42 44
+backup_update_list_opt : 36
+block                : 8 9
+blocks               : 6 8
+blocks_opt           : 4
+boot_block           : 11
+check_line           : 15 16
+check_list           : 14 15
+crash_block          : 12
+crash_content        : 25
+destination_line     : 36
+details_line         : 47
+diagnostic_block     : 10
+entries              : 1 2
+entry                : 2 3
+error_code_line      : 26
+file_entries         : 39 40
+file_list_line       : 36
+function_line        : 32
+line_line            : 32
+log_line             : 4
+message_line         : 26
+progress_line        : 47
+result_value         : 17
+source_line          : 36
+stack_item           : 30 31
+stack_items          : 29 30
+stack_trace_line     : 26
+step_line            : 22 23
+step_list            : 21 22
+timestamp_line       : 47
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . S
+    (1) S -> . entries
+    (2) entries -> . entry entries
+    (3) entries -> . entry
+    (4) entry -> . log_line blocks_opt
+    (5) log_line -> . LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+
+    LBRACKET        shift and go to state 5
+
+    S                              shift and go to state 1
+    entries                        shift and go to state 2
+    entry                          shift and go to state 3
+    log_line                       shift and go to state 4
+
+state 1
+
+    (0) S' -> S .
+
+
+
+state 2
+
+    (1) S -> entries .
+
+    $end            reduce using rule 1 (S -> entries .)
+
+
+state 3
+
+    (2) entries -> entry . entries
+    (3) entries -> entry .
+    (2) entries -> . entry entries
+    (3) entries -> . entry
+    (4) entry -> . log_line blocks_opt
+    (5) log_line -> . LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+
+    $end            reduce using rule 3 (entries -> entry .)
+    LBRACKET        shift and go to state 5
+
+    entry                          shift and go to state 3
+    entries                        shift and go to state 6
+    log_line                       shift and go to state 4
+
+state 4
+
+    (4) entry -> log_line . blocks_opt
+    (6) blocks_opt -> . blocks
+    (7) blocks_opt -> .
+    (8) blocks -> . block blocks
+    (9) blocks -> . block
+    (10) block -> . diagnostic_block
+    (11) block -> . boot_block
+    (12) block -> . crash_block
+    (13) block -> . backup_block
+    (14) diagnostic_block -> . BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC
+    (21) boot_block -> . BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE
+    (25) crash_block -> . BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT
+    (35) backup_block -> . BEGIN_BACKUP backup_content END_BACKUP
+
+    LBRACKET        reduce using rule 7 (blocks_opt -> .)
+    $end            reduce using rule 7 (blocks_opt -> .)
+    BEGIN_DIAGNOSTIC shift and go to state 14
+    BEGIN_BOOT_SEQUENCE shift and go to state 15
+    BEGIN_CRASH_REPORT shift and go to state 16
+    BEGIN_BACKUP    shift and go to state 17
+
+    blocks_opt                     shift and go to state 7
+    blocks                         shift and go to state 8
+    block                          shift and go to state 9
+    diagnostic_block               shift and go to state 10
+    boot_block                     shift and go to state 11
+    crash_block                    shift and go to state 12
+    backup_block                   shift and go to state 13
+
+state 5
+
+    (5) log_line -> LBRACKET . DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+
+    DATE            shift and go to state 18
+
+
+state 6
+
+    (2) entries -> entry entries .
+
+    $end            reduce using rule 2 (entries -> entry entries .)
+
+
+state 7
+
+    (4) entry -> log_line blocks_opt .
+
+    LBRACKET        reduce using rule 4 (entry -> log_line blocks_opt .)
+    $end            reduce using rule 4 (entry -> log_line blocks_opt .)
+
+
+state 8
+
+    (6) blocks_opt -> blocks .
+
+    LBRACKET        reduce using rule 6 (blocks_opt -> blocks .)
+    $end            reduce using rule 6 (blocks_opt -> blocks .)
+
+
+state 9
+
+    (8) blocks -> block . blocks
+    (9) blocks -> block .
+    (8) blocks -> . block blocks
+    (9) blocks -> . block
+    (10) block -> . diagnostic_block
+    (11) block -> . boot_block
+    (12) block -> . crash_block
+    (13) block -> . backup_block
+    (14) diagnostic_block -> . BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC
+    (21) boot_block -> . BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE
+    (25) crash_block -> . BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT
+    (35) backup_block -> . BEGIN_BACKUP backup_content END_BACKUP
+
+    LBRACKET        reduce using rule 9 (blocks -> block .)
+    $end            reduce using rule 9 (blocks -> block .)
+    BEGIN_DIAGNOSTIC shift and go to state 14
+    BEGIN_BOOT_SEQUENCE shift and go to state 15
+    BEGIN_CRASH_REPORT shift and go to state 16
+    BEGIN_BACKUP    shift and go to state 17
+
+    block                          shift and go to state 9
+    blocks                         shift and go to state 19
+    diagnostic_block               shift and go to state 10
+    boot_block                     shift and go to state 11
+    crash_block                    shift and go to state 12
+    backup_block                   shift and go to state 13
+
+state 10
+
+    (10) block -> diagnostic_block .
+
+    BEGIN_DIAGNOSTIC reduce using rule 10 (block -> diagnostic_block .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 10 (block -> diagnostic_block .)
+    BEGIN_CRASH_REPORT reduce using rule 10 (block -> diagnostic_block .)
+    BEGIN_BACKUP    reduce using rule 10 (block -> diagnostic_block .)
+    LBRACKET        reduce using rule 10 (block -> diagnostic_block .)
+    $end            reduce using rule 10 (block -> diagnostic_block .)
+
+
+state 11
+
+    (11) block -> boot_block .
+
+    BEGIN_DIAGNOSTIC reduce using rule 11 (block -> boot_block .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 11 (block -> boot_block .)
+    BEGIN_CRASH_REPORT reduce using rule 11 (block -> boot_block .)
+    BEGIN_BACKUP    reduce using rule 11 (block -> boot_block .)
+    LBRACKET        reduce using rule 11 (block -> boot_block .)
+    $end            reduce using rule 11 (block -> boot_block .)
+
+
+state 12
+
+    (12) block -> crash_block .
+
+    BEGIN_DIAGNOSTIC reduce using rule 12 (block -> crash_block .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 12 (block -> crash_block .)
+    BEGIN_CRASH_REPORT reduce using rule 12 (block -> crash_block .)
+    BEGIN_BACKUP    reduce using rule 12 (block -> crash_block .)
+    LBRACKET        reduce using rule 12 (block -> crash_block .)
+    $end            reduce using rule 12 (block -> crash_block .)
+
+
+state 13
+
+    (13) block -> backup_block .
+
+    BEGIN_DIAGNOSTIC reduce using rule 13 (block -> backup_block .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 13 (block -> backup_block .)
+    BEGIN_CRASH_REPORT reduce using rule 13 (block -> backup_block .)
+    BEGIN_BACKUP    reduce using rule 13 (block -> backup_block .)
+    LBRACKET        reduce using rule 13 (block -> backup_block .)
+    $end            reduce using rule 13 (block -> backup_block .)
+
+
+state 14
+
+    (14) diagnostic_block -> BEGIN_DIAGNOSTIC . check_list END_DIAGNOSTIC
+    (15) check_list -> . check_line check_list
+    (16) check_list -> . check_line
+    (17) check_line -> . CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    CHECK           shift and go to state 22
+
+    check_list                     shift and go to state 20
+    check_line                     shift and go to state 21
+
+state 15
+
+    (21) boot_block -> BEGIN_BOOT_SEQUENCE . step_list END_BOOT_SEQUENCE
+    (22) step_list -> . step_line step_list
+    (23) step_list -> . step_line
+    (24) step_line -> . STEP COLON STRING SEMICOLON
+
+    STEP            shift and go to state 25
+
+    step_list                      shift and go to state 23
+    step_line                      shift and go to state 24
+
+state 16
+
+    (25) crash_block -> BEGIN_CRASH_REPORT . crash_content END_CRASH_REPORT
+    (26) crash_content -> . error_code_line message_line stack_trace_line
+    (27) error_code_line -> . IDENTIFIER COLON NUMBER SEMICOLON
+
+    IDENTIFIER      shift and go to state 28
+
+    crash_content                  shift and go to state 26
+    error_code_line                shift and go to state 27
+
+state 17
+
+    (35) backup_block -> BEGIN_BACKUP . backup_content END_BACKUP
+    (36) backup_content -> . source_line destination_line file_list_line backup_update_list_opt
+    (37) source_line -> . SOURCE COLON STRING SEMICOLON
+
+    SOURCE          shift and go to state 31
+
+    backup_content                 shift and go to state 29
+    source_line                    shift and go to state 30
+
+state 18
+
+    (5) log_line -> LBRACKET DATE . TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+
+    TIME            shift and go to state 32
+
+
+state 19
+
+    (8) blocks -> block blocks .
+
+    LBRACKET        reduce using rule 8 (blocks -> block blocks .)
+    $end            reduce using rule 8 (blocks -> block blocks .)
+
+
+state 20
+
+    (14) diagnostic_block -> BEGIN_DIAGNOSTIC check_list . END_DIAGNOSTIC
+
+    END_DIAGNOSTIC  shift and go to state 33
+
+
+state 21
+
+    (15) check_list -> check_line . check_list
+    (16) check_list -> check_line .
+    (15) check_list -> . check_line check_list
+    (16) check_list -> . check_line
+    (17) check_line -> . CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    END_DIAGNOSTIC  reduce using rule 16 (check_list -> check_line .)
+    CHECK           shift and go to state 22
+
+    check_line                     shift and go to state 21
+    check_list                     shift and go to state 34
+
+state 22
+
+    (17) check_line -> CHECK . COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    COLON           shift and go to state 35
+
+
+state 23
+
+    (21) boot_block -> BEGIN_BOOT_SEQUENCE step_list . END_BOOT_SEQUENCE
+
+    END_BOOT_SEQUENCE shift and go to state 36
+
+
+state 24
+
+    (22) step_list -> step_line . step_list
+    (23) step_list -> step_line .
+    (22) step_list -> . step_line step_list
+    (23) step_list -> . step_line
+    (24) step_line -> . STEP COLON STRING SEMICOLON
+
+    END_BOOT_SEQUENCE reduce using rule 23 (step_list -> step_line .)
+    STEP            shift and go to state 25
+
+    step_line                      shift and go to state 24
+    step_list                      shift and go to state 37
+
+state 25
+
+    (24) step_line -> STEP . COLON STRING SEMICOLON
+
+    COLON           shift and go to state 38
+
+
+state 26
+
+    (25) crash_block -> BEGIN_CRASH_REPORT crash_content . END_CRASH_REPORT
+
+    END_CRASH_REPORT shift and go to state 39
+
+
+state 27
+
+    (26) crash_content -> error_code_line . message_line stack_trace_line
+    (28) message_line -> . IDENTIFIER COLON STRING SEMICOLON
+
+    IDENTIFIER      shift and go to state 41
+
+    message_line                   shift and go to state 40
+
+state 28
+
+    (27) error_code_line -> IDENTIFIER . COLON NUMBER SEMICOLON
+
+    COLON           shift and go to state 42
+
+
+state 29
+
+    (35) backup_block -> BEGIN_BACKUP backup_content . END_BACKUP
+
+    END_BACKUP      shift and go to state 43
+
+
+state 30
+
+    (36) backup_content -> source_line . destination_line file_list_line backup_update_list_opt
+    (38) destination_line -> . DESTINATION COLON STRING SEMICOLON
+
+    DESTINATION     shift and go to state 45
+
+    destination_line               shift and go to state 44
+
+state 31
+
+    (37) source_line -> SOURCE . COLON STRING SEMICOLON
+
+    COLON           shift and go to state 46
+
+
+state 32
+
+    (5) log_line -> LBRACKET DATE TIME . RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+
+    RBRACKET        shift and go to state 47
+
+
+state 33
+
+    (14) diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .
+
+    BEGIN_DIAGNOSTIC reduce using rule 14 (diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 14 (diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .)
+    BEGIN_CRASH_REPORT reduce using rule 14 (diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .)
+    BEGIN_BACKUP    reduce using rule 14 (diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .)
+    LBRACKET        reduce using rule 14 (diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .)
+    $end            reduce using rule 14 (diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC .)
+
+
+state 34
+
+    (15) check_list -> check_line check_list .
+
+    END_DIAGNOSTIC  reduce using rule 15 (check_list -> check_line check_list .)
+
+
+state 35
+
+    (17) check_line -> CHECK COLON . STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    STRING          shift and go to state 48
+
+
+state 36
+
+    (21) boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .
+
+    BEGIN_DIAGNOSTIC reduce using rule 21 (boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 21 (boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .)
+    BEGIN_CRASH_REPORT reduce using rule 21 (boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .)
+    BEGIN_BACKUP    reduce using rule 21 (boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .)
+    LBRACKET        reduce using rule 21 (boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .)
+    $end            reduce using rule 21 (boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE .)
+
+
+state 37
+
+    (22) step_list -> step_line step_list .
+
+    END_BOOT_SEQUENCE reduce using rule 22 (step_list -> step_line step_list .)
+
+
+state 38
+
+    (24) step_line -> STEP COLON . STRING SEMICOLON
+
+    STRING          shift and go to state 49
+
+
+state 39
+
+    (25) crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .
+
+    BEGIN_DIAGNOSTIC reduce using rule 25 (crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 25 (crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .)
+    BEGIN_CRASH_REPORT reduce using rule 25 (crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .)
+    BEGIN_BACKUP    reduce using rule 25 (crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .)
+    LBRACKET        reduce using rule 25 (crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .)
+    $end            reduce using rule 25 (crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT .)
+
+
+state 40
+
+    (26) crash_content -> error_code_line message_line . stack_trace_line
+    (29) stack_trace_line -> . STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON
+
+    STACK_TRACE     shift and go to state 51
+
+    stack_trace_line               shift and go to state 50
+
+state 41
+
+    (28) message_line -> IDENTIFIER . COLON STRING SEMICOLON
+
+    COLON           shift and go to state 52
+
+
+state 42
+
+    (27) error_code_line -> IDENTIFIER COLON . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 53
+
+
+state 43
+
+    (35) backup_block -> BEGIN_BACKUP backup_content END_BACKUP .
+
+    BEGIN_DIAGNOSTIC reduce using rule 35 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 35 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_CRASH_REPORT reduce using rule 35 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    BEGIN_BACKUP    reduce using rule 35 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    LBRACKET        reduce using rule 35 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+    $end            reduce using rule 35 (backup_block -> BEGIN_BACKUP backup_content END_BACKUP .)
+
+
+state 44
+
+    (36) backup_content -> source_line destination_line . file_list_line backup_update_list_opt
+    (39) file_list_line -> . FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON
+
+    FILE_LIST       shift and go to state 55
+
+    file_list_line                 shift and go to state 54
+
+state 45
+
+    (38) destination_line -> DESTINATION . COLON STRING SEMICOLON
+
+    COLON           shift and go to state 56
+
+
+state 46
+
+    (37) source_line -> SOURCE COLON . STRING SEMICOLON
+
+    STRING          shift and go to state 57
+
+
+state 47
+
+    (5) log_line -> LBRACKET DATE TIME RBRACKET . LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE
+
+    LOGLEVEL        shift and go to state 58
+
+
+state 48
+
+    (17) check_line -> CHECK COLON STRING . ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    ARROW           shift and go to state 59
+
+
+state 49
+
+    (24) step_line -> STEP COLON STRING . SEMICOLON
+
+    SEMICOLON       shift and go to state 60
+
+
+state 50
+
+    (26) crash_content -> error_code_line message_line stack_trace_line .
+
+    END_CRASH_REPORT reduce using rule 26 (crash_content -> error_code_line message_line stack_trace_line .)
+
+
+state 51
+
+    (29) stack_trace_line -> STACK_TRACE . COLON LBRACKET stack_items RBRACKET SEMICOLON
+
+    COLON           shift and go to state 61
+
+
+state 52
+
+    (28) message_line -> IDENTIFIER COLON . STRING SEMICOLON
+
+    STRING          shift and go to state 62
+
+
+state 53
+
+    (27) error_code_line -> IDENTIFIER COLON NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 63
+
+
+state 54
+
+    (36) backup_content -> source_line destination_line file_list_line . backup_update_list_opt
+    (42) backup_update_list_opt -> . backup_update_list
+    (43) backup_update_list_opt -> .
+    (44) backup_update_list -> . backup_update_block backup_update_list
+    (45) backup_update_list -> . backup_update_block
+    (46) backup_update_block -> . BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
+
+    END_BACKUP      reduce using rule 43 (backup_update_list_opt -> .)
+    BEGIN_BACKUP_UPDATE shift and go to state 67
+
+    backup_update_list_opt         shift and go to state 64
+    backup_update_list             shift and go to state 65
+    backup_update_block            shift and go to state 66
+
+state 55
+
+    (39) file_list_line -> FILE_LIST . COLON LBRACKET file_entries RBRACKET SEMICOLON
+
+    COLON           shift and go to state 68
+
+
+state 56
+
+    (38) destination_line -> DESTINATION COLON . STRING SEMICOLON
+
+    STRING          shift and go to state 69
+
+
+state 57
+
+    (37) source_line -> SOURCE COLON STRING . SEMICOLON
+
+    SEMICOLON       shift and go to state 70
+
+
+state 58
+
+    (5) log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL . ENTRY_NUMBER ENTRY_MESSAGE
+
+    ENTRY_NUMBER    shift and go to state 71
+
+
+state 59
+
+    (17) check_line -> CHECK COLON STRING ARROW . LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    LBRACE          shift and go to state 72
+
+
+state 60
+
+    (24) step_line -> STEP COLON STRING SEMICOLON .
+
+    STEP            reduce using rule 24 (step_line -> STEP COLON STRING SEMICOLON .)
+    END_BOOT_SEQUENCE reduce using rule 24 (step_line -> STEP COLON STRING SEMICOLON .)
+
+
+state 61
+
+    (29) stack_trace_line -> STACK_TRACE COLON . LBRACKET stack_items RBRACKET SEMICOLON
+
+    LBRACKET        shift and go to state 73
+
+
+state 62
+
+    (28) message_line -> IDENTIFIER COLON STRING . SEMICOLON
+
+    SEMICOLON       shift and go to state 74
+
+
+state 63
+
+    (27) error_code_line -> IDENTIFIER COLON NUMBER SEMICOLON .
+
+    IDENTIFIER      reduce using rule 27 (error_code_line -> IDENTIFIER COLON NUMBER SEMICOLON .)
+
+
+state 64
+
+    (36) backup_content -> source_line destination_line file_list_line backup_update_list_opt .
+
+    END_BACKUP      reduce using rule 36 (backup_content -> source_line destination_line file_list_line backup_update_list_opt .)
+
+
+state 65
+
+    (42) backup_update_list_opt -> backup_update_list .
+
+    END_BACKUP      reduce using rule 42 (backup_update_list_opt -> backup_update_list .)
+
+
+state 66
+
+    (44) backup_update_list -> backup_update_block . backup_update_list
+    (45) backup_update_list -> backup_update_block .
+    (44) backup_update_list -> . backup_update_block backup_update_list
+    (45) backup_update_list -> . backup_update_block
+    (46) backup_update_block -> . BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE
+
+    END_BACKUP      reduce using rule 45 (backup_update_list -> backup_update_block .)
+    BEGIN_BACKUP_UPDATE shift and go to state 67
+
+    backup_update_block            shift and go to state 66
+    backup_update_list             shift and go to state 75
+
+state 67
+
+    (46) backup_update_block -> BEGIN_BACKUP_UPDATE . backup_update_content END_BACKUP_UPDATE
+    (47) backup_update_content -> . timestamp_line progress_line details_line
+    (48) timestamp_line -> . TIMESTAMP COLON STRING SEMICOLON
+
+    TIMESTAMP       shift and go to state 78
+
+    backup_update_content          shift and go to state 76
+    timestamp_line                 shift and go to state 77
+
+state 68
+
+    (39) file_list_line -> FILE_LIST COLON . LBRACKET file_entries RBRACKET SEMICOLON
+
+    LBRACKET        shift and go to state 79
+
+
+state 69
+
+    (38) destination_line -> DESTINATION COLON STRING . SEMICOLON
+
+    SEMICOLON       shift and go to state 80
+
+
+state 70
+
+    (37) source_line -> SOURCE COLON STRING SEMICOLON .
+
+    DESTINATION     reduce using rule 37 (source_line -> SOURCE COLON STRING SEMICOLON .)
+
+
+state 71
+
+    (5) log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER . ENTRY_MESSAGE
+
+    ENTRY_MESSAGE   shift and go to state 81
+
+
+state 72
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE . RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    RESULT          shift and go to state 82
+
+
+state 73
+
+    (29) stack_trace_line -> STACK_TRACE COLON LBRACKET . stack_items RBRACKET SEMICOLON
+    (30) stack_items -> . stack_item COMMA stack_items
+    (31) stack_items -> . stack_item
+    (32) stack_item -> . LBRACE function_line COMMA line_line RBRACE
+
+    LBRACE          shift and go to state 85
+
+    stack_items                    shift and go to state 83
+    stack_item                     shift and go to state 84
+
+state 74
+
+    (28) message_line -> IDENTIFIER COLON STRING SEMICOLON .
+
+    STACK_TRACE     reduce using rule 28 (message_line -> IDENTIFIER COLON STRING SEMICOLON .)
+
+
+state 75
+
+    (44) backup_update_list -> backup_update_block backup_update_list .
+
+    END_BACKUP      reduce using rule 44 (backup_update_list -> backup_update_block backup_update_list .)
+
+
+state 76
+
+    (46) backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content . END_BACKUP_UPDATE
+
+    END_BACKUP_UPDATE shift and go to state 86
+
+
+state 77
+
+    (47) backup_update_content -> timestamp_line . progress_line details_line
+    (49) progress_line -> . PROGRESS COLON NUMBER SEMICOLON
+
+    PROGRESS        shift and go to state 88
+
+    progress_line                  shift and go to state 87
+
+state 78
+
+    (48) timestamp_line -> TIMESTAMP . COLON STRING SEMICOLON
+
+    COLON           shift and go to state 89
+
+
+state 79
+
+    (39) file_list_line -> FILE_LIST COLON LBRACKET . file_entries RBRACKET SEMICOLON
+    (40) file_entries -> . STRING COMMA file_entries
+    (41) file_entries -> . STRING
+
+    STRING          shift and go to state 91
+
+    file_entries                   shift and go to state 90
+
+state 80
+
+    (38) destination_line -> DESTINATION COLON STRING SEMICOLON .
+
+    FILE_LIST       reduce using rule 38 (destination_line -> DESTINATION COLON STRING SEMICOLON .)
+
+
+state 81
+
+    (5) log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .
+
+    BEGIN_DIAGNOSTIC reduce using rule 5 (log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .)
+    BEGIN_BOOT_SEQUENCE reduce using rule 5 (log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .)
+    BEGIN_CRASH_REPORT reduce using rule 5 (log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .)
+    BEGIN_BACKUP    reduce using rule 5 (log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .)
+    LBRACKET        reduce using rule 5 (log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .)
+    $end            reduce using rule 5 (log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE .)
+
+
+state 82
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT . COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    COLON           shift and go to state 92
+
+
+state 83
+
+    (29) stack_trace_line -> STACK_TRACE COLON LBRACKET stack_items . RBRACKET SEMICOLON
+
+    RBRACKET        shift and go to state 93
+
+
+state 84
+
+    (30) stack_items -> stack_item . COMMA stack_items
+    (31) stack_items -> stack_item .
+
+    COMMA           shift and go to state 94
+    RBRACKET        reduce using rule 31 (stack_items -> stack_item .)
+
+
+state 85
+
+    (32) stack_item -> LBRACE . function_line COMMA line_line RBRACE
+    (33) function_line -> . FUNCTION COLON STRING
+
+    FUNCTION        shift and go to state 96
+
+    function_line                  shift and go to state 95
+
+state 86
+
+    (46) backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .
+
+    BEGIN_BACKUP_UPDATE reduce using rule 46 (backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .)
+    END_BACKUP      reduce using rule 46 (backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE .)
+
+
+state 87
+
+    (47) backup_update_content -> timestamp_line progress_line . details_line
+    (50) details_line -> . DETAILS COLON STRING SEMICOLON
+
+    DETAILS         shift and go to state 98
+
+    details_line                   shift and go to state 97
+
+state 88
+
+    (49) progress_line -> PROGRESS . COLON NUMBER SEMICOLON
+
+    COLON           shift and go to state 99
+
+
+state 89
+
+    (48) timestamp_line -> TIMESTAMP COLON . STRING SEMICOLON
+
+    STRING          shift and go to state 100
+
+
+state 90
+
+    (39) file_list_line -> FILE_LIST COLON LBRACKET file_entries . RBRACKET SEMICOLON
+
+    RBRACKET        shift and go to state 101
+
+
+state 91
+
+    (40) file_entries -> STRING . COMMA file_entries
+    (41) file_entries -> STRING .
+
+    COMMA           shift and go to state 102
+    RBRACKET        reduce using rule 41 (file_entries -> STRING .)
+
+
+state 92
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON . result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON
+    (18) result_value -> . PASS
+    (19) result_value -> . FAIL
+    (20) result_value -> . STRING
+
+    PASS            shift and go to state 105
+    FAIL            shift and go to state 106
+    STRING          shift and go to state 103
+
+    result_value                   shift and go to state 104
+
+state 93
+
+    (29) stack_trace_line -> STACK_TRACE COLON LBRACKET stack_items RBRACKET . SEMICOLON
+
+    SEMICOLON       shift and go to state 107
+
+
+state 94
+
+    (30) stack_items -> stack_item COMMA . stack_items
+    (30) stack_items -> . stack_item COMMA stack_items
+    (31) stack_items -> . stack_item
+    (32) stack_item -> . LBRACE function_line COMMA line_line RBRACE
+
+    LBRACE          shift and go to state 85
+
+    stack_item                     shift and go to state 84
+    stack_items                    shift and go to state 108
+
+state 95
+
+    (32) stack_item -> LBRACE function_line . COMMA line_line RBRACE
+
+    COMMA           shift and go to state 109
+
+
+state 96
+
+    (33) function_line -> FUNCTION . COLON STRING
+
+    COLON           shift and go to state 110
+
+
+state 97
+
+    (47) backup_update_content -> timestamp_line progress_line details_line .
+
+    END_BACKUP_UPDATE reduce using rule 47 (backup_update_content -> timestamp_line progress_line details_line .)
+
+
+state 98
+
+    (50) details_line -> DETAILS . COLON STRING SEMICOLON
+
+    COLON           shift and go to state 111
+
+
+state 99
+
+    (49) progress_line -> PROGRESS COLON . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 112
+
+
+state 100
+
+    (48) timestamp_line -> TIMESTAMP COLON STRING . SEMICOLON
+
+    SEMICOLON       shift and go to state 113
+
+
+state 101
+
+    (39) file_list_line -> FILE_LIST COLON LBRACKET file_entries RBRACKET . SEMICOLON
+
+    SEMICOLON       shift and go to state 114
+
+
+state 102
+
+    (40) file_entries -> STRING COMMA . file_entries
+    (40) file_entries -> . STRING COMMA file_entries
+    (41) file_entries -> . STRING
+
+    STRING          shift and go to state 91
+
+    file_entries                   shift and go to state 115
+
+state 103
+
+    (20) result_value -> STRING .
+
+    COMMA           reduce using rule 20 (result_value -> STRING .)
+
+
+state 104
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value . COMMA LATENCY COLON STRING RBRACE SEMICOLON
+
+    COMMA           shift and go to state 116
+
+
+state 105
+
+    (18) result_value -> PASS .
+
+    COMMA           reduce using rule 18 (result_value -> PASS .)
+
+
+state 106
+
+    (19) result_value -> FAIL .
+
+    COMMA           reduce using rule 19 (result_value -> FAIL .)
+
+
+state 107
+
+    (29) stack_trace_line -> STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON .
+
+    END_CRASH_REPORT reduce using rule 29 (stack_trace_line -> STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON .)
+
+
+state 108
+
+    (30) stack_items -> stack_item COMMA stack_items .
+
+    RBRACKET        reduce using rule 30 (stack_items -> stack_item COMMA stack_items .)
+
+
+state 109
+
+    (32) stack_item -> LBRACE function_line COMMA . line_line RBRACE
+    (34) line_line -> . LINE COLON NUMBER
+
+    LINE            shift and go to state 118
+
+    line_line                      shift and go to state 117
+
+state 110
+
+    (33) function_line -> FUNCTION COLON . STRING
+
+    STRING          shift and go to state 119
+
+
+state 111
+
+    (50) details_line -> DETAILS COLON . STRING SEMICOLON
+
+    STRING          shift and go to state 120
+
+
+state 112
+
+    (49) progress_line -> PROGRESS COLON NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 121
+
+
+state 113
+
+    (48) timestamp_line -> TIMESTAMP COLON STRING SEMICOLON .
+
+    PROGRESS        reduce using rule 48 (timestamp_line -> TIMESTAMP COLON STRING SEMICOLON .)
+
+
+state 114
+
+    (39) file_list_line -> FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON .
+
+    BEGIN_BACKUP_UPDATE reduce using rule 39 (file_list_line -> FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON .)
+    END_BACKUP      reduce using rule 39 (file_list_line -> FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON .)
+
+
+state 115
+
+    (40) file_entries -> STRING COMMA file_entries .
+
+    RBRACKET        reduce using rule 40 (file_entries -> STRING COMMA file_entries .)
+
+
+state 116
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA . LATENCY COLON STRING RBRACE SEMICOLON
+
+    LATENCY         shift and go to state 122
+
+
+state 117
+
+    (32) stack_item -> LBRACE function_line COMMA line_line . RBRACE
+
+    RBRACE          shift and go to state 123
+
+
+state 118
+
+    (34) line_line -> LINE . COLON NUMBER
+
+    COLON           shift and go to state 124
+
+
+state 119
+
+    (33) function_line -> FUNCTION COLON STRING .
+
+    COMMA           reduce using rule 33 (function_line -> FUNCTION COLON STRING .)
+
+
+state 120
+
+    (50) details_line -> DETAILS COLON STRING . SEMICOLON
+
+    SEMICOLON       shift and go to state 125
+
+
+state 121
+
+    (49) progress_line -> PROGRESS COLON NUMBER SEMICOLON .
+
+    DETAILS         reduce using rule 49 (progress_line -> PROGRESS COLON NUMBER SEMICOLON .)
+
+
+state 122
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY . COLON STRING RBRACE SEMICOLON
+
+    COLON           shift and go to state 126
+
+
+state 123
+
+    (32) stack_item -> LBRACE function_line COMMA line_line RBRACE .
+
+    COMMA           reduce using rule 32 (stack_item -> LBRACE function_line COMMA line_line RBRACE .)
+    RBRACKET        reduce using rule 32 (stack_item -> LBRACE function_line COMMA line_line RBRACE .)
+
+
+state 124
+
+    (34) line_line -> LINE COLON . NUMBER
+
+    NUMBER          shift and go to state 127
+
+
+state 125
+
+    (50) details_line -> DETAILS COLON STRING SEMICOLON .
+
+    END_BACKUP_UPDATE reduce using rule 50 (details_line -> DETAILS COLON STRING SEMICOLON .)
+
+
+state 126
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON . STRING RBRACE SEMICOLON
+
+    STRING          shift and go to state 128
+
+
+state 127
+
+    (34) line_line -> LINE COLON NUMBER .
+
+    RBRACE          reduce using rule 34 (line_line -> LINE COLON NUMBER .)
+
+
+state 128
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING . RBRACE SEMICOLON
+
+    RBRACE          shift and go to state 129
+
+
+state 129
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE . SEMICOLON
+
+    SEMICOLON       shift and go to state 130
+
+
+state 130
+
+    (17) check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON .
+
+    CHECK           reduce using rule 17 (check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON .)
+    END_DIAGNOSTIC  reduce using rule 17 (check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON .)
+

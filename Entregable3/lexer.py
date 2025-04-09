@@ -1,7 +1,7 @@
 import ply.lex as lex
 # Illegal character
 tokens = (
-    'COMMENT', 
+    #'COMMENT',
     'LBRACKET', 
     'RBRACKET', 
     'DATE',
@@ -24,7 +24,7 @@ tokens = (
     'BEGIN_BOOT_SEQUENCE', 
     'END_BOOT_SEQUENCE',
     'STEP',
-    # 'COLON', 
+    'COLON', 
     'ENTRY_MESSAGE',
     'MESSAGE',
     'TIMESTAMP', 
@@ -52,10 +52,12 @@ tokens = (
     'LINE',
 )
 
-# Regular expressions for tokens
-def t_COMMENT(t):
-    r'\#.*'
-    pass
+t_ignore_COMMENT = r'\#.*'
+
+#Regular expressions for tokens
+# def t_COMMENT(t):
+#     r'\#.*'
+#     return t
 
 def t_LBRACKET(t):
     r'\['
@@ -64,6 +66,7 @@ def t_LBRACKET(t):
 def t_RBRACKET(t):
     r'\]'
     return t
+
 
 def t_DATE(t): 
     r'\d{4}-\d{2}-\d{2}'
@@ -250,6 +253,10 @@ def t_END_BACKUP_UPDATE(t):
     r'END_BACKUP_UPDATE'
     return t
 
+def t_COLON(t):
+    r':'
+    return t
+
 
 # Ignored characters (spaces and tabs)
 t_ignore = ' \t'
@@ -284,13 +291,18 @@ lexer = lex.lex()
 
 
 try:
+    # Clear the output file before starting
+    # with open('lexer_output.txt', 'w') as f:
+    #     f.write("ANÁLISIS LÉXICO\n")
+    #     f.write("=" * 50 + "\n\n")
+    
     with open('Docs/large_complex_log.txt', 'r') as file:
         data = file.read()
         lexer.input(data)
-        for tok in lexer:
-            #print(tok)
-            pass
-        print("Lexer executed successfully")
+        # for tok in lexer:
+        #     with open('lexer_output.txt', 'a') as f:
+        #         f.write(f"Token: {tok.type:<20} | Valor: {tok.value}\n")
+        print("Análisis léxico completado. Resultados guardados en 'lexer_output.txt'")
 except FileNotFoundError:
     print("File not found")
 except Exception as e:

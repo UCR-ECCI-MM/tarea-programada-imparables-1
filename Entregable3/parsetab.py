@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ARROW AUDIO BEGIN_BACKUP BEGIN_BACKUP_UPDATE BEGIN_BOOT_SEQUENCE BEGIN_CRASH_REPORT BEGIN_DIAGNOSTIC CHECK COLON COMMA COMMENT DATE DESTINATION DETAILS END_BACKUP END_BACKUP_UPDATE END_BOOT_SEQUENCE END_CRASH_REPORT END_DIAGNOSTIC ENTRY_NUMBER FAIL FILE_LIST FUNCTION IDENTIFIER LATENCY LBRACE LBRACKET LIINE LOGLEVEL MESSAGE MINUS NETWORK NUMBER PASS PROGRESS RBRACE RBRACKET RESULT SEMICOLON SOURCE STACK_TRACE STEP STORAGE STRING TIME TIMESTAMP VIDEOlog : entriesentries : entries entryentries : entryentry : LBRACKET TIMESTAMP RBRACKET LOGLEVEL ENTRY_NUMBER MESSAGE entry_optionalentry_optional : blocks\n| emptyblocks : blocks blockblocks : blockblock : BEGIN_DIAGNOSTIC diagnostic_list END_DIAGNOSTICblock : BEGIN_BOOT_SEQUENCE boot_steps END_BOOT_SEQUENCEblock : BEGIN_CRASH_REPORT crash_contents END_CRASH_REPORTblock : BEGIN_BACKUP backup_contents END_BACKUPdiagnostic_list : diagnostic_list diagnostic_entrydiagnostic_list : diagnostic_entrydiagnostic_entry : CHECK STRING ARROW LBRACE diagnostic_fields RBRACE SEMICOLONdiagnostic_fields : diagnostic_fields COMMA diagnostic_field\n| diagnostic_fielddiagnostic_field : RESULT STRING\n| LATENCY STRINGboot_steps : boot_steps boot_stepboot_steps : boot_stepboot_step : STEP STRING SEMICOLONcrash_contents : crash_field_listcrash_field_list : crash_field_list crash_fieldcrash_field_list : crash_fieldcrash_field : IDENTIFIER COLON NUMBER SEMICOLONcrash_field : IDENTIFIER COLON STRING SEMICOLONcrash_field : STACK_TRACE COLON LBRACKET stack_trace_entries RBRACKET SEMICOLONstack_trace_entries : stack_trace_entries COMMA stack_trace_entrystack_trace_entries : stack_trace_entrystack_trace_entry : LBRACE function_field COMMA line_field RBRACEfunction_field : FUNCTION COLON STRINGline_field : LIINE COLON NUMBERbackup_contents : backup_field_listbackup_field_list : backup_field_list backup_fieldbackup_field_list : backup_fieldbackup_field : SOURCE STRING SEMICOLONbackup_field : DESTINATION COLON STRING SEMICOLONbackup_field : FILE_LIST COLON LBRACKET file_list_entries RBRACKET SEMICOLONfile_list_entries : file_list_entries COMMA STRINGfile_list_entries : STRINGbackup_field : BEGIN_BACKUP_UPDATE backup_update_contents END_BACKUP_UPDATEbackup_update_contents : backup_update_field_listbackup_update_field_list : backup_update_field_list backup_update_fieldbackup_update_field_list : backup_update_fieldbackup_update_field : TIMESTAMP COLON STRING SEMICOLONbackup_update_field : PROGRESS COLON NUMBER SEMICOLONbackup_update_field : DETAILS COLON STRING SEMICOLONempty :'
+_lr_signature = 'ARROW AUDIO BEGIN_BACKUP BEGIN_BACKUP_UPDATE BEGIN_BOOT_SEQUENCE BEGIN_CRASH_REPORT BEGIN_DIAGNOSTIC CHECK COLON COMMA DATE DESTINATION DETAILS END_BACKUP END_BACKUP_UPDATE END_BOOT_SEQUENCE END_CRASH_REPORT END_DIAGNOSTIC ENTRY_MESSAGE ENTRY_NUMBER ERROR_CODE FAIL FILE_LIST FUNCTION IDENTIFIER LATENCY LBRACE LBRACKET LINE LOGLEVEL MESSAGE MINUS NETWORK NUMBER PASS PROGRESS RBRACE RBRACKET RESULT SEMICOLON SOURCE STACK_TRACE STEP STORAGE STRING TIME TIMESTAMP VIDEOS : entriesentries : entry entriesentries : entryentry : log_line blocks_optlog_line : LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGEblocks_opt : blocksblocks_opt : blocks : block blocksblocks : blockblock : diagnostic_block \n| boot_block \n| crash_block \n| backup_blockdiagnostic_block : BEGIN_DIAGNOSTIC check_list END_DIAGNOSTICcheck_list : check_line check_listcheck_list : check_linecheck_line : CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLONresult_value : PASSresult_value : FAILresult_value : STRINGboot_block : BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCEstep_list : step_line step_liststep_list : step_linestep_line : STEP COLON STRING SEMICOLONcrash_block : BEGIN_CRASH_REPORT crash_content END_CRASH_REPORTcrash_content : error_code_line message_line stack_trace_lineerror_code_line : IDENTIFIER COLON NUMBER SEMICOLONmessage_line : IDENTIFIER COLON STRING SEMICOLONstack_trace_line : STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLONstack_items : stack_item COMMA stack_itemsstack_items : stack_itemstack_item : LBRACE function_line COMMA line_line RBRACEfunction_line : FUNCTION COLON STRINGline_line : LINE COLON NUMBERbackup_block : BEGIN_BACKUP backup_content END_BACKUPbackup_content : source_line destination_line file_list_line backup_update_list_optsource_line : SOURCE COLON STRING SEMICOLONdestination_line : DESTINATION COLON STRING SEMICOLONfile_list_line : FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLONfile_entries : STRING COMMA file_entriesfile_entries : STRINGbackup_update_list_opt : backup_update_listbackup_update_list_opt : backup_update_list : backup_update_block backup_update_listbackup_update_list : backup_update_blockbackup_update_block : BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATEbackup_update_content : timestamp_line progress_line details_linetimestamp_line : TIMESTAMP COLON STRING SEMICOLONprogress_line : PROGRESS COLON NUMBER SEMICOLONdetails_line : DETAILS COLON STRING SEMICOLON'
     
-_lr_action_items = {'LBRACKET':([0,2,3,5,10,11,12,13,14,19,38,41,44,47,48,52,],[4,4,-3,-2,-49,-4,-5,-6,-8,-7,-9,-10,-11,63,-12,66,]),'$end':([1,2,3,5,10,11,12,13,14,19,38,41,44,48,],[0,-1,-3,-2,-49,-4,-5,-6,-8,-7,-9,-10,-11,-12,]),'TIMESTAMP':([4,37,54,55,68,94,95,96,],[6,56,56,-45,-44,-46,-47,-48,]),'RBRACKET':([6,75,76,79,80,102,106,112,],[7,88,-30,92,-41,-29,-40,-31,]),'LOGLEVEL':([7,],[8,]),'ENTRY_NUMBER':([8,],[9,]),'MESSAGE':([9,],[10,]),'BEGIN_DIAGNOSTIC':([10,12,14,19,38,41,44,48,],[15,15,-8,-7,-9,-10,-11,-12,]),'BEGIN_BOOT_SEQUENCE':([10,12,14,19,38,41,44,48,],[16,16,-8,-7,-9,-10,-11,-12,]),'BEGIN_CRASH_REPORT':([10,12,14,19,38,41,44,48,],[17,17,-8,-7,-9,-10,-11,-12,]),'BEGIN_BACKUP':([10,12,14,19,38,41,44,48,],[18,18,-8,-7,-9,-10,-11,-12,]),'CHECK':([15,20,21,39,107,],[22,22,-14,-13,-15,]),'STEP':([16,23,24,42,60,],[25,25,-21,-20,-22,]),'IDENTIFIER':([17,27,28,45,73,74,101,],[29,29,-25,-24,-26,-27,-28,]),'STACK_TRACE':([17,27,28,45,73,74,101,],[30,30,-25,-24,-26,-27,-28,]),'SOURCE':([18,32,33,49,64,67,78,105,],[34,34,-36,-35,-37,-42,-38,-39,]),'DESTINATION':([18,32,33,49,64,67,78,105,],[35,35,-36,-35,-37,-42,-38,-39,]),'FILE_LIST':([18,32,33,49,64,67,78,105,],[36,36,-36,-35,-37,-42,-38,-39,]),'BEGIN_BACKUP_UPDATE':([18,32,33,49,64,67,78,105,],[37,37,-36,-35,-37,-42,-38,-39,]),'END_DIAGNOSTIC':([20,21,39,107,],[38,-14,-13,-15,]),'STRING':([22,25,34,46,51,66,69,71,86,87,93,104,],[40,43,50,62,65,80,81,83,99,100,106,111,]),'END_BOOT_SEQUENCE':([23,24,42,60,],[41,-21,-20,-22,]),'END_CRASH_REPORT':([26,27,28,45,73,74,101,],[44,-23,-25,-24,-26,-27,-28,]),'COLON':([29,30,35,36,56,57,58,91,110,],[46,47,51,52,69,70,71,104,113,]),'END_BACKUP':([31,32,33,49,64,67,78,105,],[48,-34,-36,-35,-37,-42,-38,-39,]),'PROGRESS':([37,54,55,68,94,95,96,],[57,57,-45,-44,-46,-47,-48,]),'DETAILS':([37,54,55,68,94,95,96,],[58,58,-45,-44,-46,-47,-48,]),'ARROW':([40,],[59,]),'SEMICOLON':([43,50,61,62,65,81,82,83,88,92,97,],[60,64,73,74,78,94,95,96,101,105,107,]),'NUMBER':([46,70,113,],[61,82,114,]),'END_BACKUP_UPDATE':([53,54,55,68,94,95,96,],[67,-43,-45,-44,-46,-47,-48,]),'LBRACE':([59,63,89,],[72,77,77,]),'RESULT':([72,98,],[86,86,]),'LATENCY':([72,98,],[87,87,]),'COMMA':([75,76,79,80,84,85,90,99,100,102,106,108,111,112,],[89,-30,93,-41,98,-17,103,-18,-19,-29,-40,-16,-32,-31,]),'FUNCTION':([77,],[91,]),'RBRACE':([84,85,99,100,108,109,114,],[97,-17,-18,-19,-16,112,-33,]),'LIINE':([103,],[110,]),}
+_lr_action_items = {'LBRACKET':([0,3,4,7,8,9,10,11,12,13,19,33,36,39,43,61,68,81,],[5,5,-7,-4,-6,-9,-10,-11,-12,-13,-8,-14,-21,-25,-35,73,79,-5,]),'$end':([1,2,3,4,6,7,8,9,10,11,12,13,19,33,36,39,43,81,],[0,-1,-3,-7,-2,-4,-6,-9,-10,-11,-12,-13,-8,-14,-21,-25,-35,-5,]),'BEGIN_DIAGNOSTIC':([4,9,10,11,12,13,33,36,39,43,81,],[14,14,-10,-11,-12,-13,-14,-21,-25,-35,-5,]),'BEGIN_BOOT_SEQUENCE':([4,9,10,11,12,13,33,36,39,43,81,],[15,15,-10,-11,-12,-13,-14,-21,-25,-35,-5,]),'BEGIN_CRASH_REPORT':([4,9,10,11,12,13,33,36,39,43,81,],[16,16,-10,-11,-12,-13,-14,-21,-25,-35,-5,]),'BEGIN_BACKUP':([4,9,10,11,12,13,33,36,39,43,81,],[17,17,-10,-11,-12,-13,-14,-21,-25,-35,-5,]),'DATE':([5,],[18,]),'CHECK':([14,21,130,],[22,22,-17,]),'STEP':([15,24,60,],[25,25,-24,]),'IDENTIFIER':([16,27,63,],[28,41,-27,]),'SOURCE':([17,],[31,]),'TIME':([18,],[32,]),'END_DIAGNOSTIC':([20,21,34,130,],[33,-16,-15,-17,]),'COLON':([22,25,28,31,41,45,51,55,78,82,88,96,98,118,122,],[35,38,42,46,52,56,61,68,89,92,99,110,111,124,126,]),'END_BOOT_SEQUENCE':([23,24,37,60,],[36,-23,-22,-24,]),'END_CRASH_REPORT':([26,50,107,],[39,-26,-29,]),'END_BACKUP':([29,54,64,65,66,75,86,114,],[43,-43,-36,-42,-45,-44,-46,-39,]),'DESTINATION':([30,70,],[45,-37,]),'RBRACKET':([32,83,84,90,91,108,115,123,],[47,93,-31,101,-41,-30,-40,-32,]),'STRING':([35,38,46,52,56,79,89,92,102,110,111,126,],[48,49,57,62,69,91,100,103,91,119,120,128,]),'STACK_TRACE':([40,74,],[51,-28,]),'NUMBER':([42,99,124,],[53,112,127,]),'FILE_LIST':([44,80,],[55,-38,]),'LOGLEVEL':([47,],[58,]),'ARROW':([48,],[59,]),'SEMICOLON':([49,53,57,62,69,93,100,101,112,120,129,],[60,63,70,74,80,107,113,114,121,125,130,]),'BEGIN_BACKUP_UPDATE':([54,66,86,114,],[67,67,-46,-39,]),'ENTRY_NUMBER':([58,],[71,]),'LBRACE':([59,73,94,],[72,85,85,]),'TIMESTAMP':([67,],[78,]),'ENTRY_MESSAGE':([71,],[81,]),'RESULT':([72,],[82,]),'END_BACKUP_UPDATE':([76,97,125,],[86,-47,-50,]),'PROGRESS':([77,113,],[88,-48,]),'COMMA':([84,91,95,103,104,105,106,119,123,],[94,102,109,-20,116,-18,-19,-33,-32,]),'FUNCTION':([85,],[96,]),'DETAILS':([87,121,],[98,-49,]),'PASS':([92,],[105,]),'FAIL':([92,],[106,]),'LINE':([109,],[118,]),'LATENCY':([116,],[122,]),'RBRACE':([117,127,128,],[123,-34,129,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'log':([0,],[1,]),'entries':([0,],[2,]),'entry':([0,2,],[3,5,]),'entry_optional':([10,],[11,]),'blocks':([10,],[12,]),'empty':([10,],[13,]),'block':([10,12,],[14,19,]),'diagnostic_list':([15,],[20,]),'diagnostic_entry':([15,20,],[21,39,]),'boot_steps':([16,],[23,]),'boot_step':([16,23,],[24,42,]),'crash_contents':([17,],[26,]),'crash_field_list':([17,],[27,]),'crash_field':([17,27,],[28,45,]),'backup_contents':([18,],[31,]),'backup_field_list':([18,],[32,]),'backup_field':([18,32,],[33,49,]),'backup_update_contents':([37,],[53,]),'backup_update_field_list':([37,],[54,]),'backup_update_field':([37,54,],[55,68,]),'stack_trace_entries':([63,],[75,]),'stack_trace_entry':([63,89,],[76,102,]),'file_list_entries':([66,],[79,]),'diagnostic_fields':([72,],[84,]),'diagnostic_field':([72,98,],[85,108,]),'function_field':([77,],[90,]),'line_field':([103,],[109,]),}
+_lr_goto_items = {'S':([0,],[1,]),'entries':([0,3,],[2,6,]),'entry':([0,3,],[3,3,]),'log_line':([0,3,],[4,4,]),'blocks_opt':([4,],[7,]),'blocks':([4,9,],[8,19,]),'block':([4,9,],[9,9,]),'diagnostic_block':([4,9,],[10,10,]),'boot_block':([4,9,],[11,11,]),'crash_block':([4,9,],[12,12,]),'backup_block':([4,9,],[13,13,]),'check_list':([14,21,],[20,34,]),'check_line':([14,21,],[21,21,]),'step_list':([15,24,],[23,37,]),'step_line':([15,24,],[24,24,]),'crash_content':([16,],[26,]),'error_code_line':([16,],[27,]),'backup_content':([17,],[29,]),'source_line':([17,],[30,]),'message_line':([27,],[40,]),'destination_line':([30,],[44,]),'stack_trace_line':([40,],[50,]),'file_list_line':([44,],[54,]),'backup_update_list_opt':([54,],[64,]),'backup_update_list':([54,66,],[65,75,]),'backup_update_block':([54,66,],[66,66,]),'backup_update_content':([67,],[76,]),'timestamp_line':([67,],[77,]),'stack_items':([73,94,],[83,108,]),'stack_item':([73,94,],[84,84,]),'progress_line':([77,],[87,]),'file_entries':([79,102,],[90,115,]),'function_line':([85,],[95,]),'details_line':([87,],[97,]),'result_value':([92,],[104,]),'line_line':([109,],[117,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,54 +26,55 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> log","S'",1,None,None,None),
-  ('log -> entries','log',1,'p_log','parser.py',17),
-  ('entries -> entries entry','entries',2,'p_entries_multiple','parser.py',21),
+  ("S' -> S","S'",1,None,None,None),
+  ('S -> entries','S',1,'p_S','parser.py',17),
+  ('entries -> entry entries','entries',2,'p_entries_multiple','parser.py',21),
   ('entries -> entry','entries',1,'p_entries_single','parser.py',25),
-  ('entry -> LBRACKET TIMESTAMP RBRACKET LOGLEVEL ENTRY_NUMBER MESSAGE entry_optional','entry',7,'p_entry','parser.py',30),
-  ('entry_optional -> blocks','entry_optional',1,'p_entry_optional','parser.py',40),
-  ('entry_optional -> empty','entry_optional',1,'p_entry_optional','parser.py',41),
-  ('blocks -> blocks block','blocks',2,'p_blocks_multiple','parser.py',46),
-  ('blocks -> block','blocks',1,'p_blocks_single','parser.py',50),
-  ('block -> BEGIN_DIAGNOSTIC diagnostic_list END_DIAGNOSTIC','block',3,'p_block_diagnostic','parser.py',55),
-  ('block -> BEGIN_BOOT_SEQUENCE boot_steps END_BOOT_SEQUENCE','block',3,'p_block_boot','parser.py',59),
-  ('block -> BEGIN_CRASH_REPORT crash_contents END_CRASH_REPORT','block',3,'p_block_crash','parser.py',63),
-  ('block -> BEGIN_BACKUP backup_contents END_BACKUP','block',3,'p_block_backup','parser.py',67),
-  ('diagnostic_list -> diagnostic_list diagnostic_entry','diagnostic_list',2,'p_diagnostic_list_multiple','parser.py',72),
-  ('diagnostic_list -> diagnostic_entry','diagnostic_list',1,'p_diagnostic_list_single','parser.py',76),
-  ('diagnostic_entry -> CHECK STRING ARROW LBRACE diagnostic_fields RBRACE SEMICOLON','diagnostic_entry',7,'p_diagnostic_entry','parser.py',80),
-  ('diagnostic_fields -> diagnostic_fields COMMA diagnostic_field','diagnostic_fields',3,'p_diagnostic_fields','parser.py',85),
-  ('diagnostic_fields -> diagnostic_field','diagnostic_fields',1,'p_diagnostic_fields','parser.py',86),
-  ('diagnostic_field -> RESULT STRING','diagnostic_field',2,'p_diagnostic_field','parser.py',93),
-  ('diagnostic_field -> LATENCY STRING','diagnostic_field',2,'p_diagnostic_field','parser.py',94),
-  ('boot_steps -> boot_steps boot_step','boot_steps',2,'p_boot_steps_multiple','parser.py',101),
-  ('boot_steps -> boot_step','boot_steps',1,'p_boot_steps_single','parser.py',105),
-  ('boot_step -> STEP STRING SEMICOLON','boot_step',3,'p_boot_step','parser.py',109),
-  ('crash_contents -> crash_field_list','crash_contents',1,'p_crash_contents','parser.py',114),
-  ('crash_field_list -> crash_field_list crash_field','crash_field_list',2,'p_crash_field_list_multiple','parser.py',118),
-  ('crash_field_list -> crash_field','crash_field_list',1,'p_crash_field_list_single','parser.py',122),
-  ('crash_field -> IDENTIFIER COLON NUMBER SEMICOLON','crash_field',4,'p_crash_field_error_code','parser.py',126),
-  ('crash_field -> IDENTIFIER COLON STRING SEMICOLON','crash_field',4,'p_crash_field_message','parser.py',131),
-  ('crash_field -> STACK_TRACE COLON LBRACKET stack_trace_entries RBRACKET SEMICOLON','crash_field',6,'p_crash_field_stack_trace','parser.py',136),
-  ('stack_trace_entries -> stack_trace_entries COMMA stack_trace_entry','stack_trace_entries',3,'p_stack_trace_entries_multiple','parser.py',140),
-  ('stack_trace_entries -> stack_trace_entry','stack_trace_entries',1,'p_stack_trace_entries_single','parser.py',144),
-  ('stack_trace_entry -> LBRACE function_field COMMA line_field RBRACE','stack_trace_entry',5,'p_stack_trace_entry','parser.py',148),
-  ('function_field -> FUNCTION COLON STRING','function_field',3,'p_function_field','parser.py',152),
-  ('line_field -> LIINE COLON NUMBER','line_field',3,'p_line_field','parser.py',156),
-  ('backup_contents -> backup_field_list','backup_contents',1,'p_backup_contents','parser.py',161),
-  ('backup_field_list -> backup_field_list backup_field','backup_field_list',2,'p_backup_field_list_multiple','parser.py',166),
-  ('backup_field_list -> backup_field','backup_field_list',1,'p_backup_field_list_single','parser.py',170),
-  ('backup_field -> SOURCE STRING SEMICOLON','backup_field',3,'p_backup_field_source','parser.py',174),
-  ('backup_field -> DESTINATION COLON STRING SEMICOLON','backup_field',4,'p_backup_field_destination','parser.py',178),
-  ('backup_field -> FILE_LIST COLON LBRACKET file_list_entries RBRACKET SEMICOLON','backup_field',6,'p_backup_field_file_list','parser.py',182),
-  ('file_list_entries -> file_list_entries COMMA STRING','file_list_entries',3,'p_file_list_entries_multiple','parser.py',186),
-  ('file_list_entries -> STRING','file_list_entries',1,'p_file_list_entries_single','parser.py',190),
-  ('backup_field -> BEGIN_BACKUP_UPDATE backup_update_contents END_BACKUP_UPDATE','backup_field',3,'p_backup_field_backup_update','parser.py',194),
-  ('backup_update_contents -> backup_update_field_list','backup_update_contents',1,'p_backup_update_contents','parser.py',198),
-  ('backup_update_field_list -> backup_update_field_list backup_update_field','backup_update_field_list',2,'p_backup_update_field_list_multiple','parser.py',202),
-  ('backup_update_field_list -> backup_update_field','backup_update_field_list',1,'p_backup_update_field_list_single','parser.py',206),
-  ('backup_update_field -> TIMESTAMP COLON STRING SEMICOLON','backup_update_field',4,'p_backup_update_field_timestamp','parser.py',210),
-  ('backup_update_field -> PROGRESS COLON NUMBER SEMICOLON','backup_update_field',4,'p_backup_update_field_progress','parser.py',214),
-  ('backup_update_field -> DETAILS COLON STRING SEMICOLON','backup_update_field',4,'p_backup_update_field_details','parser.py',218),
-  ('empty -> <empty>','empty',0,'p_empty','parser.py',223),
+  ('entry -> log_line blocks_opt','entry',2,'p_entry_log','parser.py',35),
+  ('log_line -> LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE','log_line',7,'p_log_line','parser.py',39),
+  ('blocks_opt -> blocks','blocks_opt',1,'p_blocks_opt','parser.py',43),
+  ('blocks_opt -> <empty>','blocks_opt',0,'p_blocks_opt_empty','parser.py',47),
+  ('blocks -> block blocks','blocks',2,'p_blocks_multiple','parser.py',51),
+  ('blocks -> block','blocks',1,'p_blocks_single','parser.py',55),
+  ('block -> diagnostic_block','block',1,'p_block','parser.py',59),
+  ('block -> boot_block','block',1,'p_block','parser.py',60),
+  ('block -> crash_block','block',1,'p_block','parser.py',61),
+  ('block -> backup_block','block',1,'p_block','parser.py',62),
+  ('diagnostic_block -> BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC','diagnostic_block',3,'p_diagnostic_block','parser.py',66),
+  ('check_list -> check_line check_list','check_list',2,'p_check_list_multiple','parser.py',70),
+  ('check_list -> check_line','check_list',1,'p_check_list_single','parser.py',74),
+  ('check_line -> CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON','check_line',14,'p_check_line','parser.py',78),
+  ('result_value -> PASS','result_value',1,'p_result_value_pass','parser.py',81),
+  ('result_value -> FAIL','result_value',1,'p_result_value_fail','parser.py',85),
+  ('result_value -> STRING','result_value',1,'p_result_value_string','parser.py',89),
+  ('boot_block -> BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE','boot_block',3,'p_boot_block','parser.py',93),
+  ('step_list -> step_line step_list','step_list',2,'p_step_list_multiple','parser.py',97),
+  ('step_list -> step_line','step_list',1,'p_step_list_single','parser.py',101),
+  ('step_line -> STEP COLON STRING SEMICOLON','step_line',4,'p_step_line','parser.py',105),
+  ('crash_block -> BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT','crash_block',3,'p_crash_block','parser.py',109),
+  ('crash_content -> error_code_line message_line stack_trace_line','crash_content',3,'p_crash_content','parser.py',113),
+  ('error_code_line -> IDENTIFIER COLON NUMBER SEMICOLON','error_code_line',4,'p_error_code_line','parser.py',117),
+  ('message_line -> IDENTIFIER COLON STRING SEMICOLON','message_line',4,'p_message_line','parser.py',121),
+  ('stack_trace_line -> STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON','stack_trace_line',6,'p_stack_trace_line','parser.py',125),
+  ('stack_items -> stack_item COMMA stack_items','stack_items',3,'p_stack_items_multiple','parser.py',129),
+  ('stack_items -> stack_item','stack_items',1,'p_stack_items_single','parser.py',133),
+  ('stack_item -> LBRACE function_line COMMA line_line RBRACE','stack_item',5,'p_stack_item','parser.py',137),
+  ('function_line -> FUNCTION COLON STRING','function_line',3,'p_function_line','parser.py',141),
+  ('line_line -> LINE COLON NUMBER','line_line',3,'p_line_line','parser.py',145),
+  ('backup_block -> BEGIN_BACKUP backup_content END_BACKUP','backup_block',3,'p_backup_block','parser.py',149),
+  ('backup_content -> source_line destination_line file_list_line backup_update_list_opt','backup_content',4,'p_backup_content','parser.py',153),
+  ('source_line -> SOURCE COLON STRING SEMICOLON','source_line',4,'p_source_line','parser.py',157),
+  ('destination_line -> DESTINATION COLON STRING SEMICOLON','destination_line',4,'p_destination_line','parser.py',161),
+  ('file_list_line -> FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON','file_list_line',6,'p_file_list_line','parser.py',165),
+  ('file_entries -> STRING COMMA file_entries','file_entries',3,'p_file_entries_multiple','parser.py',169),
+  ('file_entries -> STRING','file_entries',1,'p_file_entries_single','parser.py',173),
+  ('backup_update_list_opt -> backup_update_list','backup_update_list_opt',1,'p_backup_update_list_opt','parser.py',177),
+  ('backup_update_list_opt -> <empty>','backup_update_list_opt',0,'p_backup_update_list_opt_empty','parser.py',181),
+  ('backup_update_list -> backup_update_block backup_update_list','backup_update_list',2,'p_backup_update_list_multiple','parser.py',185),
+  ('backup_update_list -> backup_update_block','backup_update_list',1,'p_backup_update_list_single','parser.py',189),
+  ('backup_update_block -> BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE','backup_update_block',3,'p_backup_update_block','parser.py',193),
+  ('backup_update_content -> timestamp_line progress_line details_line','backup_update_content',3,'p_backup_update_content','parser.py',197),
+  ('timestamp_line -> TIMESTAMP COLON STRING SEMICOLON','timestamp_line',4,'p_timestamp_line','parser.py',201),
+  ('progress_line -> PROGRESS COLON NUMBER SEMICOLON','progress_line',4,'p_progress_line','parser.py',205),
+  ('details_line -> DETAILS COLON STRING SEMICOLON','details_line',4,'p_details_line','parser.py',209),
 ]

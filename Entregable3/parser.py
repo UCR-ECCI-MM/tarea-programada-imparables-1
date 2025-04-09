@@ -13,230 +13,208 @@ from lexer import tokens  # adjust this import to match your project structure
 # Grammar Rules
 # ---------------------
 
-def p_log(p):
-    "log : entries"
+def p_S(p): 
+    'S : entries' 
     p[0] = p[1]
 
-def p_entries_multiple(p):
-    "entries : entries entry"
-    p[0] = p[1] + [p[2]]
+def p_entries_multiple(p): 
+    'entries : entry entries' 
+    p[0] = [p[1]] + p[2]
 
-def p_entries_single(p):
-    "entries : entry"
+def p_entries_single(p): 
+    'entries : entry' 
     p[0] = [p[1]]
 
-# An entry consists of a header and an optional block section.
-def p_entry(p):
-    "entry : LBRACKET TIMESTAMP RBRACKET LOGLEVEL ENTRY_NUMBER MESSAGE entry_optional"
-    p[0] = {
-        "timestamp": p[2],
-        "loglevel": p[4],
-        "entry_number": p[5],
-        "message": p[6],
-        "blocks": p[7]
-    }
 
-def p_entry_optional(p):
-    '''entry_optional : blocks
-                      | empty'''
-    p[0] = p[1] if p[1] is not None else []
+# def p_entry_comment(p): 
+#     'entry : COMMENT' 
+#     p[0] = ('comment', p[1])
 
-# A list of blocks
-def p_blocks_multiple(p):
-    "blocks : blocks block"
-    p[0] = p[1] + [p[2]]
 
-def p_blocks_single(p):
-    "blocks : block"
+def p_entry_log(p): 
+    'entry : log_line blocks_opt' 
+    p[0] = ('log', p[1], p[2])
+
+def p_log_line(p): 
+    'log_line : LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE' 
+    p[0] = { 'date': p[2],'time': p[3], 'loglevel': p[4], 'entry_number': p[5], 'entry_message': p[6] }
+
+def p_blocks_opt(p): 
+    'blocks_opt : blocks' 
+    p[0] = p[1]
+
+def p_blocks_opt_empty(p): 
+    'blocks_opt : ' 
+    p[0] = []
+
+def p_blocks_multiple(p): 
+    'blocks : block blocks' 
+    p[0] = [p[1]] + p[2]
+
+def p_blocks_single(p): 
+    'blocks : block'
     p[0] = [p[1]]
 
-# A block can be one of several types:
-def p_block_diagnostic(p):
-    "block : BEGIN_DIAGNOSTIC diagnostic_list END_DIAGNOSTIC"
-    p[0] = ("diagnostic", p[2])
+def p_block(p): 
+    '''block : diagnostic_block 
+    | boot_block 
+    | crash_block 
+    | backup_block''' 
+    p[0] = p[1]
 
-def p_block_boot(p):
-    "block : BEGIN_BOOT_SEQUENCE boot_steps END_BOOT_SEQUENCE"
-    p[0] = ("boot_sequence", p[2])
+def p_diagnostic_block(p): 
+    'diagnostic_block : BEGIN_DIAGNOSTIC check_list END_DIAGNOSTIC' 
+    p[0] = ('diagnostic', p[2])
 
-def p_block_crash(p):
-    "block : BEGIN_CRASH_REPORT crash_contents END_CRASH_REPORT"
-    p[0] = ("crash_report", p[2])
+def p_check_list_multiple(p): 
+    'check_list : check_line check_list' 
+    p[0] = [p[1]] + p[2]
 
-def p_block_backup(p):
-    "block : BEGIN_BACKUP backup_contents END_BACKUP"
-    p[0] = ("backup", p[2])
-
-# Diagnostic block rules
-def p_diagnostic_list_multiple(p):
-    "diagnostic_list : diagnostic_list diagnostic_entry"
-    p[0] = p[1] + [p[2]]
-
-def p_diagnostic_list_single(p):
-    "diagnostic_list : diagnostic_entry"
+def p_check_list_single(p): 
+    'check_list : check_line' 
     p[0] = [p[1]]
 
-def p_diagnostic_entry(p):
-    "diagnostic_entry : CHECK STRING ARROW LBRACE diagnostic_fields RBRACE SEMICOLON"
-    # p[2] is the quoted string indicating what is being checked (e.g. "video")
-    p[0] = {"check": p[2], "fields": p[5]}
+def p_check_line(p): 
+    '''check_line : CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON''' # Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
 
-def p_diagnostic_fields(p):
-    '''diagnostic_fields : diagnostic_fields COMMA diagnostic_field
-                         | diagnostic_field'''
-    if len(p) == 2:
-        p[0] = [p[1]]
-    else:
-        p[0] = p[1] + [p[3]]
+def p_result_value_pass(p): 
+    'result_value : PASS' 
+    p[0] = p[1]
 
-def p_diagnostic_field(p):
-    '''diagnostic_field : RESULT STRING
-                        | LATENCY STRING'''
-    # Here we remove the colon from RESULT and LATENCY tokens if needed.
-    field = "result" if p[1].startswith("result") else "latency"
-    p[0] = (field, p[2])
+def p_result_value_fail(p): 
+    'result_value : FAIL'
+    p[0] = p[1]
 
-# Boot sequence block rules
-def p_boot_steps_multiple(p):
-    "boot_steps : boot_steps boot_step"
-    p[0] = p[1] + [p[2]]
+def p_result_value_string(p): 
+    'result_value : STRING'
+    p[0] = p[1]
 
-def p_boot_steps_single(p):
-    "boot_steps : boot_step"
+def p_boot_block(p): 
+    'boot_block : BEGIN_BOOT_SEQUENCE step_list END_BOOT_SEQUENCE' 
+    p[0] = ('boot', p[2])
+
+def p_step_list_multiple(p): 
+    'step_list : step_line step_list' 
+    p[0] = [p[1]] + p[2]
+
+def p_step_list_single(p): 
+    'step_list : step_line' 
     p[0] = [p[1]]
 
-def p_boot_step(p):
-    "boot_step : STEP STRING SEMICOLON"
+def p_step_line(p): 
+    'step_line : STEP COLON STRING SEMICOLON' 
+    p[0] = p[3]
+
+def p_crash_block(p): 
+    'crash_block : BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT' 
+    p[0] = ('crash', p[2])
+
+def p_crash_content(p): 
+    'crash_content : error_code_line message_line stack_trace_line' 
+    p[0] = { 'error_code': p[1], 'message': p[2], 'stack_trace': p[3] }
+
+def p_error_code_line(p): 
+    'error_code_line : IDENTIFIER COLON NUMBER SEMICOLON' 
+    p[0] = p[3]
+
+def p_message_line(p): 
+    'message_line : IDENTIFIER COLON STRING SEMICOLON' 
+    p[0] = p[3]
+
+def p_stack_trace_line(p): 
+    'stack_trace_line : STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON' 
+    p[0] = p[4]
+
+def p_stack_items_multiple(p): 
+    'stack_items : stack_item COMMA stack_items'
+    p[0] = [p[1]] + p[3]
+
+def p_stack_items_single(p): 
+    'stack_items : stack_item' 
+    p[0] = [p[1]]
+
+def p_stack_item(p): 
+    'stack_item : LBRACE function_line COMMA line_line RBRACE' 
+    p[0] = { 'function': p[2], 'line': p[4] }
+
+def p_function_line(p): 
+    'function_line : FUNCTION COLON STRING' 
+    p[0] = p[3]
+
+def p_line_line(p): # Observa que en tu lexer has definido un token "LIINE" (o LINE); ajusta aquí según corresponda. 
+    'line_line : LINE COLON NUMBER' 
+    p[0] = p[3]
+
+def p_backup_block(p): 
+    'backup_block : BEGIN_BACKUP backup_content END_BACKUP' 
+    p[0] = ('backup', p[2])
+
+def p_backup_content(p): 
+    'backup_content : source_line destination_line file_list_line backup_update_list_opt' 
+    p[0] = { 'source': p[1], 'destination': p[2], 'file_list': p[3], 'updates': p[4] }
+
+def p_source_line(p): 
+    'source_line : SOURCE COLON STRING SEMICOLON' 
+    p[0] = p[3]
+
+def p_destination_line(p): 
+    'destination_line : DESTINATION COLON STRING SEMICOLON' 
+    p[0] = p[3]
+
+def p_file_list_line(p): 
+    'file_list_line : FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON' 
+    p[0] = p[4]
+
+def p_file_entries_multiple(p): 
+    'file_entries : STRING COMMA file_entries' 
+    p[0] = [p[1]] + p[3]
+
+def p_file_entries_single(p): 
+    'file_entries : STRING' 
+    p[0] = [p[1]]
+
+def p_backup_update_list_opt(p): 
+    'backup_update_list_opt : backup_update_list' 
+    p[0] = p[1]
+
+def p_backup_update_list_opt_empty(p): 
+    'backup_update_list_opt : '
+    p[0] = []
+
+def p_backup_update_list_multiple(p): 
+    'backup_update_list : backup_update_block backup_update_list' 
+    p[0] = [p[1]] + p[2]
+
+def p_backup_update_list_single(p):
+    'backup_update_list : backup_update_block' 
+    p[0] = [p[1]]
+
+def p_backup_update_block(p): 
+    'backup_update_block : BEGIN_BACKUP_UPDATE backup_update_content END_BACKUP_UPDATE' 
     p[0] = p[2]
 
-# Crash report block rules
-def p_crash_contents(p):
-    "crash_contents : crash_field_list"
-    p[0] = p[1]
+def p_backup_update_content(p): 
+    'backup_update_content : timestamp_line progress_line details_line' 
+    p[0] = { 'timestamp': p[1], 'progress': p[2], 'details': p[3] }
 
-def p_crash_field_list_multiple(p):
-    "crash_field_list : crash_field_list crash_field"
-    p[0] = p[1] + [p[2]]
-
-def p_crash_field_list_single(p):
-    "crash_field_list : crash_field"
-    p[0] = [p[1]]
-
-def p_crash_field_error_code(p):
-    "crash_field : IDENTIFIER COLON NUMBER SEMICOLON"
-    # Assumes IDENTIFIER is 'ERROR_CODE'
-    p[0] = ("error_code", p[3])
-
-def p_crash_field_message(p):
-    "crash_field : IDENTIFIER COLON STRING SEMICOLON"
-    # Assumes IDENTIFIER is 'MESSAGE'
-    p[0] = ("message", p[3])
-
-def p_crash_field_stack_trace(p):
-    "crash_field : STACK_TRACE COLON LBRACKET stack_trace_entries RBRACKET SEMICOLON"
-    p[0] = ("stack_trace", p[4])
-
-def p_stack_trace_entries_multiple(p):
-    "stack_trace_entries : stack_trace_entries COMMA stack_trace_entry"
-    p[0] = p[1] + [p[3]]
-
-def p_stack_trace_entries_single(p):
-    "stack_trace_entries : stack_trace_entry"
-    p[0] = [p[1]]
-
-def p_stack_trace_entry(p):
-    "stack_trace_entry : LBRACE function_field COMMA line_field RBRACE"
-    p[0] = {"function": p[2], "line": p[4]}
-
-def p_function_field(p):
-    "function_field : FUNCTION COLON STRING"
+def p_timestamp_line(p): 
+    'timestamp_line : TIMESTAMP COLON STRING SEMICOLON' 
     p[0] = p[3]
 
-def p_line_field(p):
-    "line_field : LIINE COLON NUMBER"
+def p_progress_line(p): 
+    'progress_line : PROGRESS COLON NUMBER SEMICOLON' 
     p[0] = p[3]
 
-# Backup block rules
-def p_backup_contents(p):
-    "backup_contents : backup_field_list"
-    # backup_field_list is a list of different backup-related fields.
-    p[0] = dict(p[1])
+def p_details_line(p): 
+    'details_line : DETAILS COLON STRING SEMICOLON' 
+    p[0] = p[3]
 
-def p_backup_field_list_multiple(p):
-    "backup_field_list : backup_field_list backup_field"
-    p[0] = p[1] + [p[2]]
+def p_error(p): 
+    if p: print("Error de sintaxis en el token", p.type, "con valor:", p.value, "en la línea", p.lineno, "columna", p.lexpos) 
+    else: print("Error de sintaxis al final de la entrada")
 
-def p_backup_field_list_single(p):
-    "backup_field_list : backup_field"
-    p[0] = [p[1]]
-
-def p_backup_field_source(p):
-    "backup_field : SOURCE STRING SEMICOLON"
-    p[0] = ("source", p[2])
-
-def p_backup_field_destination(p):
-    "backup_field : DESTINATION COLON STRING SEMICOLON"
-    p[0] = ("destination", p[3])
-
-def p_backup_field_file_list(p):
-    "backup_field : FILE_LIST COLON LBRACKET file_list_entries RBRACKET SEMICOLON"
-    p[0] = ("file_list", p[4])
-
-def p_file_list_entries_multiple(p):
-    "file_list_entries : file_list_entries COMMA STRING"
-    p[0] = p[1] + [p[3]]
-
-def p_file_list_entries_single(p):
-    "file_list_entries : STRING"
-    p[0] = [p[1]]
-
-def p_backup_field_backup_update(p):
-    "backup_field : BEGIN_BACKUP_UPDATE backup_update_contents END_BACKUP_UPDATE"
-    p[0] = ("backup_update", p[2])
-
-def p_backup_update_contents(p):
-    "backup_update_contents : backup_update_field_list"
-    p[0] = dict(p[1])
-
-def p_backup_update_field_list_multiple(p):
-    "backup_update_field_list : backup_update_field_list backup_update_field"
-    p[0] = p[1] + [p[2]]
-
-def p_backup_update_field_list_single(p):
-    "backup_update_field_list : backup_update_field"
-    p[0] = [p[1]]
-
-def p_backup_update_field_timestamp(p):
-    "backup_update_field : TIMESTAMP COLON STRING SEMICOLON"
-    p[0] = ("timestamp", p[3])
-
-def p_backup_update_field_progress(p):
-    "backup_update_field : PROGRESS COLON NUMBER SEMICOLON"
-    p[0] = ("progress", p[3])
-
-def p_backup_update_field_details(p):
-    "backup_update_field : DETAILS COLON STRING SEMICOLON"
-    p[0] = ("details", p[3])
-
-# Empty rule for optional parts
-def p_empty(p):
-    "empty :"
-    p[0] = None
-
-def p_error(p):
-    if p:
-        print("Syntax error at token", p.type, "value", p.value)
-    else:
-        print("Syntax error at EOF")
-
-# ---------------------
-# Build the parser
-# ---------------------
 parser = yacc.yacc()
 
-# ---------------------
-# Example usage:
-# ---------------------
 if __name__ == '__main__':
     # Read log file data (adjust the path if necessary)
     try:
