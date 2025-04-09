@@ -240,16 +240,16 @@ def t_BEGIN_BACKUP(t):
     r'BEGIN_BACKUP'
     return t
 
+def t_END_BACKUP(t):
+    r'END_BACKUP'
+    return t
+
 def t_IDENTIFIER(t):
     r'[A-Za-z_][A-Za-z0-9_]*'
     return t
 
 def t_MINUS(t): 
     r'-' 
-    return t
-
-def t_END_BACKUP(t):
-    r'END_BACKUP'
     return t
 
 def t_COLON(t):
