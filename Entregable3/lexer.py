@@ -111,19 +111,19 @@ def t_LATENCY(t):
     return t
 
 def t_VIDEO(t):
-    r'VIDEO'
+    r'video'
     return t
 
 def t_AUDIO(t):
-    r'AUDIO'
+    r'audio'
     return t
 
 def t_STORAGE(t):
-    r'STORAGE'
+    r'storage'
     return t
 
 def t_NETWORK(t):
-    r'NETWORK'
+    r'newwork'
     return t
 
 def t_PASS(t):
@@ -161,15 +161,15 @@ def t_FUNCTION(t):
     return t
 
 def t_LINE(t):
-    r'LINE:\s*\d+'
+    r'LINE:'
     return t
 
 def t_ERROR_CODE(t):
-    r'ERROR_CODE:\s*\d+'
+    r'ERROR_CODE:'
     return t
 
 def t_PROGRESS(t):
-    r'PROGRESS:\s*\d+'
+    r'PROGRESS:'
     return t
 
 def t_DETAILS(t):
@@ -228,13 +228,12 @@ def t_COMMA(t):
     r','
     return t
 
-
-def t_IDENTIFIER(t):
-    r'[A-Za-z_][A-Za-z0-9_]*'
+def t_BEGIN_BACKUP_UPDATE(t):
+    r'BEGIN_BACKUP_UPDATE'
     return t
 
-def t_MINUS(t): 
-    r'-' 
+def t_END_BACKUP_UPDATE(t):
+    r'END_BACKUP_UPDATE'
     return t
 
 def t_BEGIN_BACKUP(t):
@@ -245,12 +244,12 @@ def t_END_BACKUP(t):
     r'END_BACKUP'
     return t
 
-def t_BEGIN_BACKUP_UPDATE(t):
-    r'BEGIN_BACKUP_UPDATE'
+def t_IDENTIFIER(t):
+    r'[A-Za-z_][A-Za-z0-9_]*'
     return t
 
-def t_END_BACKUP_UPDATE(t):
-    r'END_BACKUP_UPDATE'
+def t_MINUS(t): 
+    r'-' 
     return t
 
 def t_COLON(t):
@@ -271,6 +270,7 @@ def t_error(t):
 
 def t_STRING(t):
     r'"[^"]*"'
+    t.value = t.value[1:-1]
     return t
 
 def t_SEMICOLON(t):
@@ -281,10 +281,10 @@ def t_SEMICOLON(t):
 #     r':'
 #     return t
 
-# def t_NUMBER(t):
-#     r'\d+'
-#     t.value = int(t.value)
-#     return t
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
 
 # Build the lexer
 lexer = lex.lex()

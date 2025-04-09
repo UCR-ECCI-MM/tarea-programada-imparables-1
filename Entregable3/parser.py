@@ -37,7 +37,7 @@ def p_entry_log(p):
 
 def p_log_line(p): 
     'log_line : LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE' 
-    p[0] = { 'date': p[2],'time': p[3], 'loglevel': p[4], 'entry_number': p[5], 'entry_message': p[6] }
+    p[0] = { 'date': p[2],'time': p[3], 'loglevel': p[5], 'entry_number': p[6], 'entry_message': p[7] }
 
 def p_blocks_opt(p): 
     'blocks_opt : blocks' 
@@ -75,7 +75,13 @@ def p_check_list_single(p):
     p[0] = [p[1]]
 
 def p_check_line(p): 
-    '''check_line : CHECK COLON STRING ARROW LBRACE RESULT COLON result_value COMMA LATENCY COLON STRING RBRACE SEMICOLON''' # Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
+    '''check_line : CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY STRING RBRACE SEMICOLON''' # Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
+
+def p_check_string(p):
+    '''CHECK_STRING : VIDEO 
+    | AUDIO
+    | NETWORK
+    | STORAGE'''
 
 def p_result_value_pass(p): 
     'result_value : PASS' 
@@ -102,8 +108,8 @@ def p_step_list_single(p):
     p[0] = [p[1]]
 
 def p_step_line(p): 
-    'step_line : STEP COLON STRING SEMICOLON' 
-    p[0] = p[3]
+    'step_line : STEP STRING SEMICOLON' 
+    p[0] = p[2]
 
 def p_crash_block(p): 
     'crash_block : BEGIN_CRASH_REPORT crash_content END_CRASH_REPORT' 
@@ -114,23 +120,23 @@ def p_crash_content(p):
     p[0] = { 'error_code': p[1], 'message': p[2], 'stack_trace': p[3] }
 
 def p_error_code_line(p): 
-    'error_code_line : IDENTIFIER COLON NUMBER SEMICOLON' 
-    p[0] = p[3]
+    'error_code_line : ERROR_CODE NUMBER SEMICOLON' 
+    p[0] = p[2]
 
 def p_message_line(p): 
-    'message_line : IDENTIFIER COLON STRING SEMICOLON' 
-    p[0] = p[3]
+    'message_line : MESSAGE STRING SEMICOLON' 
+    p[0] = p[2]
 
 def p_stack_trace_line(p): 
-    'stack_trace_line : STACK_TRACE COLON LBRACKET stack_items RBRACKET SEMICOLON' 
-    p[0] = p[4]
+    'stack_trace_line : STACK_TRACE LBRACKET stack_items RBRACKET SEMICOLON' 
+    p[0] = p[3]
 
 def p_stack_items_multiple(p): 
     'stack_items : stack_item COMMA stack_items'
     p[0] = [p[1]] + p[3]
 
 def p_stack_items_single(p): 
-    'stack_items : stack_item' 
+    'stack_items : stack_item COMMA' 
     p[0] = [p[1]]
 
 def p_stack_item(p): 
@@ -138,12 +144,12 @@ def p_stack_item(p):
     p[0] = { 'function': p[2], 'line': p[4] }
 
 def p_function_line(p): 
-    'function_line : FUNCTION COLON STRING' 
-    p[0] = p[3]
+    'function_line : FUNCTION STRING' 
+    p[0] = p[2]
 
 def p_line_line(p): # Observa que en tu lexer has definido un token "LIINE" (o LINE); ajusta aquí según corresponda. 
-    'line_line : LINE COLON NUMBER' 
-    p[0] = p[3]
+    'line_line : LINE NUMBER' 
+    p[0] = p[2]
 
 def p_backup_block(p): 
     'backup_block : BEGIN_BACKUP backup_content END_BACKUP' 
@@ -154,15 +160,15 @@ def p_backup_content(p):
     p[0] = { 'source': p[1], 'destination': p[2], 'file_list': p[3], 'updates': p[4] }
 
 def p_source_line(p): 
-    'source_line : SOURCE COLON STRING SEMICOLON' 
+    'source_line : SOURCE STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_destination_line(p): 
-    'destination_line : DESTINATION COLON STRING SEMICOLON' 
+    'destination_line : DESTINATION STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_file_list_line(p): 
-    'file_list_line : FILE_LIST COLON LBRACKET file_entries RBRACKET SEMICOLON' 
+    'file_list_line : FILE_LIST LBRACKET file_entries RBRACKET SEMICOLON' 
     p[0] = p[4]
 
 def p_file_entries_multiple(p): 
@@ -170,7 +176,7 @@ def p_file_entries_multiple(p):
     p[0] = [p[1]] + p[3]
 
 def p_file_entries_single(p): 
-    'file_entries : STRING' 
+    'file_entries : STRING COMMA' 
     p[0] = [p[1]]
 
 def p_backup_update_list_opt(p): 
@@ -198,16 +204,16 @@ def p_backup_update_content(p):
     p[0] = { 'timestamp': p[1], 'progress': p[2], 'details': p[3] }
 
 def p_timestamp_line(p): 
-    'timestamp_line : TIMESTAMP COLON STRING SEMICOLON' 
-    p[0] = p[3]
+    'timestamp_line : TIMESTAMP STRING SEMICOLON' 
+    p[0] = p[2]
 
 def p_progress_line(p): 
-    'progress_line : PROGRESS COLON NUMBER SEMICOLON' 
-    p[0] = p[3]
+    'progress_line : PROGRESS NUMBER SEMICOLON' 
+    p[0] = p[2]
 
 def p_details_line(p): 
-    'details_line : DETAILS COLON STRING SEMICOLON' 
-    p[0] = p[3]
+    'details_line : DETAILS STRING SEMICOLON' 
+    p[0] = p[2]
 
 def p_error(p): 
     if p: print("Error de sintaxis en el token", p.type, "con valor:", p.value, "en la línea", p.lineno, "columna", p.lexpos) 
