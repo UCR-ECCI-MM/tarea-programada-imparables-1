@@ -205,15 +205,15 @@ def p_backup_update_content(p):
 
 def p_timestamp_line(p): 
     'timestamp_line : TIMESTAMP STRING SEMICOLON' 
-    p[0] = p[3]
+    p[0] = p[2]
 
 def p_progress_line(p): 
     'progress_line : PROGRESS NUMBER SEMICOLON' 
-    p[0] = p[3]
+    p[0] = p[2]
 
 def p_details_line(p): 
     'details_line : DETAILS STRING SEMICOLON' 
-    p[0] = p[3]
+    p[0] = p[2]
 
 def p_error(p): 
     if p: print("Error de sintaxis en el token", p.type, "con valor:", p.value, "en la línea", p.lineno, "columna", p.lexpos) 

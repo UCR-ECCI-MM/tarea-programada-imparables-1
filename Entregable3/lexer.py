@@ -169,7 +169,7 @@ def t_ERROR_CODE(t):
     return t
 
 def t_PROGRESS(t):
-    r'PROGRESS:\s*\d+'
+    r'PROGRESS:'
     return t
 
 def t_DETAILS(t):
@@ -281,10 +281,10 @@ def t_SEMICOLON(t):
 #     r':'
 #     return t
 
-# def t_NUMBER(t):
-#     r'\d+'
-#     t.value = int(t.value)
-#     return t
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
 
 # Build the lexer
 lexer = lex.lex()
