@@ -160,7 +160,7 @@ def p_backup_content(p):
     p[0] = { 'source': p[1], 'destination': p[2], 'file_list': p[3], 'updates': p[4] }
 
 def p_source_line(p): 
-    'source_line : SOURCE COLON STRING SEMICOLON' 
+    'source_line : SOURCE STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_destination_line(p): 
