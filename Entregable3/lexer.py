@@ -228,6 +228,14 @@ def t_COMMA(t):
     r','
     return t
 
+def t_BEGIN_BACKUP_UPDATE(t):
+    r'BEGIN_BACKUP_UPDATE'
+    return t
+
+def t_END_BACKUP_UPDATE(t):
+    r'END_BACKUP_UPDATE'
+    return t
+
 def t_BEGIN_BACKUP(t):
     r'BEGIN_BACKUP'
     return t
@@ -242,14 +250,6 @@ def t_MINUS(t):
 
 def t_END_BACKUP(t):
     r'END_BACKUP'
-    return t
-
-def t_BEGIN_BACKUP_UPDATE(t):
-    r'BEGIN_BACKUP_UPDATE'
-    return t
-
-def t_END_BACKUP_UPDATE(t):
-    r'END_BACKUP_UPDATE'
     return t
 
 def t_COLON(t):

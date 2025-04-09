@@ -204,15 +204,15 @@ def p_backup_update_content(p):
     p[0] = { 'timestamp': p[1], 'progress': p[2], 'details': p[3] }
 
 def p_timestamp_line(p): 
-    'timestamp_line : TIMESTAMP COLON STRING SEMICOLON' 
+    'timestamp_line : TIMESTAMP STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_progress_line(p): 
-    'progress_line : PROGRESS COLON NUMBER SEMICOLON' 
+    'progress_line : PROGRESS NUMBER SEMICOLON' 
     p[0] = p[3]
 
 def p_details_line(p): 
-    'details_line : DETAILS COLON STRING SEMICOLON' 
+    'details_line : DETAILS STRING SEMICOLON' 
     p[0] = p[3]
 
 def p_error(p): 
