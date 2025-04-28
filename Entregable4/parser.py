@@ -40,7 +40,13 @@ def p_entry_log(p):
 
 def p_log_line(p): 
     'log_line : LBRACKET DATE TIME RBRACKET LOGLEVEL ENTRY_NUMBER ENTRY_MESSAGE' 
-    p[0] = { 'date': p[2],'time': p[3], 'loglevel': p[5], 'entry_number': p[6], 'entry_message': p[7] }
+    p[0] = { 
+        'date': p[2],
+        'time': p[3], 
+        'loglevel': p[5], 
+        'entry_number': p[6], 
+        'entry_message': p[7] 
+    }
 
 def p_blocks_opt(p): 
     'blocks_opt : blocks' 
@@ -79,7 +85,11 @@ def p_check_list_single(p):
 
 def p_check_line(p): 
     '''check_line : CHECK STRING ARROW LBRACE RESULT result_value COMMA LATENCY STRING RBRACE SEMICOLON'''
-    p[0] = { 'device': p[2], 'result': p[6], 'latency': p[9] }# Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
+    p[0] = { 
+        'device': p[2], 
+        'result': p[6], 
+        'latency': p[9] 
+    }# Por ejemplo: CHECK: "video" -> { result: "pass", latency: "28ms" }; p[0] = { 'device': p[3], 'result': p[8], 'latency': p[12] }
 
 def p_check_string(p):
     '''CHECK_STRING : VIDEO 
@@ -121,7 +131,11 @@ def p_crash_block(p):
 
 def p_crash_content(p): 
     'crash_content : error_code_line message_line stack_trace_line' 
-    p[0] = { 'error_code': p[1], 'message': p[2], 'stack_trace': p[3] }
+    p[0] = { 
+        'error_code': p[1], 
+        'message': p[2], 
+        'stack_trace': p[3] 
+    }
 
 def p_error_code_line(p): 
     'error_code_line : ERROR_CODE NUMBER SEMICOLON' 
@@ -145,7 +159,10 @@ def p_stack_items_single(p):
 
 def p_stack_item(p): 
     'stack_item : LBRACE function_line COMMA line_line RBRACE' 
-    p[0] = { 'function': p[2], 'line': p[4] }
+    p[0] = { 
+        'function': p[2], 
+        'line': p[4] 
+    }
 
 def p_function_line(p): 
     'function_line : FUNCTION STRING' 

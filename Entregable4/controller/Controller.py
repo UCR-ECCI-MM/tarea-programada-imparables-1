@@ -120,6 +120,33 @@ class Controller:
 
         self.model.parserAnalyzeData(file_path)
 
+        parserData = self.model.getParserData()
+
+        for entry in parserData:
+            entry_type = entry[0]
+            entry_data = entry[1]
+            entry_blocks = entry[2]
+
+            print(f"\n\nTipo de entrada: {entry_type}")
+            print("Datos principales:")
+            for key, value in entry_data.items():
+                print(f"  {key}: {value}")
+
+            print("Bloques asociados:")
+            for block in entry_blocks:
+                block_type = block[0]
+                block_data = block[1]
+
+                print(f"  Tipo de bloque: {block_type}")
+                if isinstance(block_data, list):  # Si el bloque contiene una lista
+                    for item in block_data:
+                        print(f"    {item}")
+                elif isinstance(block_data, dict):  # Si el bloque contiene un diccionario
+                    for key, value in block_data.items():
+                        print(f"    {key}: {value}")
+                else:
+                    print(f"    {block_data}")
+
 
         # ------------------------TEST THE LEXER------------------------
         # self.model.lexerAnalyze(file_path)

@@ -94,8 +94,8 @@ class Model:
                 self.data = result
                 print("Análisis sintáctico completado y almacenado en el modelo.")
                 # For demonstration, simply print the parse tree (or parts of it)
-                from pprint import pprint
-                pprint(result)
+                # from pprint import pprint
+                # pprint(result)
         except FileNotFoundError:
             print(f"File not found: {file_path}")
         except json.JSONDecodeError:
