@@ -23,23 +23,28 @@ Parser para validar estructura gramatical de logs del sistema.
 
 2. Ejecutar:
    ```sh
-   python parser.py
+   python main.py
    ```
    o
    ```sh
-   python -m Entregable3.parser
+   python -m Entregable4.main
    ```
 
 ## 📋 Funcionalidades
-- Validación de estructura gramatical
-- Manejo de errores sintácticos
+- Guardar tokens parseados dentro de una estructura de datos
 
 
 ## 📂 Estructura de archivos
 ```
 Entregable3/
+├── controller/
+├   └── Controller.py
+├── model/
+├   └── Model.py
+├── view/
+├   └── View.py
 ├── lexer.py
 ├── parser.py
-├── readme.md
-└── Tarea Corta 2 Compu (Entregable #3).pdf
+├── main.py
+└── readme.md
 ```
