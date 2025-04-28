@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.522843, y1:1, x2:0.533, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>300</y>
+      <width>281</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>NINGUN ARCHIVO CARGADO</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="analizarButton">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>450</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>AnalizarButton</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+font-size: 15px;
+min-height: 20%;</string>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuAYUDA">
+    <property name="title">
+     <string>AYUDA</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="GRAFICO1">
+    <property name="title">
+     <string>GRAFICOS</string>
+    </property>
+    <addaction name="actionGraficos"/>
+   </widget>
+   <widget class="QMenu" name="FUNCIONABILIDAD1">
+    <property name="title">
+     <string>FUNCIONABILIDADES</string>
+    </property>
+    <addaction name="actionfuncionabilidadPrueba"/>
+   </widget>
+   <addaction name="menuAYUDA"/>
+   <addaction name="GRAFICO1"/>
+   <addaction name="FUNCIONABILIDAD1"/>
+  </widget>
+  <action name="actionGraficos">
+   <property name="text">
+    <string>graficoPrueba</string>
+   </property>
+  </action>
+  <action name="actionfuncionabilidadPrueba">
+   <property name="text">
+    <string>funcionabilidadPrueba</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

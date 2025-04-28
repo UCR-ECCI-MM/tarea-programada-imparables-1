@@ -124,6 +124,12 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    - ##### Entregable 3
    ```sh
    python -m Entregable2.parser
+   ```
+
+   - ##### Entregable 4
+   ```sh
+   python -m Entregable4.main
+   ```
 ---
 
 ### ✅ Notas:
