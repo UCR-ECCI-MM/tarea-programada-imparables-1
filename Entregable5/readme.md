@@ -1,4 +1,4 @@
-# 📐 Entregable 4 - Analizador Sintáctico y estructuras de datos
+# 📐 Entregable 5 - Analizador Sintáctico y estructuras de datos
 
 Parser para validar estructura gramatical de logs del sistema.
 
@@ -27,7 +27,7 @@ Parser para validar estructura gramatical de logs del sistema.
    ```
    o
    ```sh
-   python -m Entregable4.main
+   python -m Entregable5.main
    ```
 
 ## 📋 Funcionalidades
@@ -36,7 +36,7 @@ Parser para validar estructura gramatical de logs del sistema.
 
 ## 📂 Estructura de archivos
 ```
-Entregable3/
+Entregable5/
 ├── controller/
 ├   └── Controller.py
 ├── model/
@@ -47,4 +47,6 @@ Entregable3/
 ├── parser.py
 ├── main.py
 └── readme.md
+
+
 ```

@@ -132,6 +132,11 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```sh
    python -m Entregable4.main
    ```
+
+   - ##### Entregable 5
+   ```sh
+   python -m Entregable5.main
+   ```
 ---
 
 ### ✅ Notas:
