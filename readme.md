@@ -67,6 +67,8 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    pip install PyQt5
 
    pip install ply
+
+   pip install reportlab
    ```
 7. Cómo correr cada etapa, una vez instaladas dependencias y dentro del entorno virtual
    - ##### Entregable 1
@@ -80,6 +82,14 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    - ##### Entregable 3
    ```sh
    python Entregable3/parser.py
+   ```
+   - ##### Entregable 4
+   ```sh
+   python Entregable4/parser.py
+   ```
+   - ##### Entregable 5
+   ```sh
+   python Entregable5/parser.py
    ```
 
 ### 🔹 Mac / Ubuntu (Recomendado abrir una terminal en VS code)
@@ -127,10 +137,13 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    ```sh
    python -m Entregable2.parser
    ```
-
    - ##### Entregable 4
    ```sh
    python -m Entregable4.main
+   ```
+   - ##### Entregable 5
+   ```sh
+   python -m Entregable5.main
    ```
 ---
 

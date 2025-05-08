@@ -1,4 +1,4 @@
-# 📐 Entregable 4 - Analizador Sintáctico y estructuras de datos
+# 📐 Entregable 5 - App final
 
 Parser para validar estructura gramatical de logs del sistema.
 
@@ -16,6 +16,8 @@ Parser para validar estructura gramatical de logs del sistema.
    pip install PyQt5
 
    pip install ply
+
+   pip install reportlab
    ```
 
 ### Instrucciones
@@ -27,24 +29,8 @@ Parser para validar estructura gramatical de logs del sistema.
    ```
    o
    ```sh
-   python -m Entregable4.main
+   python -m Entregable5.main
    ```
 
 ## 📋 Funcionalidades
 - Guardar tokens parseados dentro de una estructura de datos
-
-
-## 📂 Estructura de archivos
-```
-Entregable3/
-├── controller/
-├   └── Controller.py
-├── model/
-├   └── Model.py
-├── view/
-├   └── View.py
-├── lexer.py
-├── parser.py
-├── main.py
-└── readme.md
-```
