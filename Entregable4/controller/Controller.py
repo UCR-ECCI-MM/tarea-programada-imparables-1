@@ -99,6 +99,7 @@ class Controller:
         elif action == "agregar":
             file_path = self.selectFile()
             self.view.switchToDashboard()
+            # AQUI DEME LAS ESTRUCTURAS DE LOS DATOS
 
 
         else:
