@@ -109,6 +109,8 @@ class Controller:
         """
         Perform lexical analysis and print the results.
         """
+        if not file_path:
+            return
 
         # Call the model to perform lexical analysis
         has_errors = self.model.lexerAnalyze(file_path)
@@ -123,9 +125,13 @@ class Controller:
             print("Análisis léxico completado sin errores.")
 
         self.model.parserAnalyzeData(file_path)
-
         parserData = self.model.getParserData()
 
+        # Switch to dashboard and display the data
+        self.view.switchToDashboard()
+        self.view.displayParsedData(parserData)
+
+        # Print data for debugging
         for entry in parserData:
             entry_type = entry[0]
             entry_data = entry[1]

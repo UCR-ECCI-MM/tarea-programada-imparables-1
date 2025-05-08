@@ -110,6 +110,9 @@ class Controller:
         Perform lexical analysis and print the results.
         """
 
+        if not file_path:
+            return
+
         # Call the model to perform lexical analysis
         has_errors = self.model.lexerAnalyze(file_path)
 
@@ -125,6 +128,9 @@ class Controller:
         self.model.parserAnalyzeData(file_path)
 
         parserData = self.model.getParserData()
+
+        self.view.switchToDashboard()
+        self.view.displayParsedData(parserData)
 
         for entry in parserData:
             entry_type = entry[0]
