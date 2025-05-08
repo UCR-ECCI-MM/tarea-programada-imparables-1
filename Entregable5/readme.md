@@ -31,7 +31,7 @@ Parser para validar estructura gramatical de logs del sistema.
    ```
 
 ## 📋 Funcionalidades
-- Guardar tokens parseados dentro de una estructura de datos
+- Aplicación terminada; Versión final.
 
 
 ## 📂 Estructura de archivos
