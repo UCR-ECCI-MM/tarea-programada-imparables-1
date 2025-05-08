@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Analizador de Archivos</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+   QMainWindow {
+       background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
+                                         stop:0 #1a2a6c, stop:1 #b21f1f);
+   }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>911</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+     QLabel {
+         color: #333333;
+         background-color: rgba(255, 255, 255, 0.9);
+         border-radius: 15px;
+         font-size: 24px;
+         font-weight: bold;
+         padding: 20px;
+         qproperty-alignment: AlignCenter;
+         border: 2px solid #ffffff;
+     }
+     </string>
+    </property>
+    <property name="text">
+     <string>NINGÚN ARCHIVO CARGADO</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>37</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+    QMenuBar {
+        background-color: #333333;
+        color: white;
+        font-size: 14px;
+        padding: 5px;
+    }
+    QMenuBar::item {
+        background: transparent;
+        padding: 5px 10px;
+    }
+    QMenuBar::item:selected {
+        background: #555555;
+        border-radius: 4px;
+    }
+    QMenuBar::item:pressed {
+        background: #777777;
+    }
+    </string>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuAYUDA">
+    <property name="styleSheet">
+     <string notr="true">
+     QMenu {
+         background-color: #444444;
+         color: white;
+         border: 1px solid #666666;
+     }
+     QMenu::item:selected {
+         background-color: #555555;
+     }
+     </string>
+    </property>
+    <property name="title">
+     <string>AYUDA</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="GRAFICO1">
+    <property name="title">
+     <string>GRÁFICOS</string>
+    </property>
+    <addaction name="actionGraficos"/>
+   </widget>
+   <widget class="QMenu" name="FUNCIONABILIDAD1">
+    <property name="title">
+     <string>FUNCIONALIDADES</string>
+    </property>
+    <addaction name="actionfuncionabilidadPrueba"/>
+   </widget>
+   <addaction name="menuAYUDA"/>
+   <addaction name="GRAFICO1"/>
+   <addaction name="FUNCIONABILIDAD1"/>
+  </widget>
+  <action name="actionGraficos">
+   <property name="icon">
+    <iconset>
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Generar Gráfico</string>
+   </property>
+  </action>
+  <action name="actionfuncionabilidadPrueba">
+   <property name="text">
+    <string>Análisis Avanzado</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
