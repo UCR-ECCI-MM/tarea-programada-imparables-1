@@ -111,6 +111,8 @@ Para mantener un historial de cambios claro y organizado, se utilizará la sigui
    pip install PyQt5
 
    pip install ply
+
+   pip install reportlab
    ```
 7. Cómo correr cada etapa, una vez instaladas dependencias y dentro del entorno virtual
       - ##### Entregable 1

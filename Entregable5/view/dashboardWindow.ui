@@ -22,31 +22,24 @@
    </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>911</width>
-      <height>641</height>
+      <x>20</x>
+      <y>80</y>
+      <width>961</width>
+      <height>661</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">
-     QLabel {
-         color: #333333;
-         background-color: rgba(255, 255, 255, 0.9);
-         border-radius: 15px;
-         font-size: 24px;
-         font-weight: bold;
-         padding: 20px;
-         qproperty-alignment: AlignCenter;
-         border: 2px solid #ffffff;
-     }
-     </string>
-    </property>
-    <property name="text">
-     <string>NINGÚN ARCHIVO CARGADO</string>
+   </widget>
+   <widget class="QLineEdit" name="searchBar">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>40</y>
+      <width>521</width>
+      <height>28</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -86,23 +79,6 @@
    <property name="nativeMenuBar">
     <bool>false</bool>
    </property>
-   <widget class="QMenu" name="menuAYUDA">
-    <property name="styleSheet">
-     <string notr="true">
-     QMenu {
-         background-color: #444444;
-         color: white;
-         border: 1px solid #666666;
-     }
-     QMenu::item:selected {
-         background-color: #555555;
-     }
-     </string>
-    </property>
-    <property name="title">
-     <string>AYUDA</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="GRAFICO1">
     <property name="title">
      <string>GRÁFICOS</string>
@@ -115,7 +91,6 @@
     </property>
     <addaction name="actionfuncionabilidadPrueba"/>
    </widget>
-   <addaction name="menuAYUDA"/>
    <addaction name="GRAFICO1"/>
    <addaction name="FUNCIONABILIDAD1"/>
   </widget>
@@ -130,7 +105,7 @@
   </action>
   <action name="actionfuncionabilidadPrueba">
    <property name="text">
-    <string>Análisis Avanzado</string>
+    <string>Exportar PDF</string>
    </property>
   </action>
  </widget>

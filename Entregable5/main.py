@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QApplication
 try: # Try to load the Class Controller
     from controller.Controller import Controller #Linux
 except ImportError:
-    from Entregable4.controller.Controller import Controller #Mac
+    from Entregable5.controller.Controller import Controller #Mac
 
 def main():
     # Inicializa QApplication antes de cualquier QWidget

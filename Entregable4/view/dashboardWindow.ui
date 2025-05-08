@@ -22,31 +22,14 @@
    </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QTableWidget" name="tableLogs">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>911</width>
+      <x>40</x>
+      <y>30</y>
+      <width>921</width>
       <height>641</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-     QLabel {
-         color: #333333;
-         background-color: rgba(255, 255, 255, 0.9);
-         border-radius: 15px;
-         font-size: 24px;
-         font-weight: bold;
-         padding: 20px;
-         qproperty-alignment: AlignCenter;
-         border: 2px solid #ffffff;
-     }
-     </string>
-    </property>
-    <property name="text">
-     <string>NINGÚN ARCHIVO CARGADO</string>
     </property>
    </widget>
   </widget>

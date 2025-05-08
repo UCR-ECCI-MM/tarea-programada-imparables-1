@@ -2,12 +2,12 @@ import json
 try: # Intento directo de importación
     from lexer import lexer  # Import the lexer instance
 except ImportError:
-    from Entregable4.lexer import lexer  # Import the lexer instance
+    from Entregable5.lexer import lexer  # Import the lexer instance
 
 try: # Intento directo de importación
     from parser import parser  # Import the lexer instance
 except ImportError:
-    from Entregable4.parser import parser  # Import the lexer instance
+    from Entregable5.parser import parser  # Import the lexer instance
 
 class Model:
     def __init__(self):
