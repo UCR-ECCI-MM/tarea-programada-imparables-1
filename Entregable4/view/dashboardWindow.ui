@@ -26,9 +26,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>150</y>
-      <width>951</width>
-      <height>441</height>
+      <y>20</y>
+      <width>911</width>
+      <height>641</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -49,41 +49,75 @@
      <string>NINGÚN ARCHIVO CARGADO</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="agregarButton">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>620</y>
-      <width>300</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>37</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+    QMenuBar {
+        background-color: #333333;
+        color: white;
+        font-size: 14px;
+        padding: 5px;
+    }
+    QMenuBar::item {
+        background: transparent;
+        padding: 5px 10px;
+    }
+    QMenuBar::item:selected {
+        background: #555555;
+        border-radius: 4px;
+    }
+    QMenuBar::item:pressed {
+        background: #777777;
+    }
+    </string>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuAYUDA">
     <property name="styleSheet">
      <string notr="true">
-     QPushButton {
-         background-color: #4CAF50;
+     QMenu {
+         background-color: #444444;
          color: white;
-         border: none;
-         border-radius: 25px;
-         font-size: 16px;
-         font-weight: bold;
-         padding: 10px 20px;
+         border: 1px solid #666666;
      }
-     QPushButton:hover {
-         background-color: #45a049;
-     }
-     QPushButton:pressed {
-         background-color: #3e8e41;
+     QMenu::item:selected {
+         background-color: #555555;
      }
      </string>
     </property>
-    <property name="text">
-     <string>Seleccionar archivo</string>
+    <property name="title">
+     <string>AYUDA</string>
     </property>
    </widget>
+   <widget class="QMenu" name="GRAFICO1">
+    <property name="title">
+     <string>GRÁFICOS</string>
+    </property>
+    <addaction name="actionGraficos"/>
+   </widget>
+   <widget class="QMenu" name="FUNCIONABILIDAD1">
+    <property name="title">
+     <string>FUNCIONALIDADES</string>
+    </property>
+    <addaction name="actionfuncionabilidadPrueba"/>
+   </widget>
+   <addaction name="menuAYUDA"/>
+   <addaction name="GRAFICO1"/>
+   <addaction name="FUNCIONABILIDAD1"/>
   </widget>
   <action name="actionGraficos">
    <property name="icon">

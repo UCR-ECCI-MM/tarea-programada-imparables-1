@@ -9,7 +9,7 @@ except ImportError:
     from Entregable4.model.Model import Model #Mac
 
 # from model.Model import Model
-from PyQt5.QtWidgets import QVBoxLayout, QDialog, QMessageBox
+from PyQt5.QtWidgets import QVBoxLayout, QDialog, QMessageBox, QFileDialog
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
@@ -96,15 +96,18 @@ class Controller:
             # ------------------------------------PROVISIONAL------------------------------------
         elif action == "analizar":
             self.dataAnalisis()
+        elif action == "agregar":
+            file_path = self.selectFile()
+            self.view.switchToDashboard()
+
 
         else:
             print("Unknown action!")
 
-    def dataAnalisis(self):
+    def dataAnalisis(self, file_path):
         """
         Perform lexical analysis and print the results.
         """
-        file_path = 'Docs/large_complex_log.txt'
 
         # Call the model to perform lexical analysis
         has_errors = self.model.lexerAnalyze(file_path)
@@ -155,6 +158,32 @@ class Controller:
         # print("Lexical Data:")
         # for token in lexicalData:
         #     print(token)
+    
+    def selectFile(self):
+        """
+        Open a file dialog to select a file and store the selected file path.
+        """
+        # Abrir el cuadro de diálogo para seleccionar un archivo
+        file_path, _ = QFileDialog.getOpenFileName(
+            None,  # Ventana padre (None para usar la ventana principal)
+            "Seleccionar archivo",  # Título del cuadro de diálogo
+            "",  # Directorio inicial (vacío para usar el directorio actual)
+            "Archivos de texto (*.txt);;Todos los archivos (*)"  # Filtros de archivo
+        )
+
+        # Verificar si se seleccionó un archivo
+        if file_path:
+            # Validar que el archivo tenga la extensión .txt
+            if not file_path.endswith('.txt'):
+                print("El archivo seleccionado no tiene la extensión .txt.")
+                QMessageBox.warning(None, "Error de archivo", "Por favor, selecciona un archivo con extensión .txt.")
+                return None
+
+            print(f"Archivo seleccionado: {file_path}")
+            return file_path
+        else:
+            print("No se seleccionó ningún archivo.")
+            return None
 
     def run(self):
         """

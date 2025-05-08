@@ -45,9 +45,24 @@ class View(QMainWindow):
         self.centerWindow() # Center the main window on the screen
         self.stackedWidget.addWidget(self.mainPage) # Add welcomePage to the stackedWidget
         self.stackedWidget.setCurrentWidget(self.mainPage) # set the welcomePage to the main window on the stackedWidget
-        self.menuBar.setVisible(True)  # Show the menu bar
         self.connectMenuActions() # Connect menu actions to controller methods
         self.connectButtons() # Connect buttons or other widgets to controller methods
+
+    def switchToDashboard(self):
+        """
+        Switch to the dashboard window.
+        """
+        self.dashboardPage = QWidget()
+
+        try: #Try to load the IU
+            loadUi( 'view/dashboardWindow.ui' , self ) # Load from the UI file #Linux
+        except:
+            loadUi( 'Entregable4/view/dashboardWindow.ui' , self ) # Load from the UI file #Mac
+        
+        self.centerWindow() # Center the main window on the screen
+        # self.stackedWidget.addWidget(self.dashboardPage) # Add welcomePage to the stackedWidget
+        # self.stackedWidget.setCurrentWidget(self.dashboardPage) # set the welcomePage to the main window on the stackedWidget
+        # self.menuBar.setVisible(True)  # Show the menu bar
 
     def connectButtons(self):
         """
@@ -55,6 +70,7 @@ class View(QMainWindow):
         """
         self.connectButton('startButton', 'startApp', 'clicked') # (butttonName, actionName, actionExecuted)
         self.connectButton('analizarButton', 'analizar', 'clicked') # (butttonName, actionName, actionExecuted)
+        self.connectButton('agregarButton', 'agregar', 'clicked') # (butttonName, actionName, actionExecuted)
 
     def connectMenuActions(self):
         """
