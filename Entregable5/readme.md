@@ -1,4 +1,4 @@
-# 📐 Entregable 5 - App final
+# 📐 Entregable 5 - Analizador Sintáctico y estructuras de datos
 
 Parser para validar estructura gramatical de logs del sistema.
 
@@ -33,4 +33,22 @@ Parser para validar estructura gramatical de logs del sistema.
    ```
 
 ## 📋 Funcionalidades
-- Guardar tokens parseados dentro de una estructura de datos
+- Aplicación terminada; Versión final.
+
+
+## 📂 Estructura de archivos
+```
+Entregable5/
+├── controller/
+├   └── Controller.py
+├── model/
+├   └── Model.py
+├── view/
+├   └── View.py
+├── lexer.py
+├── parser.py
+├── main.py
+└── readme.md
+
+
+```
