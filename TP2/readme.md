@@ -1,4 +1,3 @@
-
 ## 📝 Descripción General
 
 El objetivo de la tarea es generar contraseñas que cumplan con requisitos de seguridad específicos, utilizando diferentes enfoques algorítmicos:
@@ -15,8 +14,27 @@ El objetivo de la tarea es generar contraseñas que cumplan con requisitos de se
 
 ### Ejemplo de ejecución (Fuerza Bruta)
 
-1. Abre una terminal y navega a la carpeta `TP2/fuerzaBruta`.
-2. Ejecuta el programa:
-
+1. Abre una terminal y navega a la carpeta `TP2/fuerzaBruta`:
    ```sh
-   python main.py
+   cd TP2/fuerzaBruta
+   ```
+
+2. Crea un entorno virtual:
+   ```sh
+   python3 -m venv venv
+   ```
+
+3. Activa el entorno virtual:
+   - En Linux/Mac:
+     ```sh
+     source venv/bin/activate
+     ```
+   - En Windows:
+     ```sh
+     venv\Scripts\activate
+     ```
+
+4. Ejecuta el programa de fuerza bruta:
+   ```sh
+   python fuerzaBruta.py
+   ```
