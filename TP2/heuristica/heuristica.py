@@ -3,11 +3,14 @@ import time
 import random
 from hashlib import sha256
 
-COMMON_SEQUENCES = [
-    "abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij", "ijk", "jkl", "klm", "lmn", "mno", "nop", "opq", "pqr", "qrs", "rst", "stu", "tuv", "uvw", "vwx", "wxy", "xyz",
-    "123", "234", "345", "456", "567", "678", "789", "890", "012",
-    "qwe", "wer", "ert", "rty", "tyu", "yui", "uio", "iop", "asd", "sdf", "dfg", "fgh", "ghj", "hjk", "jkl", "zxc", "xcv", "cvb", "vbn", "bnm"
-]
+COMMON_SEQUENCES = set([
+    "abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij", "ijk", "jkl", 
+    "klm", "lmn", "mno", "nop", "opq", "pqr", "qrs", "rst", "stu", "tuv", 
+    "uvw", "vwx", "wxy", "xyz", "123", "234", "345", "456", "567", "678", 
+    "789", "890", "012", "qwe", "wer", "ert", "rty", "tyu", "yui", "uio", 
+    "iop", "asd", "sdf", "dfg", "ghj", "hjk", "jkl", "zxc", "xcv", "cvb", 
+    "vbn", "bnm", "password", "qwerty"
+])
 
 # Extended character set: ASCII + extra symbols
 extended_symbols = (
@@ -55,7 +58,7 @@ def evaluate_password(password, min_length=8, required_categories=3):
     "upper": any(c.isupper() for c in password),
     "digit": any(c.isdigit() for c in password),
     "special": any(c in string.punctuation for c in password),
-    "common_seq": not any(seq in password.lower() for seq in COMMON_SEQUENCES),
+    "common_seq": not any(seq in password.lower() for seq in COMMON_SEQUENCES)
   }
   score = sum(categories.values())  # Maximum score is 5 if all categories are met
 
