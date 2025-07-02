@@ -10,6 +10,13 @@ COMMON_SEQUENCES = [
     "qwe", "wer", "ert", "rty", "tyu", "yui", "uio", "iop", "asd", "sdf", "dfg", "fgh", "ghj", "hjk", "jkl", "zxc", "xcv", "cvb", "vbn", "bnm"
 ]
 
+extended_symbols = (
+    string.ascii_letters + 
+    string.digits + 
+    string.punctuation + 
+    "¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿×÷"
+)
+
 def has_common_sequence(password):
     pw_lower = password.lower()
     for seq in COMMON_SEQUENCES:
@@ -30,7 +37,7 @@ def checkRequirements(password):
     hasLower = any(c.islower() for c in password)
     hasUpper = any(c.isupper() for c in password)
     hasDigit = any(c.isdigit() for c in password)
-    hasSymbol = any(c in string.punctuation for c in password)
+    hasSymbol = any(c in extended_symbols for c in password)
     noRepeat = all(password[i] != password[i+1] for i in range(len(password) - 1))
     noCommonSeq = not has_common_sequence(password)
 
@@ -44,6 +51,23 @@ def generatePasswords(initialSymbol, passLength, max_results=5):
     chars = string.ascii_letters + string.digits + string.punctuation
     solutions = []
     
+    for combination in itertools.product(chars, repeat=passLength):
+        password = initialSymbol + ''.join(combination)
+        if checkRequirements(password):
+            solutions.append(password)
+            if len(solutions) >= max_results:
+                break
+
+    return solutions
+
+def generatePasswordsWithLimit(initialSymbol, passLength, max_results=5):
+    """
+    Generates up to max_results valid passwords of a specific length,
+    starting from an initial symbol, and verifies if they meet the security requirements.
+    """
+    chars = string.ascii_letters + string.digits + string.punctuation
+    solutions = []
+
     for combination in itertools.product(chars, repeat=passLength):
         password = initialSymbol + ''.join(combination)
         if checkRequirements(password):
