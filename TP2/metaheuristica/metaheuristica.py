@@ -1,6 +1,8 @@
 import random
 import string
 import math
+import os
+import time
 
 # Extended character set: ASCII + extra symbols
 extended_symbols = (
@@ -96,9 +98,51 @@ def simulated_annealing(init_password, max_iterations=1000, init_temp=100, cooli
 
   return best_password, best_score
 
-initial_password = generate_initial_password(length=8)
-result_password, result_score = simulated_annealing(initial_password)
+# initial_password = generate_initial_password(length=8)
+# result_password, result_score = simulated_annealing(initial_password)
 
-print("Contraseña inicial:", initial_password)
-print("Contraseña final:", result_password)
-print("Puntuación final:", result_score)
+# print("Contraseña inicial:", initial_password)
+# print("Contraseña final:", result_password)
+# print("Puntuación final:", result_score)
+
+def clear_console():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+def main():
+    clear_console()
+    print("=== Generador de Contraseñas Seguras (Metaheurística - Simulated Annealing) ===")
+    initialSymbol = input("Ingrese el símbolo inicial de la contraseña: ")
+    while len(initialSymbol) != 1:
+        print("Por favor, ingrese solo un carácter.")
+        initialSymbol = input("Ingrese el símbolo inicial de la contraseña: ")
+
+    try:
+        passLength = int(input("Ingrese la longitud deseada para la contraseña (sin contar el símbolo inicial, recomendado 8 o más): "))
+        if passLength < 1:
+            print("La longitud debe ser al menos 1.")
+            return
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+        return
+
+    start_time = time.time()
+    solutions = []
+    seen = set()
+    while len(solutions) < 5:
+        # Genera la contraseña inicial con el símbolo inicial fijo
+        initial_password = initialSymbol + generate_initial_password(length=passLength)
+        pwd, score = simulated_annealing(initial_password)
+        # Asegura que la contraseña generada empiece con el símbolo inicial
+        if pwd.startswith(initialSymbol) and pwd not in seen:
+            solutions.append((pwd, score))
+            seen.add(pwd)
+    end_time = time.time()
+
+    print("\nPropuestas de contraseñas seguras:")
+    for idx, (pwd, score) in enumerate(solutions, 1):
+        print(f"{idx}. {pwd}  |  Puntaje: {score}")
+
+    print("\nTiempo de ejecución: %.4f segundos" % (end_time - start_time))
+
+if __name__ == "__main__":
+    main()

@@ -139,13 +139,14 @@ def main():
         return
 
     start_time = time.time()
-    solutions = generatePasswords(initialSymbol, passLength)
+    solutions = generatePasswords(initialSymbol, passLength, max_results=5)
     end_time = time.time()
 
     if solutions:
         print("\nPropuestas de contraseñas seguras:")
         for idx, pwd in enumerate(solutions, 1):
-            print(f"{idx}. {pwd}")
+            score = evaluate_password(pwd)
+            print(f"{idx}. {pwd}  |  Puntaje: {score}")
     else:
         print("No se encontraron contraseñas válidas con los parámetros dados.")
 
