@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Cargar el archivo CSV proporcionado
-file_path = 'TP2/doc/resultados_comparacion.csv'
+file_path = '/Users/christopherzuniga/Documents/education/CicloIII/SemestreVpt2/computabilidad/tarea-programada-imparables-1/resultados_comparacion.csv'
 data = pd.read_csv(file_path)
 
 

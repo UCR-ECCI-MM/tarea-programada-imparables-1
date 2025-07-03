@@ -26,7 +26,7 @@ def run_experiments():
     for length in password_lengths:
         for trial in range(num_trials):
             start_time = time.time()
-            solutions, score = generatePasswordsWithLimit(initial_symbol, length, max_results=1)
+            solutions, score = generatePasswordsWithLimit(initial_symbol, length, num_trials)
             end_time = time.time()
             results.append(["Fuerza Bruta", length, score, end_time - start_time])
 

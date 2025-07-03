@@ -24,6 +24,29 @@ def has_common_sequence(password):
             return True
     return False
 
+def evaluate_password(password, min_length=8, required_categories=3):
+  categories = {
+    "lower": any(c.islower() for c in password),
+    "upper": any(c.isupper() for c in password),
+    "digit": any(c.isdigit() for c in password),
+    "special": any(c in string.punctuation for c in password),
+    "noCommonSeq": not has_common_sequence(password)
+  }
+  score = sum(categories.values())  # Máximo: 4 si todas las categorías están presentes
+
+  # Penalización por longitud insuficiente
+  if len(password) < min_length:
+    score -= (min_length - len(password)) * 0.5  # Penalización más leve
+
+  # Penalización por repetición de caracteres
+  repetitions = len(password) - len(set(password))
+  score -= repetitions * 0.5
+
+  # Normalización para un rango entre 0 y 10
+  max_score = 4  # Máximo posible antes de penalizaciones
+  normalized_score = max(0, min(10, (score / max_score) * 10))
+  return normalized_score
+
 def checkRequirements(password):
     """
     Verifies if a password meets the following requirements:
@@ -60,22 +83,40 @@ def generatePasswords(initialSymbol, passLength, max_results=5):
 
     return solutions
 
-def generatePasswordsWithLimit(initialSymbol, passLength, max_results=5):
+def generatePasswordsWithLimit(initialSymbol, passLength, max_attempts=10000):
     """
-    Generates up to max_results valid passwords of a specific length,
-    starting from an initial symbol, and verifies if they meet the security requirements.
+    Genera contraseñas usando fuerza bruta con un límite de intentos.
+    
+    Parámetros:
+    initialSymbol (str): Símbolo inicial fijo para cada contraseña.
+    passLength (int): Longitud de las contraseñas excluyendo el símbolo inicial.
+    max_attempts (int): Máximo número de intentos antes de detener la generación.
+    
+    Retorna:
+    list: Lista de contraseñas válidas que cumplen los requisitos.
     """
-    chars = string.ascii_letters + string.digits + string.punctuation
     solutions = []
+    attempts = 0
+    score = 0
 
-    for combination in itertools.product(chars, repeat=passLength):
+    for combination in itertools.product(extended_symbols, repeat=passLength):
+        # Verificar si se alcanzó el límite de intentos
+        if attempts >= max_attempts:
+            print(f"Alcanzado el límite de intentos ({max_attempts}). Deteniendo.")
+            break
+
+        # Crear la contraseña
         password = initialSymbol + ''.join(combination)
-        if checkRequirements(password):
-            solutions.append(password)
-            if len(solutions) >= max_results:
-                break
 
-    return solutions
+        # Verificar si la contraseña cumple con los requisitos
+        if evaluate_password(password) >= 0:
+            solutions.append(password)
+            score = evaluate_password(password)
+
+        attempts += 1
+
+    print(f"Intentos realizados: {attempts}")
+    return solutions, score
 
 def clear_console():
     os.system('clear' if os.name == 'posix' else 'cls')
